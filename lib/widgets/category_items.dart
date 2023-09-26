@@ -19,45 +19,55 @@ class _CategoryItemsState extends State<CategoryItems> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Stack(
-          children: [
-            Container(
-              width: 87,
-              height: 88,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color.fromRGBO(220, 252, 244, 1),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 50),
-              child: Container(
+        Padding(
+          padding: const EdgeInsets.only(left: 15, top: 30, right: 3),
+          child: Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
+            children: [
+              Container(
                 width: 87,
-                height: 38,
-                decoration: const BoxDecoration(
-                  color: AppColors.greenMainColor,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(6),
-                    bottomRight: Radius.circular(6),
+                height: 88,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: AppColors.greenItems,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 50),
+                child: Container(
+                  width: 87,
+                  height: 38,
+                  decoration: const BoxDecoration(
+                    color: AppColors.greenMainColor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(6),
+                      bottomRight: Radius.circular(6),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        widget.textLabel,
+                        style: const TextStyle(
+                            fontFamily: "SemiBold",
+                            color: AppColors.whiteColor),
+                      ),
+                    ],
                   ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(widget.textLabel),
-                  ],
+              ),
+              Positioned(
+                top: -30,
+                child: SizedBox(
+                  width: 85,
+                  height: 75,
+                  child: Image.asset(widget.imagePath),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Container(
-                width: 75,
-                height: 65,
-                child: Image.asset(widget.imagePath),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ],
     );

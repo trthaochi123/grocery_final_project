@@ -64,11 +64,11 @@ class _LoginPageState extends State<LoginPage> {
 
             const SizedBox(height: 5,),
             // Login
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children: [
                   Text("Login",
                       style: TextStyle(
                           fontSize: 24,
@@ -147,12 +147,12 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             // google or facebook
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google
                 Row(
-                  children: const [
+                  children: [
                     SquareTile(
                       imagePath: 'assets/icons/ic_google.png',
                       textIcon: 'Google',
@@ -160,12 +160,12 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                const SizedBox(
+                SizedBox(
                   width: 25,
                 ),
 
                 // facebook
-                const SquareTile(
+                SquareTile(
                   imagePath: 'assets/icons/ic_facebook.png',
                   textIcon: 'Facebook',
                 ),
