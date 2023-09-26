@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'package:permission_handler/permission_handler.dart';
-
 import '../../base/colors/app_colors.dart';
-import '../../widgets/input_field.dart';
 import '../../widgets/button_widget.dart';
+import '../../widgets/input_field.dart';
 import '../../widgets/square_tile.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
+class RegisterPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _LoginPageState();
+  State<StatefulWidget> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  final yournameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final contactNumberController = TextEditingController();
 
-  void signUserIn() {}
+  void registerUser() {}
 
   @override
   Widget build(BuildContext context) {
@@ -26,63 +25,66 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: ListView(
           children: [
-            const SizedBox(
-              height: 19,
-            ),
             // SG Grocery
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 80,
+                ),
                 Image.asset(
                   "assets/images/img_logo.png",
-                  width: 37,
+                  width: 36.51,
                   height: 53,
                 ),
                 const SizedBox(
-                  width: 16,
+                  width: 17.11,
                 ),
                 const Text(
                   "SG",
-                  style: TextStyle(fontSize: 29, fontFamily: "Light"),
+                  style: TextStyle(fontSize: 28.79, fontFamily: "Light"),
                 ),
                 const SizedBox(
                   width: 6,
                 ),
                 const Text("Grocery",
                     style: TextStyle(
-                        fontSize: 29,
+                        fontSize: 28.79,
                         color: AppColors.greenMainColor,
                         fontFamily: "Medium")),
               ],
             ),
 
-            // IMAGE
-            Image.asset(
-              "assets/images/img_illustrator.png",
-              height: 200,
-            ),
-
-            const SizedBox(height: 5,),
-            // Login
-            Padding(
+            // Register
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text("Login",
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: AppColors.greenMainColor,
-                          fontFamily: "SemiBold")),
+                children: [
+                  SizedBox(height: 55),
+                  Text(
+                    "Register",
+                    style: TextStyle(
+                        fontSize: 21,
+                        color: AppColors.greenMainColor,
+                        fontFamily: "SemiBold"),
+                  ),
                 ],
               ),
             ),
 
-            const SizedBox(
-              height: 19,
+            //Your Name
+            InputLogin(
+              controller: yournameController,
+              hintText: 'Enter Your Email ID',
+              title: "Email Id",
             ),
 
-            //email
+            const SizedBox(
+              height: 10,
+            ),
+
+            // Email Id
             InputLogin(
               controller: emailController,
               hintText: 'Enter Your Email ID',
@@ -90,28 +92,50 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
 
-            //password
+            // Password
             InputLogin(
               controller: passwordController,
-              hintText: 'Enter Your Password',
-              title: "Password",
+              hintText: 'Enter Your Email ID',
+              title: "Email Id",
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            // ConfirmPassword
+            InputLogin(
+              controller: confirmPasswordController,
+              hintText: 'Enter Your Email ID',
+              title: "Email Id",
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            // ContactNumber
+            InputLogin(
+              controller: contactNumberController,
+              hintText: 'Enter Your Email ID',
+              title: "Email Id",
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            // Register Button
+            ButtonWidget(
+              onPressed: registerUser,
+              textButton: 'Register',
             ),
 
             const SizedBox(
               height: 15,
-            ),
-
-            //Button
-            ButtonWidget(
-              onPressed: signUserIn,
-              textButton: 'Login',
-            ),
-
-            const SizedBox(
-              height: 16,
             ),
 
             // or continue
@@ -146,13 +170,13 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            // google or facebook
-            Row(
+            // google or apple
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google
                 Row(
-                  children: const [
+                  children: [
                     SquareTile(
                       imagePath: 'assets/icons/ic_google.png',
                       textIcon: 'Google',
@@ -160,12 +184,12 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                const SizedBox(
+                SizedBox(
                   width: 25,
                 ),
 
-                // facebook
-                const SquareTile(
+                // apple
+                SquareTile(
                   imagePath: 'assets/icons/ic_facebook.png',
                   textIcon: 'Facebook',
                 ),
@@ -173,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             const SizedBox(
-              height: 20,
+              height: 25,
             ),
 
             // Dont have an account ?
@@ -181,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Text(
-                  "Don't You Have an Account?",
+                  "Already Have an Account?",
                   style: TextStyle(
                       color: AppColors.greyColor,
                       fontFamily: "Light",
@@ -191,17 +215,18 @@ class _LoginPageState extends State<LoginPage> {
                   width: 4,
                 ),
                 Text(
-                  'Register',
+                  'Login',
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: "SemiBold"),
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontFamily: "SemiBold",
+                  ),
                 ),
               ],
             ),
 
             const SizedBox(
-              height: 28,
+              height: 33,
             ),
           ],
         ),

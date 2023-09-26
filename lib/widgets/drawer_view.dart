@@ -1,4 +1,4 @@
-import 'package:drawer_and_bottom_nav_example/base/colors/app_colors.dart';
+import 'package:sg_grocery_project/base/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class DrawerView extends StatelessWidget {

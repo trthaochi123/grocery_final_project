@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/login/my_textfield.dart';
+import 'text_field_widget.dart';
 
 class InputLogin extends StatefulWidget {
   final TextEditingController controller;
@@ -27,10 +27,9 @@ class _InputLoginState extends State<InputLogin> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
               Text(widget.title,
-                  style: const TextStyle(fontSize: 18, fontFamily: "Medium")),
-              const SizedBox(height: 35),
+                  style: const TextStyle(fontSize: 17, fontFamily: "Medium")),
+              const SizedBox(height: 30),
             ],
           ),
         ),

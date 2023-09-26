@@ -13,7 +13,7 @@ class SquareTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 20),
-      padding: EdgeInsets.symmetric(horizontal: 36, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 36, vertical: 6),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.green),
         borderRadius: BorderRadius.circular(5),

@@ -1,6 +1,10 @@
-
-import 'package:drawer_and_bottom_nav_example/screens/splashPage/splash_page.dart';
+import 'package:sg_grocery_project/screens/home/home_page.dart';
+import 'package:sg_grocery_project/screens/login/login_page.dart';
+import 'package:sg_grocery_project/screens/main_page.dart';
+import 'package:sg_grocery_project/screens/register/register_page.dart';
+import 'package:sg_grocery_project/screens/splashPage/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/widgets/category_items.dart';
 
 import 'base/colors/app_colors.dart';
 
@@ -20,8 +24,8 @@ class MyApp extends StatelessWidget {
               backgroundColor: AppColors.bottomNavColor
           )
       ),
-      title: "Example Drawer and Bottom Nav",
-      home:   const SplashPage(),
+      title: "SG Grocery",
+      home:  MainPage(),
     );
   }
 
