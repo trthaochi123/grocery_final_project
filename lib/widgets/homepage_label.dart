@@ -22,7 +22,7 @@ class HomePageLabel extends StatelessWidget {
           TextButton(
             style: TextButton.styleFrom(
               textStyle: const TextStyle(
-                fontSize: 13,
+                fontSize: 15,
               ),
             ),
             onPressed: () {},
