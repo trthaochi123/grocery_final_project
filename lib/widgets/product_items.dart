@@ -59,7 +59,7 @@ class _ProductItemsState extends State<ProductItems> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 25),
                 child: SizedBox(
                   child: Image.asset(widget.imagePath),
                 ),
