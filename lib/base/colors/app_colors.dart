@@ -9,4 +9,7 @@ class AppColors { // lưu toàn bộ mã màu trong ứng dụng
   static const Color greyColor = Color.fromRGBO(133, 143, 173, 1);
   static const Color greenItems = Color.fromRGBO(235, 252, 244, 1);
   static const Color textItems = Color.fromRGBO(66, 66, 66, 1);
+  static const Color pinkItems = Color.fromRGBO(255, 235, 229, 1);
+  static const Color yellowItems = Color.fromRGBO(249, 255, 218, 1);
+  static const Color orangeItems = Color.fromRGBO(255, 237, 215, 1);
 }

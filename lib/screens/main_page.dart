@@ -19,9 +19,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int seclectedPage = 0; // trỏ HomePage chạy đầu tiên
 
-  bool isDrawer = false;
-
-
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey =  GlobalKey<ScaffoldState>();
@@ -54,17 +51,15 @@ class _MainPageState extends State<MainPage> {
         height: 72,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
+          currentIndex: seclectedPage,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: false,
+          showSelectedLabels: true,
           showUnselectedLabels: false,
           onTap: (index) {
             setState(() {
-              isDrawer = false;
               seclectedPage = index;
             });
           },
-
           items: [
             BottomNavigationBarItem(
               icon: Image.asset("assets/icons/ic_home.png"),
@@ -80,9 +75,10 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Image.asset("assets/icons/ic_heart.png"),
-              label: "Fav",
+              label: "Favorite",
             ),
             BottomNavigationBarItem(
+              backgroundColor: Colors.red,
               icon: Image.asset("assets/icons/ic_account.png"),
               label: "Account",
             ),
