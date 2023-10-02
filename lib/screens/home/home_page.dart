@@ -4,7 +4,7 @@ import 'package:sg_grocery_project/screens/explore/explore_page.dart';
 import 'package:sg_grocery_project/widgets/category_items.dart';
 import 'package:sg_grocery_project/widgets/deal_product_item.dart';
 import 'package:sg_grocery_project/widgets/features_items.dart';
-import 'package:sg_grocery_project/widgets/homepage_label.dart';
+import 'package:sg_grocery_project/widgets/bar_label.dart';
 import 'package:sg_grocery_project/widgets/product_items.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -110,7 +110,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               // Top categories
               //item1
-              const HomePageLabel(firstLabel: "Top Categories"),
+              const BarLabel(
+                firstLabel: "Top Categories",
+                secondLable: 'Explore all',
+              ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -144,7 +147,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Top products
-              const HomePageLabel(firstLabel: "Top Products"),
+              const BarLabel(
+                firstLabel: "Top Products",
+                secondLable: 'Explore all',
+              ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -180,11 +186,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               // Get 25%
               Padding(
-                padding: const EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Stack(
                   children: [
                     Container(
-                      width: 396,
+                      width: double.infinity,
                       height: 191,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -247,12 +253,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 50, left: 55),
-                          child: Image.asset('assets/images/img_get25_prd.png'),
-                        )
                       ],
                     ),
+                    Positioned(
+                      bottom: 6,
+                      right: 0,
+                      child: Image.asset('assets/images/img_get25_prd.png'),
+                    )
                   ],
                 ),
               ),
@@ -262,7 +269,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Deals of the week
-              const HomePageLabel(firstLabel: "Deals of the week"),
+              const BarLabel(
+                firstLabel: "Deals of the week",
+                secondLable: 'Explore all',
+              ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -291,7 +301,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Featured Items
-              const HomePageLabel(firstLabel: "Featured Items"),
+              const BarLabel(
+                firstLabel: "Featured Items",
+                secondLable: 'Explore all',
+              ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -302,6 +315,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       priceProduct: '\$22.00',
                       weightProduct: '1kg',
                       imagePath: 'assets/images/img_featured_item1.png',
+                      bgColor: AppColors.pinkItems,
                     ),
                     FeaturedItems(
                       nameProduct: 'SFT kiwi slice',
@@ -309,6 +323,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       priceProduct: '\$4.00',
                       weightProduct: '3pcs',
                       imagePath: 'assets/images/img_featured_item2.png',
+                      bgColor: AppColors.yellowItems,
                     ),
                     FeaturedItems(
                       nameProduct: 'SFT kiwi slice',
@@ -316,6 +331,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       priceProduct: '\$5.00',
                       weightProduct: '1kg',
                       imagePath: 'assets/images/img_featured_item3.png',
+                      bgColor: AppColors.orangeItems,
                     ),
                   ],
                 ),

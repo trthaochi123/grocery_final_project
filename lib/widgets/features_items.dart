@@ -7,6 +7,7 @@ class FeaturedItems extends StatefulWidget {
   final String priceProduct;
   final String weightProduct;
   final String imagePath;
+  final bgColor;
 
   const FeaturedItems(
       {super.key,
@@ -14,7 +15,7 @@ class FeaturedItems extends StatefulWidget {
       required this.detailProduct,
       required this.priceProduct,
       required this.weightProduct,
-      required this.imagePath});
+      required this.imagePath, required this.bgColor});
 
   @override
   State<StatefulWidget> createState() => _FeaturedItemsState();
@@ -34,7 +35,7 @@ class _FeaturedItemsState extends State<FeaturedItems> {
                 height: 191,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: AppColors.pinkItems,
+                  color: widget.bgColor,
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 14, right: 14, bottom: 14),

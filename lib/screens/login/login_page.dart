@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sg_grocery_project/screens/main_page.dart';
+import 'package:sg_grocery_project/screens/register/register_page.dart';
 
 import '../../base/colors/app_colors.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/button_widget.dart';
 import '../../widgets/square_tile.dart';
+import '../../widgets/text_button_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,8 +20,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
-  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,9 @@ class _LoginPageState extends State<LoginPage> {
               height: 200,
             ),
 
-            const SizedBox(height: 5,),
+            const SizedBox(
+              height: 5,
+            ),
             // Login
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -106,7 +109,12 @@ class _LoginPageState extends State<LoginPage> {
 
             //Button
             ButtonWidget(
-              onPressed: signUserIn,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainPage()),
+                );
+              },
               textButton: 'Login',
             ),
 
@@ -179,24 +187,25 @@ class _LoginPageState extends State<LoginPage> {
             // Dont have an account ?
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "Don't You Have an Account?",
                   style: TextStyle(
                       color: AppColors.greyColor,
                       fontFamily: "Light",
                       fontSize: 16),
                 ),
-                SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  'Register',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: "SemiBold"),
-                ),
+
+                TextButtonWidget(
+                    textButtonName: 'Register',
+                    onClick: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterPage(),
+                        ),
+                      );
+                    }),
               ],
             ),
 

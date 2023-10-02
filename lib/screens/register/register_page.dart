@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/screens/login/login_page.dart';
 
 import '../../base/colors/app_colors.dart';
 import '../../widgets/button_widget.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/square_tile.dart';
+import '../../widgets/text_button_widget.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -203,25 +205,24 @@ class _RegisterPageState extends State<RegisterPage> {
             // Dont have an account ?
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "Already Have an Account?",
                   style: TextStyle(
                       color: AppColors.greyColor,
                       fontFamily: "Light",
                       fontSize: 16),
                 ),
-                SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  'Login',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: "SemiBold",
-                  ),
-                ),
+                TextButtonWidget(
+                    textButtonName: 'Login',
+                    onClick: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    })
               ],
             ),
 

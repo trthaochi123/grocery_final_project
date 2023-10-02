@@ -1,3 +1,4 @@
+import 'package:sg_grocery_project/screens/explore/explore_page.dart';
 import 'package:sg_grocery_project/screens/home/home_page.dart';
 import 'package:sg_grocery_project/screens/login/login_page.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
@@ -18,15 +19,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/main': (context) => const MainPage(),
+      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              backgroundColor: AppColors.bottomNavColor
-          )
+        fontFamily: "Montserrat",
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: AppColors.bottomNavColor,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+        ),
       ),
       title: "SG Grocery",
-      home:  MainPage(),
+      home: SplashPage(),
     );
   }
-
 }

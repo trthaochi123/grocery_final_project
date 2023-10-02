@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/screens/explore/explore_page.dart';
 
 import '../base/colors/app_colors.dart';
 
-class HomePageLabel extends StatelessWidget {
+class BarLabel extends StatelessWidget {
   final String firstLabel;
+  final String secondLable;
+  final Function()? onClick;
 
-  const HomePageLabel({super.key, required this.firstLabel});
+  const BarLabel({super.key, required this.firstLabel, required this.secondLable, this.onClick});
 
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+      padding: const EdgeInsets.only(left: 16, top: 3, bottom: 3, right: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -25,10 +28,10 @@ class HomePageLabel extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            onPressed: () {},
-            child: const Text(
-              'Explore All',
-              style: TextStyle(color: AppColors.greenMainColor, fontFamily: "SemiBold"),
+            onPressed: onClick,
+            child: Text(
+              secondLable,
+              style: const TextStyle(color: AppColors.greenMainColor, fontFamily: "SemiBold"),
             ),
           ),
         ],
