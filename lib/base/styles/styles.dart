@@ -23,4 +23,18 @@ class AppStyle {
     fontSize: 14,
     fontFamily: "Medium",
   );
+
+  static TextStyle textBlackLabelPage = const TextStyle(
+    color: Colors.black87,
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
+    fontFamily: "Medium",
+  );
+
+  static TextStyle textWhiteLabelPage = const TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
+    fontFamily: "Medium",
+  );
 }

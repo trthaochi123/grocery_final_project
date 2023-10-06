@@ -68,7 +68,7 @@ class _FeaturedItemsState extends State<FeaturedItems> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 17, vertical: 14),
+                padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 14),
                 child: SizedBox(
                   child: Image.asset(widget.imagePath),
                 ),

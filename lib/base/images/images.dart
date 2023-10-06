@@ -6,4 +6,5 @@ class AppSvg {
   static const String icAccountPath = "assets/icons/ic_account.svg";
   static const String icBackBlackPath = "assets/icons/ic_back_black.svg";
   static const String icBackWhitePath = "assets/icons/ic_back_white.svg";
+  static const String icPlusLargePath = "assets/icons/ic_explore_plus.svg";
 }

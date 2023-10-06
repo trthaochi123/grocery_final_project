@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/data/prefs/prefs.dart';
+import 'package:sg_grocery_project/screens/main_page.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../main.dart';
 import '../login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -17,9 +20,23 @@ class _SplashPage extends State<SplashPage> {
     super.initState();
   }
 
+
   startLogin() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+    if (checkLogin()) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MainPage(),
+        ),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ),
+      );
+    }
   }
 
   @override

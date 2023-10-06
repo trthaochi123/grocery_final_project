@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
-import 'package:permission_handler/permission_handler.dart';
+import 'package:sg_grocery_project/data/prefs/prefs.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
 import 'package:sg_grocery_project/screens/register/register_page.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../main.dart';
 import '../../widgets/input_field.dart';
-import '../../widgets/button_widget.dart';
+import '../../widgets/log_reg_button_widget.dart';
 import '../../widgets/square_tile.dart';
 import '../../widgets/text_button_widget.dart';
 
@@ -20,6 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +112,7 @@ class _LoginPageState extends State<LoginPage> {
             //Button
             ButtonWidget(
               onPressed: () {
+                setLogin(true);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MainPage()),

@@ -110,9 +110,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               // Top categories
               //item1
-              const BarLabel(
+              BarLabel(
                 firstLabel: "Top Categories",
                 secondLable: 'Explore all',
+                onClickButton: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExplorePage(),
+                    ),
+                  );
+                },
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -147,9 +155,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Top products
-              const BarLabel(
+              BarLabel(
                 firstLabel: "Top Products",
                 secondLable: 'Explore all',
+                onClickButton: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExplorePage(),
+                    ),
+                  );
+                },
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -269,9 +285,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Deals of the week
-              const BarLabel(
+              BarLabel(
                 firstLabel: "Deals of the week",
                 secondLable: 'Explore all',
+                onClickButton: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExplorePage(),
+                    ),
+                  );
+                },
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -301,9 +325,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Featured Items
-              const BarLabel(
+               BarLabel(
                 firstLabel: "Featured Items",
                 secondLable: 'Explore all',
+                 onClickButton: () {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => ExplorePage(),
+                     ),
+                   );
+                 },
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sg_grocery_project/screens/login/login_page.dart';
 
 import '../../base/colors/app_colors.dart';
-import '../../widgets/button_widget.dart';
+import '../../widgets/log_reg_button_widget.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/square_tile.dart';
 import '../../widgets/text_button_widget.dart';
