@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sg_grocery_project/base/images/images.dart';
+import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/widgets/app_icon.dart';
 
 class BackButtonWidget extends StatelessWidget {

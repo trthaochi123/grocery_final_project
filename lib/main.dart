@@ -1,3 +1,4 @@
+import 'package:sg_grocery_project/screens/cart/cart_page.dart';
 import 'package:sg_grocery_project/screens/explore/explore_page.dart';
 import 'package:sg_grocery_project/screens/fruits/fruits_page.dart';
 import 'package:sg_grocery_project/screens/home/home_page.dart';
@@ -29,7 +30,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Montserrat",
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: "SG Grocery",
-      home: FruitsPage(),
+      home: SplashPage(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sg_grocery_project/base/styles/styles.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
 
 import '../base/colors/app_colors.dart';

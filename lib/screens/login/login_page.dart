@@ -4,6 +4,7 @@ import 'package:sg_grocery_project/screens/main_page.dart';
 import 'package:sg_grocery_project/screens/register/register_page.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../base/strings/app_strings.dart';
 import '../../main.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/log_reg_button_widget.dart';
@@ -20,8 +21,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +44,22 @@ class _LoginPageState extends State<LoginPage> {
                   width: 16,
                 ),
                 const Text(
-                  "SG",
-                  style: TextStyle(fontSize: 29, fontFamily: "Light"),
+                  LoginPageString.sg,
+                  style: TextStyle(
+                    fontSize: 29,
+                    fontFamily: "Light",
+                  ),
                 ),
                 const SizedBox(
                   width: 6,
                 ),
-                const Text("Grocery",
-                    style: TextStyle(
-                        fontSize: 29,
-                        color: AppColors.greenMainColor,
-                        fontFamily: "Medium")),
+                const Text(
+                  LoginPageString.grocery,
+                  style: TextStyle(
+                      fontSize: 29,
+                      color: AppColors.greenMainColor,
+                      fontFamily: "Medium"),
+                ),
               ],
             ),
 
@@ -74,11 +78,14 @@ class _LoginPageState extends State<LoginPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text("Login",
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: AppColors.greenMainColor,
-                          fontFamily: "SemiBold")),
+                  Text(
+                    LoginPageString.login,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: AppColors.greenMainColor,
+                      fontFamily: "SemiBold",
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -90,8 +97,8 @@ class _LoginPageState extends State<LoginPage> {
             //email
             InputLogin(
               controller: emailController,
-              hintText: 'Enter Your Email ID',
-              title: "Email Id",
+              hintText: LoginPageString.enterYourEmailID,
+              title: LoginPageString.emailId,
             ),
 
             const SizedBox(
@@ -101,8 +108,8 @@ class _LoginPageState extends State<LoginPage> {
             //password
             InputLogin(
               controller: passwordController,
-              hintText: 'Enter Your Password',
-              title: "Password",
+              hintText: LoginPageString.enterYourPassword,
+              title: LoginPageString.password,
             ),
 
             const SizedBox(
@@ -118,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   MaterialPageRoute(builder: (context) => const MainPage()),
                 );
               },
-              textButton: 'Login',
+              textButton: LoginPageString.textButton,
             ),
 
             const SizedBox(
@@ -140,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      'Or continue with',
+                      LoginPageString.orContinueWith,
                       style: TextStyle(
                           color: AppColors.greyColor,
                           fontSize: 16,
@@ -166,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     SquareTile(
                       imagePath: 'assets/icons/ic_google.png',
-                      textIcon: 'Google',
+                      textIcon: LoginPageString.google,
                     ),
                   ],
                 ),
@@ -178,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                 // facebook
                 SquareTile(
                   imagePath: 'assets/icons/ic_facebook.png',
-                  textIcon: 'Facebook',
+                  textIcon: LoginPageString.facebook,
                 ),
               ],
             ),
@@ -192,15 +199,14 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  "Don't You Have an Account?",
+                  LoginPageString.question,
                   style: TextStyle(
                       color: AppColors.greyColor,
                       fontFamily: "Light",
                       fontSize: 16),
                 ),
-
                 TextButtonWidget(
-                    textButtonName: 'Register',
+                    textButtonName: LoginPageString.register,
                     onClick: () {
                       Navigator.push(
                         context,

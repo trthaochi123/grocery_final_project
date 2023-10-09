@@ -37,4 +37,33 @@ class AppStyle {
     fontSize: 20,
     fontFamily: "Medium",
   );
+
+  static TextStyle textNameItemCart = const TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 18,
+  fontFamily: "Medium",
+  );
+
+  static TextStyle textWeightItemCart = const TextStyle(
+    color: Colors.grey,
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+    fontFamily: "Regular",
+  );
+
+  static TextStyle textPriceItemCart = const TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    fontFamily: "SemiBold",
+  );
+
+  static TextStyle textButtonCartStyle = const TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    fontFamily: "Medium",
+  );
+
 }

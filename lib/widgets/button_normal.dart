@@ -7,6 +7,7 @@ class ButtonNormalWidget extends StatefulWidget {
   final TextStyle textStyle;
   final double heightButton;
   final double widthButton;
+  final Color backgroundColorButton;
   
 
   const ButtonNormalWidget(
@@ -15,7 +16,7 @@ class ButtonNormalWidget extends StatefulWidget {
       required this.textButton,
       required this.heightButton,
       required this.widthButton,
-      required this.textStyle});
+      required this.textStyle, required this.backgroundColorButton});
 
   @override
   State<StatefulWidget> createState() => _ButtonNormalWidgetState();
@@ -29,10 +30,12 @@ class _ButtonNormalWidgetState extends State<ButtonNormalWidget> {
       width: widget.widthButton,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(1)),
+          shape: BeveledRectangleBorder(
+              borderRadius: BorderRadius.circular(2.0)),
           textStyle: widget.textStyle,
-          backgroundColor: Colors.green,
+          backgroundColor: widget.backgroundColorButton,
           foregroundColor: Colors.white,
+          padding: EdgeInsets.only(right: 2),
         ),
         onPressed: widget.onClickButton,
         child: Text(

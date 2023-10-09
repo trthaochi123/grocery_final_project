@@ -20,6 +20,7 @@ class OutlinedButtonWidget extends StatefulWidget {
 }
 
 class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,6 +32,7 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
           textStyle: widget.textStyle,
           foregroundColor: Colors.green,
           side: BorderSide(width: 0.4, color: Colors.green),
+            padding: EdgeInsets.only(right: 2),
         ),
         onPressed: () {},
         child: Text(widget.textButton),

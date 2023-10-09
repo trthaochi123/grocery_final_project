@@ -8,6 +8,8 @@ import 'package:sg_grocery_project/widgets/bar_label.dart';
 import 'package:sg_grocery_project/widgets/product_items.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../base/strings/app_strings.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
-                    hintText: "Search products and brands",
+                    hintText: HomePageString.hintSearch,
                     hintStyle: const TextStyle(
                         fontFamily: "light",
                         fontSize: 14,
@@ -111,8 +113,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               // Top categories
               //item1
               BarLabel(
-                firstLabel: "Top Categories",
-                secondLable: 'Explore all',
+                firstLabel: HomePageString.topCategories,
+                secondLable: HomePageString.exploreAll,
                 onClickButton: () {
                   Navigator.push(
                     context,
@@ -128,23 +130,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   children: [
                     CategoryItems(
                       imagePath: 'assets/images/img_cate_item1.png',
-                      textLabel: 'Groceries',
+                      textLabel: HomePageString.groceries,
                     ),
                     CategoryItems(
                       imagePath: 'assets/images/img_cate_item2.png',
-                      textLabel: 'Vegetables',
+                      textLabel: HomePageString.vegetables,
                     ),
                     CategoryItems(
                       imagePath: 'assets/images/img_cate_item3.png',
-                      textLabel: 'Fruits',
+                      textLabel: HomePageString.fruits,
                     ),
                     CategoryItems(
                       imagePath: 'assets/images/img_cate_item4.png',
-                      textLabel: 'Beverages',
+                      textLabel: HomePageString.beverages,
                     ),
                     CategoryItems(
                       imagePath: 'assets/images/img_cate_item1.png',
-                      textLabel: 'Groceries',
+                      textLabel: HomePageString.groceries,
                     ),
                   ],
                 ),
@@ -156,8 +158,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               // Top products
               BarLabel(
-                firstLabel: "Top Products",
-                secondLable: 'Explore all',
+                firstLabel: HomePageString.topProducts,
+                secondLable: HomePageString.exploreAll,
                 onClickButton: () {
                   Navigator.push(
                     context,
@@ -172,25 +174,25 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Row(
                   children: [
                     ProductItems(
-                      nameProduct: 'Fortune Rice',
-                      priceProduct: "\$3/kg",
+                      nameProduct: HomePageString.fortuneRice,
+                      priceProduct: HomePageString.threeKg,
                       imagePath: 'assets/images/img_prd_item1.png',
-                      numberSale: '37%',
-                      offSale: 'off',
+                      numberSale: HomePageString.thirtysevenPer,
+                      offSale: HomePageString.off,
                     ),
                     ProductItems(
-                      nameProduct: 'Fresh Avocado',
-                      priceProduct: '\$3/kg',
+                      nameProduct: HomePageString.freshAvocado,
+                      priceProduct: HomePageString.threeKg,
                       imagePath: 'assets/images/img_prd_item2.png',
-                      numberSale: '37%',
-                      offSale: 'off',
+                      numberSale: HomePageString.thirtysevenPer,
+                      offSale: HomePageString.off,
                     ),
                     ProductItems(
-                      nameProduct: 'Organic',
-                      priceProduct: '\$3/kg',
+                      nameProduct: HomePageString.organic,
+                      priceProduct: HomePageString.threeKg,
                       imagePath: 'assets/images/img_prd_item3.png',
-                      numberSale: '37%',
-                      offSale: 'off',
+                      numberSale: HomePageString.thirtysevenPer,
+                      offSale: HomePageString.off,
                     ),
                   ],
                 ),
@@ -218,7 +220,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "\Get 25% Cashback",
+                              HomePageString.getTwentyCashback,
                               style: TextStyle(
                                 fontSize: 24,
                                 fontFamily: "SemiBold",
@@ -226,7 +228,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               ),
                             ),
                             Text(
-                              "on all baby products",
+                              HomePageString.onAllBabyProducts,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontFamily: "Light",
@@ -258,7 +260,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     backgroundColor: AppColors.greenMainColor,
                                   ),
                                   child: const Text(
-                                    'Shop Now',
+                                    HomePageString.shopNow,
                                     style: TextStyle(
                                         color: AppColors.whiteColor,
                                         fontFamily: "SemiBold",
@@ -286,8 +288,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               // Deals of the week
               BarLabel(
-                firstLabel: "Deals of the week",
-                secondLable: 'Explore all',
+                firstLabel: HomePageString.dealsWweek,
+                secondLable: HomePageString.exploreAll,
                 onClickButton: () {
                   Navigator.push(
                     context,
@@ -302,18 +304,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Row(
                   children: [
                     DealItems(
-                      textLabel: 'Soft drinks',
-                      detailItem: 'Upto 40% off',
+                      textLabel: HomePageString.softDrinks,
+                      detailItem: HomePageString.uptoFourty,
                       imagePath: 'assets/images/img_deal_item1.png',
                     ),
                     DealItems(
-                      textLabel: 'Tea',
-                      detailItem: 'Upto 30% off',
+                      textLabel: HomePageString.tea,
+                      detailItem: HomePageString.uptoThirty,
                       imagePath: 'assets/images/img_deal_item2.png',
                     ),
                     DealItems(
-                      textLabel: 'Black drinks',
-                      detailItem: 'Min 40% off',
+                      textLabel: HomePageString.blackDrinks,
+                      detailItem: HomePageString.minFourty,
                       imagePath: 'assets/images/img_deal_item3.png',
                     ),
                   ],
@@ -326,8 +328,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               // Featured Items
                BarLabel(
-                firstLabel: "Featured Items",
-                secondLable: 'Explore all',
+                firstLabel: HomePageString.featuredItems,
+                secondLable: HomePageString.exploreAll,
                  onClickButton: () {
                    Navigator.push(
                      context,
@@ -342,26 +344,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Row(
                   children: [
                     FeaturedItems(
-                      nameProduct: 'Granola',
-                      detailProduct: 'Premium Almond',
-                      priceProduct: '\$22.00',
-                      weightProduct: '1kg',
+                      nameProduct: HomePageString.granola,
+                      detailProduct: HomePageString.premiumAlmond,
+                      priceProduct: HomePageString.twentyTwo,
+                      weightProduct: HomePageString.oneKg,
                       imagePath: 'assets/images/img_featured_item1.png',
                       bgColor: AppColors.pinkItems,
                     ),
                     FeaturedItems(
-                      nameProduct: 'SFT kiwi slice',
-                      detailProduct: '(Dried)',
-                      priceProduct: '\$4.00',
-                      weightProduct: '3pcs',
+                      nameProduct: HomePageString.sftKiwiSlice,
+                      detailProduct: HomePageString.dried,
+                      priceProduct: HomePageString.fourDollars,
+                      weightProduct: HomePageString.threePacks,
                       imagePath: 'assets/images/img_featured_item2.png',
                       bgColor: AppColors.yellowItems,
                     ),
                     FeaturedItems(
-                      nameProduct: 'SFT kiwi slice',
-                      detailProduct: '(Dried)',
-                      priceProduct: '\$5.00',
-                      weightProduct: '1kg',
+                      nameProduct: HomePageString.sftKiwiSlice,
+                      detailProduct: HomePageString.dried,
+                      priceProduct: HomePageString.fourDollars,
+                      weightProduct: HomePageString.threePacks,
                       imagePath: 'assets/images/img_featured_item3.png',
                       bgColor: AppColors.orangeItems,
                     ),

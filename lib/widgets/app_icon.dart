@@ -15,7 +15,7 @@ class AppIcon extends StatelessWidget {
     return Column(
       children: [
         Image.asset(icon),
-        SizedBox(height: 14),
+        const SizedBox(height: 14),
         Text(name, style: TextStyle(
           fontFamily: "Medium",
           fontSize: 20

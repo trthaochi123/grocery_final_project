@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../base/styles/styles.dart';
+import '../base/styles/app_styles.dart';
 
 class MyTextField extends StatelessWidget {
   final TextEditingController controller;
