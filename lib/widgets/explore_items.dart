@@ -3,18 +3,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/base/colors/app_colors.dart';
 import 'package:sg_grocery_project/base/images/app_images.dart';
 
+import '../base/styles/app_styles.dart';
+
 class ExploreItems extends StatefulWidget {
   final String nameProduct;
   final String weightProduct;
   final String priceProduct;
   final String imagePath;
 
-  const ExploreItems(
-      {super.key,
-      required this.nameProduct,
-      required this.weightProduct,
-      required this.priceProduct,
-      required this.imagePath});
+  const ExploreItems({
+    super.key,
+    required this.nameProduct,
+    required this.weightProduct,
+    required this.priceProduct,
+    required this.imagePath,
+  });
 
   @override
   State<StatefulWidget> createState() => _ExploreItemsState();
@@ -26,7 +29,7 @@ class _ExploreItemsState extends State<ExploreItems> {
     return Row(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 6, left: 15),
+          padding: const EdgeInsets.only(top: 6, left: 15),
           child: Stack(
             children: [
               Container(
@@ -37,45 +40,52 @@ class _ExploreItemsState extends State<ExploreItems> {
                   color: AppColors.greenItems,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 8, bottom: 6),
+                  padding: const EdgeInsets.only(left: 8, bottom: 6),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         widget.nameProduct,
-                        style: const TextStyle(fontSize: 12, fontFamily: "Medium"),
+                        style: AppStyle.nameExplItem,
                       ),
                       const SizedBox(
                         height: 2,
                       ),
                       Text(
                         widget.weightProduct,
-                        style: TextStyle(fontSize: 12, fontFamily: "ExtraLight"),
+                        style: AppStyle.weightExplItem,
                       ),
                       const SizedBox(
                         height: 2,
                       ),
                       Text(
                         widget.priceProduct,
-                        style: TextStyle(fontSize: 12, fontFamily: "SemiBold"),
+                        style: AppStyle.priceExplItem,
                       ),
                     ],
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 102, left: 70),
+                padding: const EdgeInsets.only(
+                  top: 102,
+                  left: 70,
+                ),
                 child: IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(AppSvg.icPlusLargePath),
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 12,
+                ),
                 child: SizedBox(
-                  child: Image.asset(widget.imagePath, ),
+                  child: Image.asset(
+                    widget.imagePath,
+                  ),
                 ),
               ),
             ],

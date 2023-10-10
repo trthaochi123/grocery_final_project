@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class OutlinedButtonWidget extends StatefulWidget {
-  const OutlinedButtonWidget(
-      {super.key,
-      this.onClickButton,
-      required this.textButton,
-      required this.textStyle,
-      required this.heightButton,
-      required this.widthButton});
+  const OutlinedButtonWidget({
+    super.key,
+    this.onClickButton,
+    required this.textButton,
+    required this.textStyle,
+    required this.heightButton,
+    required this.widthButton,
+  });
 
   final Function()? onClickButton;
   final String textButton;
@@ -20,7 +21,6 @@ class OutlinedButtonWidget extends StatefulWidget {
 }
 
 class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,11 +28,13 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
       width: widget.widthButton,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(1)),
+          shape: BeveledRectangleBorder(
+            borderRadius: BorderRadius.circular(1),
+          ),
           textStyle: widget.textStyle,
           foregroundColor: Colors.green,
-          side: BorderSide(width: 0.4, color: Colors.green),
-            padding: EdgeInsets.only(right: 2),
+          side: const BorderSide(width: 0.4, color: Colors.green),
+          padding: const EdgeInsets.only(right: 2),
         ),
         onPressed: () {},
         child: Text(widget.textButton),

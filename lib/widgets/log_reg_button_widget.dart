@@ -8,7 +8,11 @@ class ButtonWidget extends StatefulWidget {
   final Function()? onPressed;
   final String textButton;
 
-  const ButtonWidget({super.key, this.onPressed, required this.textButton});
+  const ButtonWidget({
+    super.key,
+    this.onPressed,
+    required this.textButton,
+  });
 
   @override
   State<StatefulWidget> createState() => _ButtonWidget();
@@ -30,7 +34,7 @@ class _ButtonWidget extends State<ButtonWidget> {
         child: Center(
           child: Text(
             widget.textButton,
-            style: AppStyle.textButtonMediumStyle
+            style: AppStyle.textButtonMediumStyle,
           ),
         ),
       ),

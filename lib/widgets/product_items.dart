@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sg_grocery_project/base/colors/app_colors.dart';
 
+import '../base/styles/app_styles.dart';
+
 class ProductItems extends StatefulWidget {
   final String nameProduct;
   final String priceProduct;
@@ -8,13 +10,14 @@ class ProductItems extends StatefulWidget {
   final String numberSale;
   final String offSale;
 
-  const ProductItems(
-      {super.key,
-      required this.nameProduct,
-      required this.priceProduct,
-      required this.imagePath,
-      required this.numberSale,
-      required this.offSale});
+  const ProductItems({
+    super.key,
+    required this.nameProduct,
+    required this.priceProduct,
+    required this.imagePath,
+    required this.numberSale,
+    required this.offSale,
+  });
 
   @override
   State<StatefulWidget> createState() => _ProductItemsState();
@@ -37,29 +40,31 @@ class _ProductItemsState extends State<ProductItems> {
                   color: AppColors.greenItems,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20, left: 15),
+                  padding: const EdgeInsets.only(
+                    bottom: 20,
+                    left: 15,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         widget.nameProduct,
-                        style: const TextStyle(
-                            color: AppColors.textItems, fontFamily: "Medium"),
+                        style: AppStyle.namePrdWidget,
                       ),
                       Text(
                         widget.priceProduct,
-                        style: const TextStyle(
-                          color: AppColors.textItems,
-                          fontFamily: "SemiBold",
-                        ),
+                        style: AppStyle.pricePrdWidget,
                       ),
                     ],
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 25),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 38,
+                  vertical: 25,
+                ),
                 child: SizedBox(
                   child: Image.asset(widget.imagePath),
                 ),
@@ -85,19 +90,11 @@ class _ProductItemsState extends State<ProductItems> {
                       children: [
                         Text(
                           widget.numberSale,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: AppColors.whiteColor,
-                            fontFamily: "SemiBold",
-                          ),
+                          style: AppStyle.numberSalePrd,
                         ),
                         Text(
                           widget.offSale,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: AppColors.whiteColor,
-                            fontFamily: "SemiBold",
-                          ),
+                          style: AppStyle.offSalePrd,
                         )
                       ],
                     ),

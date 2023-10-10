@@ -31,12 +31,15 @@ class _CartPageState extends State<CartPage> {
           children: [
             // ----- TOMORROW ------
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
               child: Row(
                 children: [
-                  const Text(
+                  Text(
                     CartPageString.tomorrowTime,
-                    style: TextStyle(fontSize: 20, fontFamily: "SemiBold"),
+                    style: AppStyle.tomorrowTime,
                   ),
                   IconButton(
                     onPressed: () {},
@@ -48,7 +51,7 @@ class _CartPageState extends State<CartPage> {
 
             // ----- ITEM -----
             const CartItem(
-              imagePath: "assets/images/img_cart_item4.png",
+              imagePath: AppImage.imgCartItem4,
               namePrd: CartPageString.namePrd1,
               weightPrd: CartPageString.weightPrd,
               pricePrd: CartPageString.pricePrd1,
@@ -60,7 +63,7 @@ class _CartPageState extends State<CartPage> {
               height: 20,
             ),
             const CartItem(
-              imagePath: "assets/images/img_cart_item2.png",
+              imagePath: AppImage.imgCartItem2,
               namePrd: CartPageString.namePrd2,
               weightPrd: CartPageString.weightPrd,
               pricePrd: CartPageString.pricePrd2,
@@ -72,7 +75,7 @@ class _CartPageState extends State<CartPage> {
               height: 20,
             ),
             const CartItem(
-              imagePath: "assets/images/img_cart_item5.png",
+              imagePath: AppImage.imgCartItem5,
               namePrd: CartPageString.namePrd3,
               weightPrd: CartPageString.weightPrd,
               pricePrd: CartPageString.pricePrd3,
@@ -113,22 +116,16 @@ class _CartPageState extends State<CartPage> {
             ),
 
             // ------ PROMO CODE ------
-            const Center(
+            Center(
               child: Column(
                 children: [
                   Text(
-                   CartPageString.promoCode,
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.greenItemCart,
-                        fontFamily: "Medium"),
+                    CartPageString.promoCode,
+                    style: AppStyle.promoCode,
                   ),
                   Text(
                     CartPageString.onPaymentScreen,
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.greenItemCart,
-                        fontFamily: "Medium"),
+                    style: AppStyle.onPaymentScreen,
                   )
                 ],
               ),
@@ -139,13 +136,13 @@ class _CartPageState extends State<CartPage> {
             ),
 
             // ------ PAYMENT ------
-            const Padding(
-              padding: EdgeInsets.only(left: 16),
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   CartPageString.paymentDetail,
-                  style: TextStyle(fontSize: 22, fontFamily: "SemiBold"),
+                  style: AppStyle.paymentDetail,
                 ),
               ),
             ),
@@ -177,22 +174,16 @@ class _CartPageState extends State<CartPage> {
                     ),
                     child: Column(
                       children: [
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               CartPageString.totalMRP,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "ExtraLight",
-                              ),
+                              style: AppStyle.paymentItems,
                             ),
                             Text(
                               CartPageString.totalPrice,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "ExtraLight",
-                              ),
+                              style: AppStyle.paymentItems,
                             ),
                           ],
                         ),
@@ -202,22 +193,16 @@ class _CartPageState extends State<CartPage> {
                           color: Colors.grey[400],
                         ),
                         const SizedBox(height: 4),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               CartPageString.discount,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "ExtraLight",
-                              ),
+                              style: AppStyle.paymentItems,
                             ),
                             Text(
                               CartPageString.discountPrice,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "ExtraLight",
-                              ),
+                              style: AppStyle.paymentItems,
                             ),
                           ],
                         ),
@@ -227,22 +212,16 @@ class _CartPageState extends State<CartPage> {
                           color: Colors.grey[400],
                         ),
                         const SizedBox(height: 4),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               CartPageString.shippingCharges,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "ExtraLight",
-                              ),
+                              style: AppStyle.paymentItems,
                             ),
                             Text(
                               CartPageString.shippingPrice,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "ExtraLight",
-                              ),
+                              style: AppStyle.paymentItems,
                             ),
                           ],
                         ),
@@ -254,28 +233,23 @@ class _CartPageState extends State<CartPage> {
                     height: 52,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(8.0),
-                          bottomRight: Radius.circular(8.0)),
+                        bottomLeft: Radius.circular(8.0),
+                        bottomRight: Radius.circular(8.0),
+                      ),
                       color: AppColors.greenCartTotal,
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 28),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 28),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             CartPageString.totalCart,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: "SemiBold",
-                            ),
+                            style: AppStyle.totalCart,
                           ),
                           Text(
                             CartPageString.totalCartPrice,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: "SemiBold",
-                            ),
+                            style: AppStyle.totalCart,
                           ),
                         ],
                       ),

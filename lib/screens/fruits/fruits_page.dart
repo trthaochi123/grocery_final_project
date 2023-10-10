@@ -30,57 +30,57 @@ class _FruitsPageState extends State<FruitsPage> {
       "title": FruitsPageString.strawberry,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item1.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem1,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
     {
       "title": FruitsPageString.banana,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item2.png",
-      "ic_heart": "assets/icons/ic_fruits_heart2.svg",
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
       "title": FruitsPageString.kiwiFruit,
       "price2": FruitsPageString.threeUnit,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item3.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem3,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
     {
       "title": FruitsPageString.grapes,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item4.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem4,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
     {
       "title": FruitsPageString.watermelon,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item5.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem5,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
     {
       "title": FruitsPageString.orange,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item6.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem6,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
     {
       "title": FruitsPageString.guava,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item7.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem6,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
     {
       "title": FruitsPageString.avocado,
       "price2": FruitsPageString.twoPacks,
       "price": FruitsPageString.fourDollars,
-      "images": "assets/images/img_fruits_item8.png",
-      "ic_heart": "assets/icons/ic_fruits_heart.svg",
+      "images": AppImage.fruitPageItem8,
+      "ic_heart": AppSvg.icHeartFruitsPage,
     },
   ];
 
@@ -94,7 +94,7 @@ class _FruitsPageState extends State<FruitsPage> {
       ),
       backgroundColor: AppColors.greenMainColor,
       body: Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         height: double.infinity,
         decoration: const BoxDecoration(
           color: AppColors.whiteColor,
@@ -105,7 +105,10 @@ class _FruitsPageState extends State<FruitsPage> {
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 50,
+            ),
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -134,7 +137,8 @@ class _FruitsPageState extends State<FruitsPage> {
                             child: IconButton(
                               onPressed: () {},
                               icon: SvgPicture.asset(
-                                  "${gridMap.elementAt(index)['ic_heart']}"),
+                                "${gridMap.elementAt(index)['ic_heart']}",
+                              ),
                             ),
                           ),
                           Padding(
@@ -147,39 +151,30 @@ class _FruitsPageState extends State<FruitsPage> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 8, top: 138),
+                            padding: const EdgeInsets.only(left: 8, top: 138),
                             child: Row(
                               children: [
                                 Text(
                                   "${gridMap.elementAt(index)['title']}",
-                                  style: const TextStyle(
-                                      fontFamily: "SemiBold",
-                                      fontSize: 18,
-                                      color: AppColors.greyFruits),
+                                  style: AppStyle.titleFruits,
                                 ),
                                 const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
                                   "${gridMap.elementAt(index)['price2']}",
-                                  style: const TextStyle(
-                                      fontFamily: "SemiBold",
-                                      fontSize: 14,
-                                      color: AppColors.greyFruits),
+                                  style: AppStyle.price2Fruits,
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 154, left: 8),
+                            padding: const EdgeInsets.only(top: 154, left: 8),
                             child: Row(
                               children: [
                                 Text(
                                   "${gridMap.elementAt(index)['price']}",
-                                  style: const TextStyle(
-                                      fontFamily: "SemiBold",
-                                      fontSize: 18,
-                                      color: AppColors.greenMainColor),
+                                  style: AppStyle.priceFruits,
                                 ),
                                 const SizedBox(
                                   width: 54,
@@ -189,19 +184,18 @@ class _FruitsPageState extends State<FruitsPage> {
                                     IconButton(
                                       onPressed: () {},
                                       icon: SvgPicture.asset(
-                                          'assets/icons/ic_fruits_minor.svg'),
+                                        AppSvg.icMinorFruitsPage,
+                                      ),
                                     ),
-                                    const Text(
+                                    Text(
                                       "1",
-                                      style: TextStyle(
-                                          fontFamily: "SemiBold",
-                                          fontSize: 18,
-                                          color: AppColors.greenMainColor),
+                                      style: AppStyle.amount,
                                     ),
                                     IconButton(
                                       onPressed: () {},
                                       icon: SvgPicture.asset(
-                                          'assets/icons/ic_fruits_plus.svg'),
+                                        AppSvg.icPlusFruitsPage,
+                                      ),
                                     ),
                                   ],
                                 )
@@ -211,16 +205,14 @@ class _FruitsPageState extends State<FruitsPage> {
 
                           //BTN
                           Padding(
-                            padding: EdgeInsets.only(top: 198, left: 8),
+                            padding: const EdgeInsets.only(top: 198, left: 8),
                             child: Row(
                               children: [
                                 ButtonNormalWidget(
                                   textButton: FruitsPageString.subscribe,
                                   heightButton: 24,
                                   widthButton: 88,
-                                  textStyle: const TextStyle(
-                                    fontSize: 11,
-                                  ),
+                                  textStyle: AppStyle.subscribeButton,
                                   onClickButton: () {
                                     setState(
                                       () {
@@ -234,11 +226,12 @@ class _FruitsPageState extends State<FruitsPage> {
                                 const SizedBox(
                                   width: 4,
                                 ),
-                                const OutlinedButtonWidget(
-                                    textButton: FruitsPageString.buyOne,
-                                    textStyle: TextStyle(fontSize: 11),
-                                    heightButton: 24,
-                                    widthButton: 86),
+                                OutlinedButtonWidget(
+                                  textButton: FruitsPageString.buyOne,
+                                  textStyle: AppStyle.buyOneButton,
+                                  heightButton: 24,
+                                  widthButton: 86,
+                                ),
                               ],
                             ),
                           ),

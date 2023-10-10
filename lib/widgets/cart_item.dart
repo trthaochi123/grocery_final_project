@@ -62,7 +62,7 @@ class _CartItemState extends State<CartItem> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Image.asset(
                     widget.imagePath,
                     width: widget.width,
@@ -83,17 +83,14 @@ class _CartItemState extends State<CartItem> {
                     children: [
                       Text(
                         widget.namePrd,
-                        style: TextStyle(fontSize: 18, fontFamily: "Regular"),
+                        style: AppStyle.namePrd,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
                         widget.weightPrd,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontFamily: "Light",
-                        ),
+                        style: AppStyle.weightPrd,
                       ),
                       const SizedBox(
                         height: 8,
@@ -102,20 +99,14 @@ class _CartItemState extends State<CartItem> {
                         children: [
                           Text(
                             widget.realityPrice,
-                            style:
-                                TextStyle(fontFamily: "SemiBold", fontSize: 18),
+                            style: AppStyle.realityPrice,
                           ),
                           const SizedBox(
                             width: 16,
                           ),
                           Text(
                             widget.pricePrd,
-                            style: const TextStyle(
-                                fontFamily: "Regular",
-                                fontSize: 18,
-                                color: Colors.grey,
-                                decoration: TextDecoration.lineThrough,
-                                decorationColor: Colors.grey),
+                            style: AppStyle.pricePrd,
                           ),
                         ],
                       )
@@ -139,25 +130,24 @@ class _CartItemState extends State<CartItem> {
                           IconButton(
                             onPressed: () {},
                             icon: SvgPicture.asset(
-                                "assets/icons/ic_cart_minor.svg"),
+                              AppSvg.icMinorCart,
+                            ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
                           Text(
                             "1",
-                            style: TextStyle(
-                                color: AppColors.greenMainColor,
-                                fontSize: 24,
-                                fontFamily: "SemiBold"),
+                            style: AppStyle.amountPrd,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
                           IconButton(
                             onPressed: () {},
                             icon: SvgPicture.asset(
-                                "assets/icons/ic_cart_plus.svg"),
+                              AppSvg.icPlusCart,
+                            ),
                           ),
                         ],
                       ),

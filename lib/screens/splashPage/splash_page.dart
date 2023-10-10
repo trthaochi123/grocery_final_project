@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/data/prefs/prefs.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../base/images/app_images.dart';
+import '../../base/strings/app_strings.dart';
 import '../../main.dart';
 import '../login/login_page.dart';
 
@@ -20,7 +23,7 @@ class _SplashPage extends State<SplashPage> {
     super.initState();
   }
 
-
+// check Login
   startLogin() {
     if (checkLogin()) {
       Navigator.pushReplacement(
@@ -49,41 +52,30 @@ class _SplashPage extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/images/img_logo.png",
+                AppImage.logoApp,
                 width: 53,
                 height: 78,
               ),
               const SizedBox(
-                width: 17.11,
+                width: 18,
               ),
-              const Text(
-                "SG",
-                style: TextStyle(
-                  fontSize: 43,
-                  fontFamily: "Light",
-                ),
+               Text(
+                SplashPageString.sg,
+                style: AppStyle.sgSplash,
               ),
               const SizedBox(
                 width: 6,
               ),
-              const Text(
-                "Grocery",
-                style: TextStyle(
-                  fontSize: 43,
-                  color: AppColors.greenMainColor,
-                  fontFamily: "SemiBold",
-                ),
+               Text(
+                SplashPageString.grocery,
+                style: AppStyle.grocerySplash,
               ),
             ],
           ),
           const SizedBox(height: 7),
-          const Text(
-            "Your needs in just one place",
-            style: TextStyle(
-              fontSize: 20,
-              color: AppColors.greenMainColor,
-              fontFamily: "Light",
-            ),
+           Text(
+            SplashPageString.yourNeeds,
+            style: AppStyle.yourNeeds,
           ),
         ],
       ),

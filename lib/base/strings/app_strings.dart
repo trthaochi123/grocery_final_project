@@ -144,3 +144,35 @@ class LoginPageString {
   static const String register =  'Register';
 
 }
+
+class RegisterPageString {
+  static const String sg =  'SG';
+  static const String grocery =  'Grocery';
+  static const String register =  'Register';
+  static const String enterYourName =  'Enter Your Name';
+  static const String yourName =  'Your Name';
+  static const String enterYourEmailID =  'Enter Your Email ID';
+  static const String emailId =  'Email Id';
+  static const String enterYourPassword =  'Enter Your Password';
+  static const String password =  'Password';
+  static const String confirmYourPassword =  'Confirm Your Password';
+  static const String confirmPassword =  'Confirm Password';
+  static const String yourContactNumber =  'Your Contact Number';
+  static const String contactNumber =  'Contact Number';
+  static const String textButton =  'Register';
+  static const String orContinueWith =  'Or continue with';
+  static const String google =  'Google';
+  static const String facebook =  'Facebook';
+  static const String question =  "Already Have an Account?";
+  static const String login =  'Login';
+}
+
+class SplashPageString {
+  static const String sg =  'SG';
+  static const String grocery =  'Grocery';
+  static const String yourNeeds =  'Your needs in just one place';
+}
+
+class TicketWidgetString {
+  static const String code =  'code';
+}

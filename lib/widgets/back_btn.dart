@@ -7,7 +7,11 @@ class BackButtonWidget extends StatelessWidget {
   final String svgPath;
   final Function()? onClick;
 
-  const BackButtonWidget({super.key, this.onClick, required this.svgPath});
+  const BackButtonWidget({
+    super.key,
+    this.onClick,
+    required this.svgPath,
+  });
 
   @override
   Widget build(BuildContext context) {

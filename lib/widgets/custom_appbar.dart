@@ -9,12 +9,13 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final TextStyle textStyle;
   final AlignmentGeometry? alignment;
 
-  const CustomAppbar(
-      {super.key,
-      required this.textTitle,
-      required this.backgroundColor,
-      required this.textStyle,
-      this.alignment});
+  const CustomAppbar({
+    super.key,
+    required this.textTitle,
+    required this.backgroundColor,
+    required this.textStyle,
+    this.alignment,
+  });
 
   @override
   // TODO: implement preferredSize

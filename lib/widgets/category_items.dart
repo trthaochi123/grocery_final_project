@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 
 import '../base/colors/app_colors.dart';
 
@@ -6,8 +7,11 @@ class CategoryItems extends StatefulWidget {
   final String imagePath;
   final String textLabel;
 
-  const CategoryItems(
-      {super.key, required this.imagePath, required this.textLabel});
+  const CategoryItems({
+    super.key,
+    required this.imagePath,
+    required this.textLabel,
+  });
 
   @override
   State<StatefulWidget> createState() => _CategoryItemsState();
@@ -20,7 +24,11 @@ class _CategoryItemsState extends State<CategoryItems> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 15, top: 30, right: 3),
+          padding: const EdgeInsets.only(
+            left: 15,
+            top: 30,
+            right: 3,
+          ),
           child: Stack(
             alignment: Alignment.center,
             clipBehavior: Clip.none,
@@ -34,7 +42,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 50),
                 child: Container(
                   width: 87,
                   height: 38,
@@ -50,9 +58,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                     children: [
                       Text(
                         widget.textLabel,
-                        style: const TextStyle(
-                            fontFamily: "SemiBold",
-                            color: AppColors.whiteColor),
+                        style: AppStyle.textLabelCart,
                       ),
                     ],
                   ),

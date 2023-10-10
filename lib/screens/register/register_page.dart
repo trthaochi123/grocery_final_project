@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/screens/login/login_page.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../base/images/app_images.dart';
+import '../../base/strings/app_strings.dart';
 import '../../widgets/log_reg_button_widget.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/square_tile.dart';
 import '../../widgets/text_button_widget.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _RegisterPageState();
 }
@@ -35,41 +40,37 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 80,
                 ),
                 Image.asset(
-                  "assets/images/img_logo.png",
+                  AppImage.logoApp,
                   width: 36.51,
                   height: 53,
                 ),
                 const SizedBox(
                   width: 17.11,
                 ),
-                const Text(
-                  "SG",
-                  style: TextStyle(fontSize: 28.79, fontFamily: "Light"),
+                Text(
+                  RegisterPageString.sg,
+                  style: AppStyle.sgRegister,
                 ),
                 const SizedBox(
                   width: 6,
                 ),
-                const Text("Grocery",
-                    style: TextStyle(
-                        fontSize: 28.79,
-                        color: AppColors.greenMainColor,
-                        fontFamily: "Medium")),
+                Text(
+                  RegisterPageString.grocery,
+                  style: AppStyle.groceryRegister,
+                ),
               ],
             ),
 
             // Register
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 55),
+                  const SizedBox(height: 55),
                   Text(
-                    "Register",
-                    style: TextStyle(
-                        fontSize: 21,
-                        color: AppColors.greenMainColor,
-                        fontFamily: "SemiBold"),
+                    RegisterPageString.register,
+                    style: AppStyle.registerLable,
                   ),
                 ],
               ),
@@ -78,8 +79,8 @@ class _RegisterPageState extends State<RegisterPage> {
             //Your Name
             InputLogin(
               controller: yournameController,
-              hintText: 'Enter Your Email ID',
-              title: "Email Id",
+              hintText: RegisterPageString.enterYourName,
+              title: RegisterPageString.yourName,
             ),
 
             const SizedBox(
@@ -89,8 +90,8 @@ class _RegisterPageState extends State<RegisterPage> {
             // Email Id
             InputLogin(
               controller: emailController,
-              hintText: 'Enter Your Email ID',
-              title: "Email Id",
+              hintText: RegisterPageString.enterYourEmailID,
+              title: RegisterPageString.emailId,
             ),
 
             const SizedBox(
@@ -100,8 +101,8 @@ class _RegisterPageState extends State<RegisterPage> {
             // Password
             InputLogin(
               controller: passwordController,
-              hintText: 'Enter Your Email ID',
-              title: "Email Id",
+              hintText: RegisterPageString.enterYourPassword,
+              title: RegisterPageString.password,
             ),
 
             const SizedBox(
@@ -111,8 +112,8 @@ class _RegisterPageState extends State<RegisterPage> {
             // ConfirmPassword
             InputLogin(
               controller: confirmPasswordController,
-              hintText: 'Enter Your Email ID',
-              title: "Email Id",
+              hintText: RegisterPageString.confirmYourPassword,
+              title: RegisterPageString.confirmPassword,
             ),
 
             const SizedBox(
@@ -122,8 +123,8 @@ class _RegisterPageState extends State<RegisterPage> {
             // ContactNumber
             InputLogin(
               controller: contactNumberController,
-              hintText: 'Enter Your Email ID',
-              title: "Email Id",
+              hintText: RegisterPageString.yourContactNumber,
+              title: RegisterPageString.contactNumber,
             ),
 
             const SizedBox(
@@ -133,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
             // Register Button
             ButtonWidget(
               onPressed: registerUser,
-              textButton: 'Register',
+              textButton: RegisterPageString.textButton,
             ),
 
             const SizedBox(
@@ -152,14 +153,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: Colors.grey[900],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      'Or continue with',
-                      style: TextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: 16,
-                          fontFamily: "Light"),
+                      RegisterPageString.orContinueWith,
+                      style: AppStyle.orContinueWithRegister,
                     ),
                   ),
                   Expanded(
@@ -180,8 +178,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   children: [
                     SquareTile(
-                      imagePath: 'assets/icons/ic_google.png',
-                      textIcon: 'Google',
+                      imagePath: AppImage.googleApp,
+                      textIcon: RegisterPageString.google,
                     ),
                   ],
                 ),
@@ -192,8 +190,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // apple
                 SquareTile(
-                  imagePath: 'assets/icons/ic_facebook.png',
-                  textIcon: 'Facebook',
+                  imagePath: AppImage.facebookApp,
+                  textIcon: RegisterPageString.facebook,
                 ),
               ],
             ),
@@ -202,19 +200,16 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 25,
             ),
 
-            // Dont have an account ?
+            // Already have an account ?
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "Already Have an Account?",
-                  style: TextStyle(
-                      color: AppColors.greyColor,
-                      fontFamily: "Light",
-                      fontSize: 16),
+                Text(
+                  RegisterPageString.question,
+                  style: AppStyle.questionRegister,
                 ),
                 TextButtonWidget(
-                    textButtonName: 'Login',
+                    textButtonName: RegisterPageString.login,
                     onClick: () {
                       Navigator.push(
                         context,

@@ -82,8 +82,9 @@ class _MainPageState extends State<MainPage> {
       height: 36,
       width: 36,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(13),
-          color: selected ? AppColors.whiteColor : AppColors.greenMainColor),
+        borderRadius: BorderRadius.circular(13),
+        color: selected ? AppColors.whiteColor : AppColors.greenMainColor,
+      ),
       child: Center(
         child: SvgPicture.asset(
           checkIcon,

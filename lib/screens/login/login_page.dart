@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/data/prefs/prefs.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
 import 'package:sg_grocery_project/screens/register/register_page.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../base/images/app_images.dart';
 import '../../base/strings/app_strings.dart';
 import '../../main.dart';
 import '../../widgets/input_field.dart';
@@ -36,36 +38,30 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/img_logo.png",
+                  AppImage.logoApp,
                   width: 37,
                   height: 53,
                 ),
                 const SizedBox(
                   width: 16,
                 ),
-                const Text(
+                Text(
                   LoginPageString.sg,
-                  style: TextStyle(
-                    fontSize: 29,
-                    fontFamily: "Light",
-                  ),
+                  style: AppStyle.sgLogo,
                 ),
                 const SizedBox(
                   width: 6,
                 ),
-                const Text(
+                Text(
                   LoginPageString.grocery,
-                  style: TextStyle(
-                      fontSize: 29,
-                      color: AppColors.greenMainColor,
-                      fontFamily: "Medium"),
+                  style: AppStyle.groceryLogo,
                 ),
               ],
             ),
 
             // IMAGE
             Image.asset(
-              "assets/images/img_illustrator.png",
+              AppImage.illusLogin,
               height: 200,
             ),
 
@@ -73,18 +69,14 @@ class _LoginPageState extends State<LoginPage> {
               height: 5,
             ),
             // Login
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     LoginPageString.login,
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: AppColors.greenMainColor,
-                      fontFamily: "SemiBold",
-                    ),
+                    style: AppStyle.loginLable,
                   ),
                 ],
               ),
@@ -122,7 +114,9 @@ class _LoginPageState extends State<LoginPage> {
                 setLogin(true);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MainPage()),
+                  MaterialPageRoute(
+                    builder: (context) => const MainPage(),
+                  ),
                 );
               },
               textButton: LoginPageString.textButton,
@@ -144,14 +138,11 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.grey[900],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       LoginPageString.orContinueWith,
-                      style: TextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: 16,
-                          fontFamily: "Light"),
+                      style: AppStyle.orContinueWith,
                     ),
                   ),
                   Expanded(
@@ -172,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   children: [
                     SquareTile(
-                      imagePath: 'assets/icons/ic_google.png',
+                      imagePath: AppImage.googleApp,
                       textIcon: LoginPageString.google,
                     ),
                   ],
@@ -184,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 // facebook
                 SquareTile(
-                  imagePath: 'assets/icons/ic_facebook.png',
+                  imagePath: AppImage.facebookApp,
                   textIcon: LoginPageString.facebook,
                 ),
               ],
@@ -198,12 +189,9 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   LoginPageString.question,
-                  style: TextStyle(
-                      color: AppColors.greyColor,
-                      fontFamily: "Light",
-                      fontSize: 16),
+                  style: AppStyle.question,
                 ),
                 TextButtonWidget(
                     textButtonName: LoginPageString.register,

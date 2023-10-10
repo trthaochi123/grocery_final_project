@@ -9,13 +9,15 @@ class FeaturedItems extends StatefulWidget {
   final String imagePath;
   final bgColor;
 
-  const FeaturedItems(
-      {super.key,
-      required this.nameProduct,
-      required this.detailProduct,
-      required this.priceProduct,
-      required this.weightProduct,
-      required this.imagePath, required this.bgColor});
+  const FeaturedItems({
+    super.key,
+    required this.nameProduct,
+    required this.detailProduct,
+    required this.priceProduct,
+    required this.weightProduct,
+    required this.imagePath,
+    required this.bgColor,
+  });
 
   @override
   State<StatefulWidget> createState() => _FeaturedItemsState();
@@ -27,7 +29,7 @@ class _FeaturedItemsState extends State<FeaturedItems> {
     return Row(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 6, left: 15),
+          padding: const EdgeInsets.only(top: 6, left: 15),
           child: Stack(
             children: [
               Container(
@@ -38,7 +40,11 @@ class _FeaturedItemsState extends State<FeaturedItems> {
                   color: widget.bgColor,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 14, right: 14, bottom: 14),
+                  padding: const EdgeInsets.only(
+                    left: 14,
+                    right: 14,
+                    bottom: 14,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +55,7 @@ class _FeaturedItemsState extends State<FeaturedItems> {
                       Text(
                         widget.detailProduct,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Row(
@@ -68,7 +74,10 @@ class _FeaturedItemsState extends State<FeaturedItems> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 17,
+                  vertical: 14,
+                ),
                 child: SizedBox(
                   child: Image.asset(widget.imagePath),
                 ),

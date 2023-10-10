@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sg_grocery_project/base/colors/app_colors.dart';
+import 'package:sg_grocery_project/base/images/app_images.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/screens/explore/explore_page.dart';
 import 'package:sg_grocery_project/widgets/category_items.dart';
 import 'package:sg_grocery_project/widgets/deal_product_item.dart';
@@ -19,9 +21,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   List<String> assets = [
-    'assets/images/img_advertisement.png',
-    'assets/images/img_advertisement.png',
-    'assets/images/img_advertisement.png',
+    AppImage.adHomePage,
+    AppImage.adHomePage,
+    AppImage.adHomePage,
   ];
 
   int currentIndex = 0;
@@ -48,11 +50,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       borderSide: BorderSide.none,
                     ),
                     hintText: HomePageString.hintSearch,
-                    hintStyle: const TextStyle(
-                        fontFamily: "light",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400),
-                    prefixIcon: Icon(
+                    hintStyle: AppStyle.hintSearch,
+                    prefixIcon: const Icon(
                       Icons.search,
                       size: 35,
                     ),
@@ -76,7 +75,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           onPageChanged: (value) {
                             //value: tham số đại diện cho chỉ số của trang mới được chọn
                             currentIndex = value;
-                            setState(() {});
+                            setState(
+                              () {},
+                            );
                           },
                           // itemBuider Xây dựng và trả về widget tương ứng với index
                           itemBuilder: (context, index) {
@@ -129,23 +130,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Row(
                   children: [
                     CategoryItems(
-                      imagePath: 'assets/images/img_cate_item1.png',
+                      imagePath: AppImage.cateHomePage1,
                       textLabel: HomePageString.groceries,
                     ),
                     CategoryItems(
-                      imagePath: 'assets/images/img_cate_item2.png',
+                      imagePath: AppImage.cateHomePage2,
                       textLabel: HomePageString.vegetables,
                     ),
                     CategoryItems(
-                      imagePath: 'assets/images/img_cate_item3.png',
+                      imagePath: AppImage.cateHomePage3,
                       textLabel: HomePageString.fruits,
                     ),
                     CategoryItems(
-                      imagePath: 'assets/images/img_cate_item4.png',
+                      imagePath: AppImage.cateHomePage4,
                       textLabel: HomePageString.beverages,
                     ),
                     CategoryItems(
-                      imagePath: 'assets/images/img_cate_item1.png',
+                      imagePath: AppImage.cateHomePage1,
                       textLabel: HomePageString.groceries,
                     ),
                   ],
@@ -176,21 +177,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ProductItems(
                       nameProduct: HomePageString.fortuneRice,
                       priceProduct: HomePageString.threeKg,
-                      imagePath: 'assets/images/img_prd_item1.png',
+                      imagePath: AppImage.prdHomePage1,
                       numberSale: HomePageString.thirtysevenPer,
                       offSale: HomePageString.off,
                     ),
                     ProductItems(
                       nameProduct: HomePageString.freshAvocado,
                       priceProduct: HomePageString.threeKg,
-                      imagePath: 'assets/images/img_prd_item2.png',
+                      imagePath: AppImage.prdHomePage2,
                       numberSale: HomePageString.thirtysevenPer,
                       offSale: HomePageString.off,
                     ),
                     ProductItems(
                       nameProduct: HomePageString.organic,
                       priceProduct: HomePageString.threeKg,
-                      imagePath: 'assets/images/img_prd_item3.png',
+                      imagePath: AppImage.prdHomePage3,
                       numberSale: HomePageString.thirtysevenPer,
                       offSale: HomePageString.off,
                     ),
@@ -214,28 +215,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(10),
                         color: const Color.fromRGBO(234, 251, 255, 1),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(top: 20, left: 20),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20, left: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               HomePageString.getTwentyCashback,
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontFamily: "SemiBold",
-                                color: Color.fromRGBO(63, 138, 154, 1),
-                              ),
+                              style: AppStyle.getTwentyCashback,
                             ),
                             Text(
                               HomePageString.onAllBabyProducts,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "Light",
-                                color: Color.fromRGBO(63, 138, 154, 1),
-                              ),
+                              style: AppStyle.onAllBabyProducts,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                           ],
@@ -248,7 +241,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           padding: const EdgeInsets.only(top: 110, left: 20),
                           child: Stack(
                             children: [
-                              Image.asset('assets/images/img_get25_item.png'),
+                              Image.asset(
+                                AppImage.get25Item,
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: ElevatedButton(
@@ -259,12 +254,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     ),
                                     backgroundColor: AppColors.greenMainColor,
                                   ),
-                                  child: const Text(
+                                  child: Text(
                                     HomePageString.shopNow,
-                                    style: TextStyle(
-                                        color: AppColors.whiteColor,
-                                        fontFamily: "SemiBold",
-                                        fontSize: 16),
+                                    style: AppStyle.shopNow,
                                   ),
                                 ),
                               ),
@@ -276,7 +268,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     Positioned(
                       bottom: 6,
                       right: 0,
-                      child: Image.asset('assets/images/img_get25_prd.png'),
+                      child: Image.asset(
+                        AppImage.get25Prd,
+                      ),
                     )
                   ],
                 ),
@@ -306,17 +300,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     DealItems(
                       textLabel: HomePageString.softDrinks,
                       detailItem: HomePageString.uptoFourty,
-                      imagePath: 'assets/images/img_deal_item1.png',
+                      imagePath: AppImage.dealHomePage1,
                     ),
                     DealItems(
                       textLabel: HomePageString.tea,
                       detailItem: HomePageString.uptoThirty,
-                      imagePath: 'assets/images/img_deal_item2.png',
+                      imagePath: AppImage.dealHomePage2,
                     ),
                     DealItems(
                       textLabel: HomePageString.blackDrinks,
                       detailItem: HomePageString.minFourty,
-                      imagePath: 'assets/images/img_deal_item3.png',
+                      imagePath: AppImage.dealHomePage3,
                     ),
                   ],
                 ),
@@ -327,17 +321,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               // Featured Items
-               BarLabel(
+              BarLabel(
                 firstLabel: HomePageString.featuredItems,
                 secondLable: HomePageString.exploreAll,
-                 onClickButton: () {
-                   Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                       builder: (context) => ExplorePage(),
-                     ),
-                   );
-                 },
+                onClickButton: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExplorePage(),
+                    ),
+                  );
+                },
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -348,7 +342,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       detailProduct: HomePageString.premiumAlmond,
                       priceProduct: HomePageString.twentyTwo,
                       weightProduct: HomePageString.oneKg,
-                      imagePath: 'assets/images/img_featured_item1.png',
+                      imagePath: AppImage.featuredHomePage1,
                       bgColor: AppColors.pinkItems,
                     ),
                     FeaturedItems(
@@ -356,7 +350,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       detailProduct: HomePageString.dried,
                       priceProduct: HomePageString.fourDollars,
                       weightProduct: HomePageString.threePacks,
-                      imagePath: 'assets/images/img_featured_item2.png',
+                      imagePath: AppImage.featuredHomePage2,
                       bgColor: AppColors.yellowItems,
                     ),
                     FeaturedItems(
@@ -364,7 +358,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       detailProduct: HomePageString.dried,
                       priceProduct: HomePageString.fourDollars,
                       weightProduct: HomePageString.threePacks,
-                      imagePath: 'assets/images/img_featured_item3.png',
+                      imagePath: AppImage.featuredHomePage3,
                       bgColor: AppColors.orangeItems,
                     ),
                   ],

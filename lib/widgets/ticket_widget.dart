@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../base/colors/app_colors.dart';
+import '../base/strings/app_strings.dart';
+import '../base/styles/app_styles.dart';
 
 class TicketWidget extends StatelessWidget {
   final String xPath;
@@ -12,20 +14,21 @@ class TicketWidget extends StatelessWidget {
   final String codeText;
   final Color backgroundColor;
 
-  const TicketWidget(
-      {super.key,
-      required this.xPath,
-      required this.firstLineText,
-      required this.secondLineText,
-      required this.thirdLineText,
-      required this.fourthLineText,
-      required this.codeText,
-      required this.backgroundColor});
+  const TicketWidget({
+    super.key,
+    required this.xPath,
+    required this.firstLineText,
+    required this.secondLineText,
+    required this.thirdLineText,
+    required this.fourthLineText,
+    required this.codeText,
+    required this.backgroundColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: 16),
       child: Stack(
         children: [
           Row(
@@ -34,19 +37,21 @@ class TicketWidget extends StatelessWidget {
                 width: 284,
                 height: 108,
                 decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      bottomLeft: Radius.circular(20.0),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2), // Màu của bóng
+                      spreadRadius: 1, // Bán kính bóng
+                      blurRadius: 10, // Độ mờ của bóng
+                      offset:
+                          Offset(-5, 5), // Độ lệch của bóng theo trục x và y
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2), // Màu của bóng
-                        spreadRadius: 1, // Bán kính bóng
-                        blurRadius: 10, // Độ mờ của bóng
-                        offset: Offset(-5, 5), // Độ lệch của bóng theo trục x và y
-                      ),
-                    ],
-                    color: backgroundColor),
+                  ],
+                  color: backgroundColor,
+                ),
               ),
               const SizedBox(
                 width: 2,
@@ -55,11 +60,12 @@ class TicketWidget extends StatelessWidget {
                 width: 110,
                 height: 108,
                 decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(20.0),
-                      bottomRight: Radius.circular(20.0),
-                    ),
-                    color: backgroundColor),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                  ),
+                  color: backgroundColor,
+                ),
               ),
             ],
           ),
@@ -89,40 +95,38 @@ class TicketWidget extends StatelessWidget {
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [SvgPicture.asset(xPath), SvgPicture.asset(xPath)],
+              children: [
+                SvgPicture.asset(xPath),
+                SvgPicture.asset(xPath),
+              ],
             ),
           ),
 
           Padding(
-            padding: EdgeInsets.only(top: 12, left: 38),
+            padding: const EdgeInsets.only(top: 12, left: 38),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   firstLineText,
                   style: const TextStyle(
-                      fontSize: 14,
-                      fontFamily: "ExtraBold",
-                      color: Colors.white),
+                    fontSize: 14,
+                    fontFamily: "ExtraBold",
+                    color: Colors.white,
+                  ),
                 ),
                 Text(
                   secondLineText,
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontFamily: "ExtraBold",
-                      color: Colors.white),
+                  style: AppStyle.secondLineTextTicket,
                 ),
-                Text(thirdLineText,
-                    style: const TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Medium",
-                        color: Colors.white)),
-                Text(fourthLineText,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontFamily: "Medium",
-                      color: Colors.white,
-                    )),
+                Text(
+                  thirdLineText,
+                  style: AppStyle.thirdLineTextTicket,
+                ),
+                Text(
+                  fourthLineText,
+                  style: AppStyle.fourthLineTextTicket,
+                ),
               ],
             ),
           ),
@@ -133,7 +137,10 @@ class TicketWidget extends StatelessWidget {
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [SvgPicture.asset(xPath), SvgPicture.asset(xPath)],
+              children: [
+                SvgPicture.asset(xPath),
+                SvgPicture.asset(xPath),
+              ],
             ),
           ),
 
@@ -143,24 +150,28 @@ class TicketWidget extends StatelessWidget {
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [SvgPicture.asset(xPath), SvgPicture.asset(xPath)],
+              children: [
+                SvgPicture.asset(xPath),
+                SvgPicture.asset(xPath),
+              ],
             ),
           ),
 
           Padding(
-            padding: EdgeInsets.only(left: 302, top: 32),
+            padding: const EdgeInsets.only(
+              left: 302,
+              top: 32,
+            ),
             child: Column(
               children: [
-                Text("code",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Medium",
-                        color: Colors.white)),
-                Text(codeText,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: "ExtraBold",
-                        color: Colors.white))
+                Text(
+                  TicketWidgetString.code,
+                  style: AppStyle.codeStyle,
+                ),
+                Text(
+                  codeText,
+                  style: AppStyle.codeTextDetail,
+                ),
               ],
             ),
           ),
@@ -171,7 +182,10 @@ class TicketWidget extends StatelessWidget {
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [SvgPicture.asset(xPath), SvgPicture.asset(xPath)],
+              children: [
+                SvgPicture.asset(xPath),
+                SvgPicture.asset(xPath),
+              ],
             ),
           ),
         ],

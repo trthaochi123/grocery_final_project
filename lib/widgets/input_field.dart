@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sg_grocery_project/base/styles/app_styles.dart';
 
 import 'text_field_widget.dart';
 
@@ -7,11 +8,12 @@ class InputLogin extends StatefulWidget {
   final String hintText;
   final String title;
 
-  const InputLogin(
-      {super.key,
-      required this.controller,
-      required this.hintText,
-      required this.title});
+  const InputLogin({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.title,
+  });
 
   @override
   State<StatefulWidget> createState() => _InputLoginState();
@@ -27,8 +29,10 @@ class _InputLoginState extends State<InputLogin> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(widget.title,
-                  style: const TextStyle(fontSize: 17, fontFamily: "Medium")),
+              Text(
+                widget.title,
+                style: AppStyle.titleInputField,
+              ),
               const SizedBox(height: 30),
             ],
           ),
