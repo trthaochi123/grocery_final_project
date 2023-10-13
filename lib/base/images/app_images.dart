@@ -78,5 +78,6 @@ class AppImage {
   // LOGIN
   static const String illusLogin = "assets/images/img_illustrator.png";
 
-
+  // MY SUBSCRIPTION
+  static const String imageFav = "assets/images/img_fav_illustrator.png";
 }

@@ -410,4 +410,21 @@ class AppStyle {
     fontFamily: "ExtraBold",
     color: Colors.white,
   );
+
+  // MY SUBSCRIPTION
+  static TextStyle textDropdownTitle = const TextStyle(
+    fontFamily: "SemiBold",
+    fontSize: 16,
+  );
+
+  static TextStyle today = const TextStyle(
+    fontSize: 18,
+    fontFamily: "SemiBold",
+  );
+
+  static TextStyle dateMonthYear = const TextStyle(
+    fontSize: 18,
+    fontFamily: "Light",
+    color: AppColors.greyFruits,
+  );
 }

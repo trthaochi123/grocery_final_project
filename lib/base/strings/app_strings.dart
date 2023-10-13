@@ -176,3 +176,21 @@ class SplashPageString {
 class TicketWidgetString {
   static const String code =  'code';
 }
+
+class FavWidgetString {
+  static const textTitle  =  "My Subscription";
+  static const textDropdownTitle  =  "Subscription -Weekly";
+  static const String today=  "Today";
+  static const String dateMonthYear=  "(23 September 2021)";
+  static const String  namePrdFav=  "Amul Gold Milk";
+  static const String  weightPrdFav=  "500 ml";
+  static const String  pricePrdFav=  "\$2";
+  static const String  monday=  "M";
+  static const String  tuesday=  "T";
+  static const String  wednesday=  "W";
+  static const String  thursday=  "T";
+  static const String  friday=  "F";
+  static const String  saturday=  "S";
+  static const String  sunday=  "S";
+  static const String  textIllustrator=  "Excited to serve you the best quality";
+}
