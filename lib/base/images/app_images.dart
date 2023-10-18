@@ -21,6 +21,14 @@ class AppSvg {
   static const String icMinorCart = "assets/icons/ic_cart_minor.svg";
   static const String icPlusCart = "assets/icons/ic_cart_plus.svg";
 
+  static const String icAccMyOrders = "assets/icons/ic_account_myorders.svg";
+  static const String icAccMySubs = "assets/icons/ic_account_mysubs.svg";
+  static const String icAccAddresses = "assets/icons/ic_account_myadd.svg";
+  static const String icAccFaq = "assets/icons/ic_account_faq.svg";
+  static const String icAccContact = "assets/icons/ic_account_contact.svg";
+  static const String icAccAbout = "assets/icons/ic_account_about.svg";
+  static const String icAccLogout = "assets/icons/ic_account_logout.svg";
+
 }
 
 // ---- IMAGE -----

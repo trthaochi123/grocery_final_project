@@ -10,9 +10,9 @@ class AppStyle {
   );
 
   static TextStyle groceryLogo = const TextStyle(
-      fontSize: 29,
-      color: AppColors.greenMainColor,
-      fontFamily: "Medium",
+    fontSize: 29,
+    color: AppColors.greenMainColor,
+    fontFamily: "Medium",
   );
 
   static TextStyle loginLable = const TextStyle(
@@ -28,9 +28,9 @@ class AppStyle {
   );
 
   static TextStyle question = const TextStyle(
-      color: AppColors.greyColor,
-      fontFamily: "Light",
-      fontSize: 16,
+    color: AppColors.greyColor,
+    fontFamily: "Light",
+    fontSize: 16,
   );
 
   // REGISTER
@@ -58,9 +58,9 @@ class AppStyle {
   );
 
   static TextStyle questionRegister = const TextStyle(
-      color: AppColors.greyColor,
-      fontFamily: "Light",
-      fontSize: 16,
+    color: AppColors.greyColor,
+    fontFamily: "Light",
+    fontSize: 16,
   );
 
   // SPLASH PAGE
@@ -108,16 +108,16 @@ class AppStyle {
   );
 
   static TextStyle shopNow = const TextStyle(
-      color: AppColors.whiteColor,
-      fontFamily: "SemiBold",
-      fontSize: 16,
+    color: AppColors.whiteColor,
+    fontFamily: "SemiBold",
+    fontSize: 16,
   );
 
   // FruitsPage
-  static TextStyle titleFruits  = const TextStyle(
-      fontFamily: "SemiBold",
-      fontSize: 18,
-      color: AppColors.greyFruits,
+  static TextStyle titleFruits = const TextStyle(
+    fontFamily: "SemiBold",
+    fontSize: 18,
+    color: AppColors.greyFruits,
   );
 
   static TextStyle price2Fruits = const TextStyle(
@@ -126,8 +126,7 @@ class AppStyle {
     color: AppColors.greyFruits,
   );
 
-
-  static TextStyle  priceFruits = const TextStyle(
+  static TextStyle priceFruits = const TextStyle(
     fontFamily: "SemiBold",
     fontSize: 18,
     color: AppColors.greenMainColor,
@@ -147,7 +146,6 @@ class AppStyle {
   );
 
   // Explore Page
-
 
   // Cart Page
   static TextStyle tomorrowTime = const TextStyle(
@@ -182,15 +180,12 @@ class AppStyle {
     fontFamily: "SemiBold",
   );
 
-
-
   static TextStyle textButtonMediumStyle = const TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.bold,
     fontSize: 18,
     fontFamily: "Regular",
   );
-
 
   static TextStyle textButtonSmallStyle = const TextStyle(
     color: Colors.white,
@@ -214,10 +209,10 @@ class AppStyle {
   );
 
   static TextStyle textNameItemCart = const TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.bold,
-  fontSize: 18,
-  fontFamily: "Medium",
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    fontFamily: "Medium",
   );
 
   static TextStyle textWeightItemCart = const TextStyle(
@@ -300,11 +295,10 @@ class AppStyle {
   );
 
   // Cate_items
-  static TextStyle textLabelCart= const TextStyle(
+  static TextStyle textLabelCart = const TextStyle(
     fontFamily: "SemiBold",
     color: AppColors.whiteColor,
   );
-
 
   // Deal_prd_item
   static TextStyle textLabelDealPrd = const TextStyle(
@@ -313,13 +307,11 @@ class AppStyle {
     fontFamily: "SemiBold",
   );
 
-
-  static TextStyle  detailItem = const TextStyle(
+  static TextStyle detailItem = const TextStyle(
     fontSize: 11,
     color: AppColors.greenMainColor,
     fontFamily: "SemiBold",
   );
-
 
   // explore_item
   static TextStyle nameExplItem = const TextStyle(
@@ -348,7 +340,6 @@ class AppStyle {
     color: AppColors.textItems,
     fontFamily: "Medium",
   );
-
 
   static TextStyle pricePrdWidget = const TextStyle(
     color: AppColors.textItems,
@@ -426,5 +417,21 @@ class AppStyle {
     fontSize: 18,
     fontFamily: "Light",
     color: AppColors.greyFruits,
+  );
+
+  // ACCOUNT
+  static TextStyle nameAcc = const TextStyle(
+    fontSize: 24,
+    fontFamily: "Regular",
+  );
+
+  static TextStyle emailAcc = const TextStyle(
+    fontSize: 14,
+    fontFamily: "Regular",
+  );
+
+  static TextStyle textItemAcc = const TextStyle(
+    fontSize: 18,
+    fontFamily: "Light",
   );
 }

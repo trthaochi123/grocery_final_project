@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/base/strings/app_strings.dart';
+import 'package:sg_grocery_project/base/strings/db_query_strings.dart';
+import 'package:sg_grocery_project/data/local/db_helper.dart';
 import 'package:sg_grocery_project/widgets/button_normal.dart';
 import 'package:sg_grocery_project/widgets/cart_item.dart';
 import 'package:sg_grocery_project/widgets/custom_appbar.dart';
@@ -9,6 +11,7 @@ import 'package:sg_grocery_project/widgets/ticket_widget.dart';
 
 import '../../base/colors/app_colors.dart';
 import '../../base/styles/app_styles.dart';
+import '../../model/cart_db.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -18,6 +21,28 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  List<CartDB> carts = [];
+
+  // xu ly DB
+  @override
+  void initState() {
+    loadCart();
+    super.initState();
+  }
+
+  Future<void> loadCart() async {
+    final db = await DBHelper.instance.database;
+    final data = await db.query(AppQueryString.tableCarts);
+    setState(() {
+      carts = List.generate(data.length, (index) {
+        return CartDB(
+          name: data[index]["name"].toString(),
+          weight: data[index]["weight"].toString(),
+        );
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,6 +175,8 @@ class _CartPageState extends State<CartPage> {
             const SizedBox(
               height: 16,
             ),
+
+            // table
             Container(
               width: 396,
               height: 201,
@@ -276,6 +303,21 @@ class _CartPageState extends State<CartPage> {
             const SizedBox(
               height: 38,
             ),
+
+            // Container(
+            //   height: 200,
+            //   child: ListView.builder(
+            //     itemCount: carts.length,
+            //     itemBuilder: (context, int index) {
+            //       return ListTile(
+            //         leading: Text(carts[index].name),
+            //         title: Text(carts[index].weight),
+            //       );
+            //     },
+            //
+            //   ),
+            // ),
+
           ],
         ),
       ),

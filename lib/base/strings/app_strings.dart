@@ -35,6 +35,14 @@ class CartPageString {
   static const String textButton =  'Checkout';
 }
 
+class FavPageString {
+  static const String favTitle = 'My Favorite';
+}
+
+
+
+
+
 class ExplorePageString {
   static const String exploreTitle =  'Explore';
   static const String groceries =  'Groceries';
@@ -84,7 +92,7 @@ class FruitsPageString {
   static const String guava =  'Guava';
   static const String avocado =  'Avocado';
   static const String oneKg =  '(1 kg)';
-  static const String fourDollars =  '\$4';
+  static const String fourDollars =  '\$2';
   static const String threeUnit =  '(3 unit)';
   static const String twoPacks =  '(2 pcs)';
   static const String subscribe =  'Subscribe';
@@ -193,4 +201,17 @@ class FavWidgetString {
   static const String  saturday=  "S";
   static const String  sunday=  "S";
   static const String  textIllustrator=  "Excited to serve you the best quality";
+}
+
+class AccountPageString {
+  static const String accountTitle = 'Profile';
+  static const String nameAcc = "George D.";
+  static const String emailAcc = "@george31";
+  static const String myOrders = "My orders";
+  static const String mySubscriptions = "My Subscriptions";
+  static const String myAddresses = "My Addresses";
+  static const String faq = "FAQ";
+  static const String contactUs = "Contact Us";
+  static const String about = "About";
+  static const String logOut = "Log Out";
 }

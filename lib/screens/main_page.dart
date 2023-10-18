@@ -3,12 +3,13 @@ import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/screens/account/account_page.dart';
 import 'package:sg_grocery_project/screens/cart/cart_page.dart';
 import 'package:sg_grocery_project/screens/explore/explore_page.dart';
-import 'package:sg_grocery_project/screens/fav/fav_page.dart';
+import 'package:sg_grocery_project/screens/account/subs_page.dart';
 import 'package:sg_grocery_project/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 import '../base/colors/app_colors.dart';
 import '../widgets/app_icon.dart';
+import 'fav/fav_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
