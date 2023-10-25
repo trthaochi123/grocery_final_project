@@ -95,6 +95,13 @@ class AppStyle {
     fontWeight: FontWeight.w300,
   );
 
+  static TextStyle textFieldAdress = const TextStyle(
+    fontFamily: "Light",
+    color: Colors.black,
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+  );
+
   static TextStyle getTwentyCashback = const TextStyle(
     fontSize: 24,
     fontFamily: "SemiBold",

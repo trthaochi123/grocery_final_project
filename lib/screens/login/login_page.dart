@@ -4,10 +4,8 @@ import 'package:sg_grocery_project/data/prefs/prefs.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
 import 'package:sg_grocery_project/screens/register/register_page.dart';
 
-import '../../base/colors/app_colors.dart';
 import '../../base/images/app_images.dart';
 import '../../base/strings/app_strings.dart';
-import '../../main.dart';
 import '../../widgets/input_field.dart';
 import '../../widgets/log_reg_button_widget.dart';
 import '../../widgets/square_tile.dart';
@@ -156,12 +154,12 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             // google or facebook
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google
                 Row(
-                  children: [
+                  children: const [
                     SquareTile(
                       imagePath: AppImage.googleApp,
                       textIcon: LoginPageString.google,
@@ -169,12 +167,12 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
 
                 // facebook
-                SquareTile(
+                const SquareTile(
                   imagePath: AppImage.facebookApp,
                   textIcon: LoginPageString.facebook,
                 ),
@@ -199,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegisterPage(),
+                          builder: (context) => const RegisterPage(),
                         ),
                       );
                     }),

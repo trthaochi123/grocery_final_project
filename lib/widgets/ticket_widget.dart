@@ -69,7 +69,7 @@ class TicketWidget extends StatelessWidget {
               ),
             ],
           ),
-          const Positioned(
+          Positioned(
             left: 273,
             top: -12,
             bottom: -12,

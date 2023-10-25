@@ -171,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
 
             // google or apple
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google

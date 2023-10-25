@@ -120,7 +120,7 @@ class _SubsItemState extends State<SubsItem> {
                         ),
                       ),
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: 88, left: 148),
                       child: Row(
                         children: [

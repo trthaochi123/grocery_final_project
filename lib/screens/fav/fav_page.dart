@@ -105,10 +105,7 @@ class _FavPageState extends State<FavPage> {
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 50,
-            ),
+            padding: const EdgeInsets.all(16),
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

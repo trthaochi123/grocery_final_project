@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   );
                 },
               ),
-              const SingleChildScrollView(
+               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   );
                 },
               ),
-              const SingleChildScrollView(
+               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -293,7 +293,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   );
                 },
               ),
-              const SingleChildScrollView(
+               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -333,7 +333,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   );
                 },
               ),
-              const SingleChildScrollView(
+               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [

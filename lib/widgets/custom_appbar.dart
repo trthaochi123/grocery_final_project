@@ -7,6 +7,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String textTitle;
   final Color backgroundColor;
   final TextStyle textStyle;
+  final Widget? leading;
   final AlignmentGeometry? alignment;
 
   const CustomAppbar({
@@ -15,6 +16,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     required this.backgroundColor,
     required this.textStyle,
     this.alignment,
+    this.leading,
   });
 
   @override
@@ -24,19 +26,21 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        elevation: 0,
-        backgroundColor: backgroundColor,
-        title: alignment != null
-            ? Align(
-                alignment: alignment!,
-                child: Text(
-                  textTitle,
-                  style: textStyle,
-                ),
-              )
-            : Text(
+      leading: leading,
+      elevation: 0,
+      backgroundColor: backgroundColor,
+      title: alignment != null
+          ? Align(
+              alignment: alignment!,
+              child: Text(
                 textTitle,
                 style: textStyle,
-              ));
+              ),
+            )
+          : Text(
+              textTitle,
+              style: textStyle,
+            ),
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:sg_grocery_project/screens/address/address_page.dart';
 import 'package:sg_grocery_project/screens/cart/cart_page.dart';
 import 'package:sg_grocery_project/screens/explore/explore_page.dart';
 import 'package:sg_grocery_project/screens/fruits/fruits_page.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: "SG Grocery",
-      home: SplashPage(),
+      home: AddressPage(),
     );
   }
 }

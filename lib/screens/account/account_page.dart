@@ -49,66 +49,67 @@ class _AccountPageState extends State<AccountPage> {
               SizedBox(
                 height: 21,
               ),
-              Container(
-                  width: 396,
-                  height: 543,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: AppColors.greenItems,
-                  ),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccMyOrders),
-                        title: Text(
-                          AccountPageString.myOrders,
-                          style: AppStyle.textItemAcc,
+              Expanded(  //lap day khoang trong
+                child: Container(
+                    width: 396,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: AppColors.greenItems,
+                    ),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccMyOrders),
+                          title: Text(
+                            AccountPageString.myOrders,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccMySubs),
-                        title: Text(
-                          AccountPageString.mySubscriptions,
-                          style: AppStyle.textItemAcc,
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccMySubs),
+                          title: Text(
+                            AccountPageString.mySubscriptions,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccAddresses),
-                        title: Text(
-                          AccountPageString.myAddresses,
-                          style: AppStyle.textItemAcc,
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccAddresses),
+                          title: Text(
+                            AccountPageString.myAddresses,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccFaq),
-                        title: Text(
-                          AccountPageString.faq,
-                          style: AppStyle.textItemAcc,
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccFaq),
+                          title: Text(
+                            AccountPageString.faq,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccContact),
-                        title: Text(
-                          AccountPageString.contactUs,
-                          style: AppStyle.textItemAcc,
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccContact),
+                          title: Text(
+                            AccountPageString.contactUs,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccAbout),
-                        title: Text(
-                          AccountPageString.about,
-                          style: AppStyle.textItemAcc,
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccAbout),
+                          title: Text(
+                            AccountPageString.about,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                      ListTile(
-                        leading: SvgPicture.asset(AppSvg.icAccLogout),
-                        title: Text(
-                          AccountPageString.logOut,
-                          style: AppStyle.textItemAcc,
+                        ListTile(
+                          leading: SvgPicture.asset(AppSvg.icAccLogout),
+                          title: Text(
+                            AccountPageString.logOut,
+                            style: AppStyle.textItemAcc,
+                          ),
                         ),
-                      ),
-                    ],
-                  )),
+                      ],
+                    )),
+              ),
             ],
           ),
         ));

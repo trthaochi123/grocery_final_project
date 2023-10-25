@@ -26,7 +26,7 @@ class _ExplorePageState extends State<ExplorePage> {
         backgroundColor: AppColors.whiteColor,
         textStyle: AppStyle.textBlackLabelPage,
       ),
-      body: const SizedBox(
+      body:  SizedBox(
         height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
