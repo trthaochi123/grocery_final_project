@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: "SG Grocery",
-      home: AddressPage(),
+      home: SplashPage(),
     );
   }
 }

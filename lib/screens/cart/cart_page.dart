@@ -23,25 +23,25 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   List<CartDB> carts = [];
 
-  // xu ly DB
-  @override
-  void initState() {
-    loadCart();
-    super.initState();
-  }
-
-  Future<void> loadCart() async {
-    final db = await DBHelper.instance.database;
-    final data = await db.query(AppQueryString.tableCarts);
-    setState(() {
-      carts = List.generate(data.length, (index) {
-        return CartDB(
-          name: data[index]["name"].toString(),
-          weight: data[index]["weight"].toString(),
-        );
-      });
-    });
-  }
+  // // xu ly DB
+  // @override
+  // void initState() {
+  //   loadCart();
+  //   super.initState();
+  // }
+  //
+  // Future<void> loadCart() async {
+  //   final db = await DBHelper.instance.database;
+  //   final data = await db.query(AppQueryString.tableCarts);
+  //   setState(() {
+  //     carts = List.generate(data.length, (index) {
+  //       return CartDB(
+  //         name: data[index]["name"].toString(),
+  //         weight: data[index]["weight"].toString(),
+  //       );
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -55,9 +55,10 @@ class _SubsPageState extends State<SubsPage> {
           const SizedBox(
             height: 28,
           ),
+
           Container(
             width: double.infinity,
-            height: 606,
+            height: 722,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(28),

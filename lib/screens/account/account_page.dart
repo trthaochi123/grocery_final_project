@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sg_grocery_project/screens/aboutUs/aboutUs_page.dart';
+import 'package:sg_grocery_project/screens/myOrder/myOrder_page.dart';
+import 'package:sg_grocery_project/screens/subscription/subs_page.dart';
+import 'package:sg_grocery_project/screens/address/address_page.dart';
+import 'package:sg_grocery_project/screens/contactUs/contactUs_page.dart';
+import 'package:sg_grocery_project/screens/faq/faq_page.dart';
 import 'package:sg_grocery_project/widgets/custom_appbar.dart';
 
 import '../../base/colors/app_colors.dart';
@@ -60,44 +66,104 @@ class _AccountPageState extends State<AccountPage> {
                       children: [
                         ListTile(
                           leading: SvgPicture.asset(AppSvg.icAccMyOrders),
-                          title: Text(
-                            AccountPageString.myOrders,
-                            style: AppStyle.textItemAcc,
+                          title: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyOrdersPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              AccountPageString.myOrders,
+                              style: AppStyle.textItemAcc,
+                            ),
                           ),
                         ),
                         ListTile(
                           leading: SvgPicture.asset(AppSvg.icAccMySubs),
-                          title: Text(
-                            AccountPageString.mySubscriptions,
-                            style: AppStyle.textItemAcc,
+                          title: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SubsPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              AccountPageString.mySubscriptions,
+                              style: AppStyle.textItemAcc,
+                            ),
                           ),
                         ),
                         ListTile(
                           leading: SvgPicture.asset(AppSvg.icAccAddresses),
-                          title: Text(
-                            AccountPageString.myAddresses,
-                            style: AppStyle.textItemAcc,
+                          title: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AddressPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              AccountPageString.myAddresses,
+                              style: AppStyle.textItemAcc,
+                            ),
                           ),
                         ),
                         ListTile(
                           leading: SvgPicture.asset(AppSvg.icAccFaq),
-                          title: Text(
-                            AccountPageString.faq,
-                            style: AppStyle.textItemAcc,
+                          title: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FaqPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              AccountPageString.faq,
+                              style: AppStyle.textItemAcc,
+                            ),
                           ),
                         ),
                         ListTile(
                           leading: SvgPicture.asset(AppSvg.icAccContact),
-                          title: Text(
-                            AccountPageString.contactUs,
-                            style: AppStyle.textItemAcc,
+                          title: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ContactUsPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              AccountPageString.contactUs,
+                              style: AppStyle.textItemAcc,
+                            ),
                           ),
                         ),
                         ListTile(
                           leading: SvgPicture.asset(AppSvg.icAccAbout),
-                          title: Text(
-                            AccountPageString.about,
-                            style: AppStyle.textItemAcc,
+                          title: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AboutUsPage(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              AccountPageString.about,
+                              style: AppStyle.textItemAcc,
+                            ),
                           ),
                         ),
                         ListTile(

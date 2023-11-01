@@ -1,6 +1,5 @@
 class AppQueryString {
-  static const String databaseName = "fruitApp.db";
-  static const String tableCarts = "carts";
+  static const String tableAddresses = "addresses";
   static const String createDB =
-      'CREATE TABLE carts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, weight TEXT, price TEXT)';
+      'CREATE TABLE addresses (id INTEGER PRIMARY KEY AUTOINCREMENT, country TEXT, state TEXT, city TEXT, pinCode TEXT)';
 }

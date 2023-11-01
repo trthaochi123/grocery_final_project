@@ -440,5 +440,6 @@ class AppStyle {
   static TextStyle textItemAcc = const TextStyle(
     fontSize: 18,
     fontFamily: "Light",
+    color: Colors.black,
   );
 }

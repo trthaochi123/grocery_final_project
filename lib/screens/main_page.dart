@@ -3,7 +3,7 @@ import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/screens/account/account_page.dart';
 import 'package:sg_grocery_project/screens/cart/cart_page.dart';
 import 'package:sg_grocery_project/screens/explore/explore_page.dart';
-import 'package:sg_grocery_project/screens/account/subs_page.dart';
+import 'package:sg_grocery_project/screens/subscription/subs_page.dart';
 import 'package:sg_grocery_project/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
