@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/base/colors/app_colors.dart';
+import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/data/local/db_helper.dart';
 import 'package:sg_grocery_project/model/address.dart';
 import 'package:sg_grocery_project/screens/address/new_address.dart';
 import 'package:sg_grocery_project/widgets/custom_appbar.dart';
+import 'package:sg_grocery_project/widgets/location_address_widget.dart';
 
 import '../../base/styles/app_styles.dart';
 
@@ -19,6 +21,9 @@ class _AddressPageState extends State<AddressPage> {
   List<Address>? listAddress = [];
   final db = DBHelper.instance;
 
+  // 0: unSelected, 1: selected
+  int isSelected = 0;
+
   @override
   void initState() {
     loadData();
@@ -27,6 +32,9 @@ class _AddressPageState extends State<AddressPage> {
 
   Future<void> loadData() async {
     final data = await db.loadAddress();
+    for(var item in data) {
+      print(item.isSelected);
+    }
     setState(() {
       listAddress = data;
     });
@@ -95,26 +103,32 @@ class _AddressPageState extends State<AddressPage> {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const NewAddress(),
+                          builder: (context) => NewAddress(),
                         ),
                       );
+                      if (result != null) {
+                        loadData();
+                      }
                     },
                     icon: SvgPicture.asset(
                       "assets/icons/ic_address_plus.svg",
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const NewAddress(),
+                          builder: (context) => NewAddress(),
                         ),
                       );
+                      if (result != null) {
+                        loadData();
+                      }
                     },
                     child: const Text(
                       "Add New Address",
@@ -132,7 +146,7 @@ class _AddressPageState extends State<AddressPage> {
 
               // Items
               SizedBox(
-                height: 500,
+                height: 700,
                 child: ListView.builder(
                   itemCount: listAddress?.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -153,142 +167,177 @@ class _AddressPageState extends State<AddressPage> {
   Widget _buildItemAddress(Address? address) {
     return Padding(
       padding: const EdgeInsets.only(top: 12),
-      child: Row(
+      child: Column(
         children: [
-          Stack(
-            children: [
-              SvgPicture.asset("assets/icons/ic_address_red_border_circle.svg"),
-              Padding(
-                padding: EdgeInsets.only(top: 5, left: 5),
-                child: SvgPicture.asset(
-                    "assets/icons/ic_address_red_center_circle.svg"),
+          RadioListTile<int>(
+            title: Container(
+              width: 362,
+              height: 174,
+              decoration: BoxDecoration(
+                color: AppColors.whiteColor,
+                borderRadius: BorderRadius.circular(12),
               ),
-            ],
-          ),
-
-          SizedBox(
-            width: 16,
-          ),
-
-          // CARD
-          Container(
-            width: 362,
-            height: 174,
-            decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 18, left: 20, right: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        child: Row(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 18, left: 20, right: 20),
+                child: Column(
+                  children: [
+                    // Line 1
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
                           children: [
-                            SvgPicture.asset(
-                              "assets/icons/ic_address_home.svg",
-                            ),
-                            SizedBox(
-                              width: 6,
-                            ),
+                            SvgPicture.asset(address?.typeAddress == 1
+                                ? AppSvg.icHome
+                                : address?.typeAddress == 2
+                                    ? AppSvg.icOffice
+                                    : AppSvg.icOffice),
+                            SizedBox(width: 6),
                             Text(
-                              "Home",
+                              address?.typeAddress == 1
+                                  ? "Home"
+                                  : address?.typeAddress == 2
+                                      ? "Others"
+                                      : "Office",
                               style: TextStyle(
                                   fontSize: 20, fontFamily: "SemiBold"),
                             ),
                           ],
                         ),
-                      ),
-                      Container(
-                        child: Row(
-                          children: [
-                            // THUC CHAT LA CHUYEN DEN EDIT
-                            IconButton(
-                              onPressed: () async {
-                                final result = await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => NewAddress(
-                                      address: address,
-                                    ),
-                                  ),
-                                );
-                                if (result != null) {
-                                  loadData();
-                                }
-                              },
-                              icon: SvgPicture.asset(
-                                "assets/icons/ic_address_edit.svg",
-                              ),
-                            ),
-                            SizedBox(
-                              width: 6,
-                            ),
 
-                            // DELETE BUTTON
-                            SvgPicture.asset(
-                              "assets/icons/ic_address_delete.svg",
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 28),
-                    child: Row(
-                      children: [
-                        Text(
-                          address!.country.toString(),
-                          style: TextStyle(fontFamily: "Regular"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 28),
-                    child: Row(
-                      children: [
-                        Text(
-                          address.city.toString(),
-                          style: TextStyle(fontFamily: "Regular"),
-                        ),
-                        const Text(
-                          ",",
-                          style: TextStyle(fontFamily: "Regular"),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          address.state.toString(),
-                          style: TextStyle(fontFamily: "Regular"),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          address.pinCode.toString(),
-                          style: TextStyle(fontFamily: "Regular"),
+                        // button SQL
+                        Container(
+                          child: Row(
+                            children: [
+                              // THUC CHAT LA CHUYEN DEN EDIT
+                              IconButton(
+                                onPressed: () async {
+                                  final result = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NewAddress(
+                                        address: address,
+                                      ),
+                                    ),
+                                  );
+                                  if (result != null) {
+                                    loadData();
+                                  }
+                                },
+                                icon: SvgPicture.asset(
+                                  "assets/icons/ic_address_edit.svg",
+                                ),
+                              ),
+
+                              SizedBox(
+                                width: 6,
+                              ),
+
+                              //DELETE BUTTON
+                              InkWell(
+                                onTap: () async {
+                                  final result = await db
+                                      .deleteAddress(address!.id!.toInt());
+                                  if (result) {
+                                    loadData();
+                                  }
+                                },
+                                child: SvgPicture.asset(
+                                  "assets/icons/ic_address_delete.svg",
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+
+                    SizedBox(
+                      height: 18,
+                    ),
+
+                    // COUNTRY FIELD
+                    Padding(
+                      padding: const EdgeInsets.only(left: 28),
+                      child: Row(
+                        children: [
+                          Text(
+                            address!.country.toString(),
+                            style: TextStyle(fontFamily: "Regular"),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 12,
+                    ),
+
+                    // State, City, Pincode
+                    Padding(
+                      padding: const EdgeInsets.only(left: 28),
+                      child: Row(
+                        children: [
+                          Text(
+                            address.city.toString(),
+                            style: TextStyle(fontFamily: "Regular"),
+                          ),
+                          const Text(
+                            ",",
+                            style: TextStyle(fontFamily: "Regular"),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            address.state.toString(),
+                            style: TextStyle(fontFamily: "Regular"),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            address.pinCode.toString(),
+                            style: TextStyle(fontFamily: "Regular"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
+            value: address.id ?? -1,
+            groupValue: listAddress?.firstWhere((element) => element.isSelected == true).id,
+            onChanged: setSelected,
+            activeColor: Colors.red,
+          )
         ],
       ),
     );
+  }
+
+  void setSelected(int? value) {
+
+    if(value == null) return;
+    List<Address>? listTemp = [];
+    listTemp = (listAddress ?? []).map((e) {
+      db.updateSelectAddress(value, false);
+      if(value  == e.id) {
+        db.updateSelectAddress(value, true);
+      }
+      return Address(
+          id: e.id,
+          country: e.country,
+          state: e.state,
+          city: e.city,
+          pinCode: e.pinCode,
+          typeAddress: e.typeAddress,
+          isSelected: value == e.id ? true : false
+      );
+    }).toList();
+    setState(() {
+      listAddress = listTemp;
+    });
   }
 }

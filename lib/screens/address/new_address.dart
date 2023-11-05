@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sg_grocery_project/data/local/db_helper.dart';
-import 'package:sg_grocery_project/widgets/checkbox_address.dart';
 import 'package:sg_grocery_project/widgets/textfield_address.dart';
 
 import '../../base/colors/app_colors.dart';
@@ -13,7 +12,7 @@ import '../../widgets/button_normal.dart';
 import '../../widgets/custom_appbar.dart';
 
 class NewAddress extends StatefulWidget {
-  final Address? address;
+  final Address? address; // bien address kieu DL Address
 
   const NewAddress({super.key, this.address});
 
@@ -28,6 +27,7 @@ class _NewAddressState extends State<NewAddress> {
   final cityController = TextEditingController();
   final pinCodeController = TextEditingController();
   final db = DBHelper.instance;
+  int type = 0;
 
   @override
   void initState() {
@@ -36,11 +36,12 @@ class _NewAddressState extends State<NewAddress> {
       stateController.text = widget.address!.state.toString();
       cityController.text = widget.address!.city.toString();
       pinCodeController.text = widget.address!.pinCode.toString();
+      setState(() {
+        type = widget.address!.typeAddress.toInt();
+      });
     }
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,9 @@ class _NewAddressState extends State<NewAddress> {
             hintText: hintText,
             hintStyle: AppStyle.hintTextStyle,
             horizontal: 40,
-            vertical: 6, contentHorizontal: 50, contentVertical: 10,
+            vertical: 6,
+            contentHorizontal: 50,
+            contentVertical: 10,
           ),
         ],
       );
@@ -61,15 +64,16 @@ class _NewAddressState extends State<NewAddress> {
     FutureOr<void> onClick() async {
       if (widget.address == null) {
         // add new
-        final result = await db.addAddress(
+        await db.addAddress(
           Address(
             country: countryController.text.toString(),
             state: stateController.text.toString(),
             city: cityController.text.toString(),
             pinCode: pinCodeController.text.toString(),
+            typeAddress: type,
+            isSelected: false,
           ),
         );
-        print("result: $result");
       } else {
         await db.updateAddress(
           widget.address!.id!,
@@ -78,6 +82,7 @@ class _NewAddressState extends State<NewAddress> {
             state: stateController.text.toString(),
             city: cityController.text.toString(),
             pinCode: pinCodeController.text.toString(),
+            typeAddress: type,
           ),
         );
       }
@@ -133,18 +138,50 @@ class _NewAddressState extends State<NewAddress> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20, left: 44),
+                padding: EdgeInsets.only(top: 20, left: 44),
                 child: Row(
-                  children: const [
-                    CheckBoxAddress(textCheckbox: "Home"),
-                    SizedBox(
-                      width: 16,
+                  children: [
+                    Checkbox(
+                        value: type == 1,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            type = value == true ? 1 : 0;
+                          });
+                        }),
+                    Text(
+                      "Homeee",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
-                    CheckBoxAddress(textCheckbox: "Work / Office"),
-                    SizedBox(
-                      width: 16,
+                    const SizedBox(width: 4),
+                    Checkbox(
+                        value: type == 3,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            type = value == true ? 3 : 0;
+                          });
+                        }),
+                    Text(
+                      "Office",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
-                    CheckBoxAddress(textCheckbox: "Other"),
+                    const SizedBox(width: 4),
+                    Checkbox(
+                        value: type == 2,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            type = value == true ? 2 : 0;
+                          });
+                        }),
+                    Text(
+                      "Other",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -165,7 +202,4 @@ class _NewAddressState extends State<NewAddress> {
       ),
     );
   }
-
-
- }
-
+}

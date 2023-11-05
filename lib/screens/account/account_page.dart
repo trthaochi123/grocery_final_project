@@ -55,7 +55,8 @@ class _AccountPageState extends State<AccountPage> {
               SizedBox(
                 height: 21,
               ),
-              Expanded(  //lap day khoang trong
+              Expanded(
+                //lap day khoang trong
                 child: Container(
                     width: 396,
                     decoration: BoxDecoration(
@@ -64,120 +65,136 @@ class _AccountPageState extends State<AccountPage> {
                     ),
                     child: Column(
                       children: [
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccMyOrders),
-                          title: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MyOrdersPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              AccountPageString.myOrders,
-                              style: AppStyle.textItemAcc,
-                            ),
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccMyOrders),
+                          // text
+                          'My Orders',
+                          // onTap
+                              () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyOrdersPage(),
+                              ),
+                            );
+                          },
                         ),
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccMySubs),
-                          title: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SubsPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              AccountPageString.mySubscriptions,
-                              style: AppStyle.textItemAcc,
-                            ),
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccMySubs),
+                          // text
+                          'My Subscriptions',
+                          // onTap
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SubsPage(),
+                              ),
+                            );
+                          },
                         ),
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccAddresses),
-                          title: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AddressPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              AccountPageString.myAddresses,
-                              style: AppStyle.textItemAcc,
-                            ),
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccAddresses),
+                          // text
+                          'My Addresses',
+                          // onTap
+                              () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddressPage(),
+                              ),
+                            );
+                          },
                         ),
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccFaq),
-                          title: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => FaqPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              AccountPageString.faq,
-                              style: AppStyle.textItemAcc,
-                            ),
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccFaq),
+                          // text
+                          'FAQ',
+                          // onTap
+                              () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FaqPage(),
+                              ),
+                            );
+                          },
                         ),
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccContact),
-                          title: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ContactUsPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              AccountPageString.contactUs,
-                              style: AppStyle.textItemAcc,
-                            ),
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccContact),
+                          // text
+                          'Contact Us',
+                          // onTap
+                              () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ContactUsPage(),
+                              ),
+                            );
+                          },
                         ),
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccAbout),
-                          title: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AboutUsPage(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              AccountPageString.about,
-                              style: AppStyle.textItemAcc,
-                            ),
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccAbout),
+                          // text
+                          'About',
+                          // onTap
+                              () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AboutUsPage(),
+                              ),
+                            );
+                          },
                         ),
-                        ListTile(
-                          leading: SvgPicture.asset(AppSvg.icAccLogout),
-                          title: Text(
-                            AccountPageString.logOut,
-                            style: AppStyle.textItemAcc,
-                          ),
+                        buildListTile(
+                          // icon
+                          SvgPicture.asset(AppSvg.icAccLogout),
+                          // text
+                          'Log Out',
+                          // onTap
+                              () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SubsPage(),
+                              ),
+                            );
+                          },
                         ),
+
                       ],
                     )),
               ),
             ],
           ),
         ));
+  }
+
+  Widget buildListTile(Widget leading, String title, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        child: Row(
+          children: <Widget>[
+            leading,
+            SizedBox(width: 16), // Khoảng cách giữa icon và text
+            Text(
+              title,
+              style: TextStyle(fontSize: 18, fontFamily: "ExtraLight"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

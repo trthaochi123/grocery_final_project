@@ -28,10 +28,18 @@ class DBHelper {
   }
 
   // tao database
-  FutureOr<void> _onCreate(Database db, int version) {
-    final createDB = db.execute(
-      "CREATE TABLE addresses (id INTEGER PRIMARY KEY AUTOINCREMENT, country TEXT, state TEXT, city TEXT, pinCode TEXT"
-    );
+  FutureOr<void> _onCreate(Database db, int version) async {
+    final createDB = await db.execute(
+        "CREATE TABLE addresses "
+            "("
+            "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+            "country TEXT, "
+            "state TEXT, "
+            "city TEXT, "
+            "pinCode TEXT, "
+            "typeAddress INTEGER, "
+            "isSelected INTEGER "
+            ")");
     return createDB;
   }
 
@@ -41,10 +49,13 @@ class DBHelper {
     return List.generate(
       data.length,
       (index) => Address(
+        id: int.parse(data[index]["id"].toString()),
         country: data[index]["country"].toString(),
         state: data[index]["state"].toString(),
         city: data[index]["city"].toString(),
         pinCode: data[index]["pinCode"].toString(),
+        typeAddress: int.parse(data[index]['typeAddress'].toString()), // if 1 = HOME, 2 = OTHER, 3 = OFFICE
+        isSelected: int.parse(data[index]['isSelected'].toString()) == 1 //if 1 = true, 0 = false
       ),
     );
   }
@@ -52,8 +63,18 @@ class DBHelper {
   FutureOr<bool> addAddress(Address address) async {
     try {
       final database = await db;
-      await database
-          .rawInsert("INSERT INTO addresses(country, state, city, pinCode) VALUES(${address.country}, ${address.state}, ${address.city}, ${address.pinCode})");
+      await database.rawInsert(
+        "INSERT INTO addresses(country, state, city, pinCode, typeAddress, isSelected)"
+            "VALUES"
+            "("
+            "'${address.country}', "
+            "'${address.state}', "
+            "'${address.city}', "
+            "'${address.pinCode}', "
+            "'${address.typeAddress}', "
+            "0"
+            ")",
+      );
       return true;
     } catch (e) {
       return false;
@@ -63,8 +84,27 @@ class DBHelper {
   FutureOr<bool> updateAddress(int id, Address address) async {
     try {
       final database = await db;
-      final data = await database.rawUpdate(
-        "UPDATE addresses SET country='${address.country}', state ='${address.state}', city='${address.city}', pinCode='${address.pinCode}' WHERE id=$id",
+      await database.rawUpdate(
+        "UPDATE addresses SET "
+            "country='${address.country}', "
+            "state ='${address.state}', "
+            "city='${address.city}', "
+            "pinCode='${address.pinCode}', "
+            "typeAddress='${address.typeAddress}', "
+            "isSelected=0"
+            "WHERE id=$id",
+      );
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  FutureOr<bool> updateSelectAddress(int id, bool isSelected) async {
+    try {
+      final database = await db;
+      await database.rawUpdate(
+        "UPDATE addresses SET isSelected=${isSelected == true ? 1 : 0} WHERE id=$id",
       );
       return true;
     } catch (e) {

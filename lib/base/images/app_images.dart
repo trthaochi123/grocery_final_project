@@ -29,6 +29,8 @@ class AppSvg {
   static const String icAccAbout = "assets/icons/ic_account_about.svg";
   static const String icAccLogout = "assets/icons/ic_account_logout.svg";
 
+  static const String icHome = "assets/icons/ic_address_home.svg";
+  static const String icOffice = "assets/icons/ic_address_office.svg";
 }
 
 // ---- IMAGE -----
@@ -88,4 +90,6 @@ class AppImage {
 
   // MY SUBSCRIPTION
   static const String imageFav = "assets/images/img_fav_illustrator.png";
+
+
 }
