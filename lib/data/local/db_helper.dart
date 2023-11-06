@@ -108,6 +108,7 @@ class DBHelper {
       );
       return true;
     } catch (e) {
+      print("eeee: $e");
       return false;
     }
   }

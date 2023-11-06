@@ -21,8 +21,6 @@ class _AddressPageState extends State<AddressPage> {
   List<Address>? listAddress = [];
   final db = DBHelper.instance;
 
-  // 0: unSelected, 1: selected
-  int isSelected = 0;
 
   @override
   void initState() {
@@ -32,9 +30,6 @@ class _AddressPageState extends State<AddressPage> {
 
   Future<void> loadData() async {
     final data = await db.loadAddress();
-    for(var item in data) {
-      print(item.isSelected);
-    }
     setState(() {
       listAddress = data;
     });
@@ -65,6 +60,31 @@ class _AddressPageState extends State<AddressPage> {
   final TextEditingController _stateController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _pinCodeController = TextEditingController();
+
+  void _showDeleteDialog(Address address) {
+    showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Do you want to delete this address?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.of(context).pop();
+              final result = await db.deleteAddress(address.id!.toInt());
+              if (result) {
+                loadData();
+              }
+            },
+            child: const Text('OK'),
+          )
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -235,12 +255,13 @@ class _AddressPageState extends State<AddressPage> {
 
                               //DELETE BUTTON
                               InkWell(
-                                onTap: () async {
-                                  final result = await db
-                                      .deleteAddress(address!.id!.toInt());
-                                  if (result) {
-                                    loadData();
-                                  }
+                                onTap: ()  {
+                                  // final result = await db
+                                  //     .deleteAddress(address!.id!.toInt());
+                                  // if (result) {
+                                  //   loadData();
+                                  // // }
+                                  _showDeleteDialog(address!);
                                 },
                                 child: SvgPicture.asset(
                                   "assets/icons/ic_address_delete.svg",
@@ -308,7 +329,7 @@ class _AddressPageState extends State<AddressPage> {
               ),
             ),
             value: address.id ?? -1,
-            groupValue: listAddress?.firstWhere((element) => element.isSelected == true).id,
+            groupValue: address.id,
             onChanged: setSelected,
             activeColor: Colors.red,
           )

@@ -114,6 +114,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       vertical: 6,
                       contentHorizontal: 20,
                       contentVertical: 10,
+                      inputType: TextInputType.emailAddress,
                     ),
                     TextFieldAddress(
                       controller: lasttNameController,
@@ -123,6 +124,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       vertical: 6,
                       contentHorizontal: 20,
                       contentVertical: 10,
+                      inputType: TextInputType.emailAddress,
                     ),
                     TextFieldAddress(
                       controller: emailController,
@@ -132,6 +134,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       vertical: 6,
                       contentHorizontal: 20,
                       contentVertical: 10,
+                      inputType: TextInputType.emailAddress,
                     ),
                     TextFieldAddress(
                       controller: phoneNumberController,
@@ -141,6 +144,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       vertical: 6,
                       contentHorizontal: 20,
                       contentVertical: 10,
+                      inputType: TextInputType.emailAddress,
                     ),
                     TextFieldAddress(
                       controller: infoController,
@@ -150,6 +154,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       vertical: 6,
                       contentHorizontal: 20,
                       contentVertical: 40,
+                      inputType: TextInputType.emailAddress,
                     ),
                   ],
                 ),

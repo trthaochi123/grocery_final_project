@@ -43,12 +43,34 @@ class _NewAddressState extends State<NewAddress> {
     super.initState();
   }
 
+  dialogMising() {
+    return showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Address must be filled in completely'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).pop();
+              });
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    itemTextField(TextEditingController controller, String hintText) {
+    itemTextField(TextEditingController controller, String hintText, TextInputType inputType) {
       return Column(
         children: [
           TextFieldAddress(
+            inputType: inputType,
             controller: controller,
             hintText: hintText,
             hintStyle: AppStyle.hintTextStyle,
@@ -63,17 +85,24 @@ class _NewAddressState extends State<NewAddress> {
 
     FutureOr<void> onClick() async {
       if (widget.address == null) {
-        // add new
-        await db.addAddress(
-          Address(
-            country: countryController.text.toString(),
-            state: stateController.text.toString(),
-            city: cityController.text.toString(),
-            pinCode: pinCodeController.text.toString(),
-            typeAddress: type,
-            isSelected: false,
-          ),
-        );
+        if (countryController.text.isEmpty ||
+            stateController.text.isEmpty ||
+            cityController.text.isEmpty ||
+            pinCodeController.text.isEmpty) {
+          dialogMising();
+        } else {
+          await db.addAddress(
+            Address(
+              country: countryController.text.toString(),
+              state: stateController.text.toString(),
+              city: cityController.text.toString(),
+              pinCode: pinCodeController.text.toString(),
+              typeAddress: type,
+              isSelected: false,
+            ),
+          );
+          Navigator.pop(context, true);
+        }
       } else {
         await db.updateAddress(
           widget.address!.id!,
@@ -86,8 +115,8 @@ class _NewAddressState extends State<NewAddress> {
           ),
         );
       }
-      Navigator.pop(context, true);
     }
+
 
     return Scaffold(
       appBar: CustomAppbar(
@@ -121,19 +150,19 @@ class _NewAddressState extends State<NewAddress> {
           padding: const EdgeInsets.only(top: 44),
           child: Column(
             children: [
-              itemTextField(countryController, "Country"),
+              itemTextField(countryController, "Country", TextInputType.text),
               const SizedBox(
                 height: 4,
               ),
-              itemTextField(stateController, "State"),
+              itemTextField(stateController, "State", TextInputType.text),
               const SizedBox(
                 height: 4,
               ),
-              itemTextField(cityController, "City"),
+              itemTextField(cityController, "City", TextInputType.text),
               const SizedBox(
                 height: 4,
               ),
-              itemTextField(pinCodeController, "Pincode"),
+              itemTextField(pinCodeController, "Pincode", TextInputType.number),
               const SizedBox(
                 height: 20,
               ),

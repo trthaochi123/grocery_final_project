@@ -12,6 +12,7 @@ class TextFieldAddress extends StatelessWidget {
   final double vertical;
   final double contentHorizontal;
   final double contentVertical;
+  final TextInputType inputType;
 
   const TextFieldAddress({
     super.key,
@@ -22,6 +23,7 @@ class TextFieldAddress extends StatelessWidget {
     required this.vertical,
     required this.contentHorizontal,
     required this.contentVertical,
+    required this.inputType,
   });
 
   @override
@@ -31,7 +33,8 @@ class TextFieldAddress extends StatelessWidget {
         horizontal: horizontal,
         vertical: vertical,
       ),
-      child: TextField(
+      child: TextFormField(
+        keyboardType: inputType,
         controller: controller,
         decoration: InputDecoration(
           contentPadding:
