@@ -329,8 +329,8 @@ class _AddressPageState extends State<AddressPage> {
               ),
             ),
             value: address.id ?? -1,
-            groupValue: address.id,
-            onChanged: setSelected,
+            groupValue: 23,
+            onChanged: (value) {},
             activeColor: Colors.red,
           )
         ],
@@ -338,27 +338,26 @@ class _AddressPageState extends State<AddressPage> {
     );
   }
 
-  void setSelected(int? value) {
-
-    if(value == null) return;
-    List<Address>? listTemp = [];
-    listTemp = (listAddress ?? []).map((e) {
-      db.updateSelectAddress(value, false);
-      if(value  == e.id) {
-        db.updateSelectAddress(value, true);
-      }
-      return Address(
-          id: e.id,
-          country: e.country,
-          state: e.state,
-          city: e.city,
-          pinCode: e.pinCode,
-          typeAddress: e.typeAddress,
-          isSelected: value == e.id ? true : false
-      );
-    }).toList();
-    setState(() {
-      listAddress = listTemp;
-    });
-  }
+  // void setSelected(int? value) {
+  //   if(value == null) return;
+  //   List<Address>? listTemp = [];
+  //   listTemp = (listAddress ?? []).map((e) {
+  //     db.updateSelectAddress(value, false);
+  //     if(value  == e.id) {
+  //       db.updateSelectAddress(value, true);
+  //     }
+  //     return Address(
+  //         id: e.id,
+  //         country: e.country,
+  //         state: e.state,
+  //         city: e.city,
+  //         pinCode: e.pinCode,
+  //         typeAddress: e.typeAddress,
+  //         isSelected: value == e.id ? true : false
+  //     );
+  //   }).toList();
+  //   setState(() {
+  //     listAddress = listTemp;
+  //   });
+  // }
 }

@@ -91,7 +91,7 @@ class DBHelper {
             "city='${address.city}', "
             "pinCode='${address.pinCode}', "
             "typeAddress='${address.typeAddress}', "
-            "isSelected=0"
+            "isSelected=0 "
             "WHERE id=$id",
       );
       return true;

@@ -43,7 +43,7 @@ class _NewAddressState extends State<NewAddress> {
     super.initState();
   }
 
-  dialogMising() {
+  dynamic dialogMissing() {
     return showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
@@ -89,7 +89,7 @@ class _NewAddressState extends State<NewAddress> {
             stateController.text.isEmpty ||
             cityController.text.isEmpty ||
             pinCodeController.text.isEmpty) {
-          dialogMising();
+          dialogMissing();
         } else {
           await db.addAddress(
             Address(
@@ -114,6 +114,7 @@ class _NewAddressState extends State<NewAddress> {
             typeAddress: type,
           ),
         );
+        Navigator.pop(context, true);
       }
     }
 
@@ -178,7 +179,7 @@ class _NewAddressState extends State<NewAddress> {
                           });
                         }),
                     Text(
-                      "Homeee",
+                      "Home",
                       style: TextStyle(
                         fontSize: 14,
                       ),
