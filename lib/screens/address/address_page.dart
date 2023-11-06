@@ -166,7 +166,7 @@ class _AddressPageState extends State<AddressPage> {
 
               // Items
               SizedBox(
-                height: 700,
+                height: 565,
                 child: ListView.builder(
                   itemCount: listAddress?.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -329,8 +329,9 @@ class _AddressPageState extends State<AddressPage> {
               ),
             ),
             value: address.id ?? -1,
-            groupValue: 23,
-            onChanged: (value) {},
+            groupValue: listAddress!.firstWhere((element) => element.isSelected == true).id,
+            // groupValue: selectedAddressId,
+            onChanged: setSelected,
             activeColor: Colors.red,
           )
         ],
@@ -338,26 +339,28 @@ class _AddressPageState extends State<AddressPage> {
     );
   }
 
-  // void setSelected(int? value) {
-  //   if(value == null) return;
-  //   List<Address>? listTemp = [];
-  //   listTemp = (listAddress ?? []).map((e) {
-  //     db.updateSelectAddress(value, false);
-  //     if(value  == e.id) {
-  //       db.updateSelectAddress(value, true);
-  //     }
-  //     return Address(
-  //         id: e.id,
-  //         country: e.country,
-  //         state: e.state,
-  //         city: e.city,
-  //         pinCode: e.pinCode,
-  //         typeAddress: e.typeAddress,
-  //         isSelected: value == e.id ? true : false
-  //     );
-  //   }).toList();
-  //   setState(() {
-  //     listAddress = listTemp;
-  //   });
-  // }
+
+  void setSelected(int? value) {
+    if(value == null) return;
+    List<Address>? listTemp = [];
+    listTemp = (listAddress ?? []).map((e) {
+      print("value: $value");
+      db.updateSelectAddress(value, false);
+      if(value  == e.id) {
+        db.updateSelectAddress(value, true);
+      }
+      return Address(
+          id: e.id,
+          country: e.country,
+          state: e.state,
+          city: e.city,
+          pinCode: e.pinCode,
+          typeAddress: e.typeAddress,
+          isSelected: value == e.id ? true : false
+      );
+    }).toList();
+    setState(() {
+      listAddress = listTemp;
+    });
+  }
 }

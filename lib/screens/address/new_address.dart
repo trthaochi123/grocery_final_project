@@ -88,7 +88,9 @@ class _NewAddressState extends State<NewAddress> {
         if (countryController.text.isEmpty ||
             stateController.text.isEmpty ||
             cityController.text.isEmpty ||
-            pinCodeController.text.isEmpty) {
+            pinCodeController.text.isEmpty ||
+            type == 0
+        ) {
           dialogMissing();
         } else {
           await db.addAddress(
@@ -98,7 +100,6 @@ class _NewAddressState extends State<NewAddress> {
               city: cityController.text.toString(),
               pinCode: pinCodeController.text.toString(),
               typeAddress: type,
-              isSelected: false,
             ),
           );
           Navigator.pop(context, true);
