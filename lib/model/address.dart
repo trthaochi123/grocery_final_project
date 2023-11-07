@@ -3,30 +3,29 @@ class Address {
   final String country;
   final String state;
   final String city;
-  final String pinCode;
-  final int typeAddress;
-  final bool? isSelected;
-
+  final String pincode;
+  final String type;
+  bool isCheck;
   Address({
-    this.id,
+    required this.id,
     required this.country,
     required this.state,
     required this.city,
-    required this.pinCode,
-    required this.typeAddress,
-    this.isSelected
+    required this.pincode,
+    required this.type,
+    this.isCheck = false
   });
 
+  // SQLFlite lưu tru DL theo dang Map, List
   Map<String, dynamic> toMapConvert() {
     return {
       'id': id,
       'country': country,
       'state': state,
       'city': city,
-      'pinCode': pinCode,
-      'typeAddress': typeAddress,
-      'isSelected': isSelected,
+      'pincode': pincode,
+      'type': type,
+      'isCheck': isCheck ? 1 : 0,
     };
   }
-
 }

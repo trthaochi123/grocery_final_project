@@ -442,4 +442,11 @@ class AppStyle {
     fontFamily: "Light",
     color: Colors.black,
   );
+
+  static TextStyle textParagraphAbout = TextStyle(
+    fontSize: 14,
+    fontFamily: "Light",
+    color: Colors.black
+  );
+
 }

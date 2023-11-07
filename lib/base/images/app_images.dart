@@ -91,5 +91,10 @@ class AppImage {
   // MY SUBSCRIPTION
   static const String imageFav = "assets/images/img_fav_illustrator.png";
 
+  // ACCOUNT
+  static const String imgAccAva = "assets/images/img_account_ava.png";
 
+  // ABOUT US
+  static const String imgIllustrator = "assets/images/img_about.png";
+  static const String imgFruit = "assets/images/img_about_fruit.png";
 }

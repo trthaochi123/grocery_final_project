@@ -40,9 +40,6 @@ class FavPageString {
 }
 
 
-
-
-
 class ExplorePageString {
   static const String exploreTitle =  'Explore';
   static const String groceries =  'Groceries';
@@ -214,4 +211,64 @@ class AccountPageString {
   static const String contactUs = "Contact Us";
   static const String about = "About";
   static const String logOut = "Log Out";
+}
+
+class ContactUsPageString {
+  static const String contactUs = "Contact Us";
+  static const String getInTouch = "Get In Touch";
+  static const String slogan1 = "One of our workspace experts will reach out to you";
+  static const String slogan2 = "based on your communication preferences.";
+  static const String yourDetail = "Your Detail";
+  static const String firstName = "First name";
+  static const String lastName = "Last name";
+  static const String email = "Email";
+  static const String phoneNumber = "Phone number";
+  static const String additionalInfo = "Additional Info";
+  static const String sendMessage = "Send Message";
+  static const String textInfo = "2464 Royal Ln. Mesa, New Jersey 45463";
+}
+
+class EditAddressPageString {
+  static const String pageTitle1 = "Add New Address";
+  static const String pageTitle = "Edit Address";
+  static const String mustBeFilled = "Address must be filled in completely";
+  static const String pinCodeRequires = "Pin Code requires at least 6 numbers";
+  static const String wantToEdit = "Do you want to edit this address?";
+  static const String wantToSave = "Do you want to save this address?";
+  static const String hasBeenSaved = "Your address has been saved";
+}
+
+class FaqPageString {
+  static const String pageTitle = "FAQ";
+  static const String select = "Select Category";
+  static const String selectContent = "Placing an order is very simple.";
+  static const String where = "Where do you Deliver?";
+  static const String whereContent = "Placing an order is very simple. Just register on the SG Grocery website/mobile application, pick your choice of products with a wide range of product selection in the online store and proceed to checkout or just call customer care and place an order. i.e. 1800-123-1947 ";
+  static const String how = "How can I order at SG Grocery? ";
+  static const String howDoIKnow = "How do I know at what time I will receive my Delivery? ";
+  static const String whatIs = "What is minimum order value?";
+  static const String whatIf = "What if I want to return something?";
+  static const String notListed = "Not Listed your Question/Query?";
+  static const String write = "Write your Question/Query here";
+}
+
+class MyAddressPageString {
+  static const String addNewAddress = "Add New Address";
+}
+
+class AboutUsPageString {
+  static const String pageTitle = "About Us";
+  static const String para1 = "What began little, with a solitary idea of a store that provides rebate and the basic thought of moving more for less, has become in the course of the last 10 years into the biggest retailer in this whole country.";
+  static const String para2 = "Every week, about 265 million clients and individuals visit our in excess of 13,200 stores under 55 standards in 27 nations and eCommerce sites in 4 nations. With financial year 2018 income of \$500.3 billion, ‘Organization Name’ utilizes over 2.2 million partners around the world.";
+  static const String para3 = "SG Grocery keeps on being an innovator in support ability, corporate magnanimity and work opportunity. It’s everything part of our relentless promise to making openings and conveying an incentive to clients and networks the world over.";
+  static const String whyChooseUs = "~ Why Choose Us? ~";
+  static const String weDoNot = "We do not buy from the open";
+  static const String market = "market & traders.";
+  static const String weWouldLike = "We would like to give the best to our valuable customer that’s why our experts check quality of every products before we deliver it to you and promises to do further to keep faith constant.";
+  static const String organic = "100% Organic";
+  static const String service = "24/7 Service";
+  static const String delivery = "Fast Delivery";
+  static const String secure = "Secure Payment";
+  static const String privacy = "Privacy Policy";
+  static const String terms = "Terms and services";
 }

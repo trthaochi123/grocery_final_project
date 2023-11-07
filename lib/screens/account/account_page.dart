@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/screens/aboutUs/aboutUs_page.dart';
+import 'package:sg_grocery_project/screens/myAddresses/index.dart';
 import 'package:sg_grocery_project/screens/myOrder/myOrder_page.dart';
 import 'package:sg_grocery_project/screens/subscription/subs_page.dart';
-import 'package:sg_grocery_project/screens/address/address_page.dart';
 import 'package:sg_grocery_project/screens/contactUs/contactUs_page.dart';
 import 'package:sg_grocery_project/screens/faq/faq_page.dart';
 import 'package:sg_grocery_project/widgets/custom_appbar.dart';
@@ -35,7 +35,7 @@ class _AccountPageState extends State<AccountPage> {
             children: [
               ClipOval(
                 child: Image.asset(
-                  "assets/images/img_account_ava.png",
+                  AppImage.imgAccAva,
                   width: 100,
                   height: 100,
                 ),
@@ -43,11 +43,11 @@ class _AccountPageState extends State<AccountPage> {
               Column(
                 children: [
                   Text(
-                    "George D.",
+                    AccountPageString.nameAcc,
                     style: AppStyle.nameAcc,
                   ),
                   Text(
-                    "@george31",
+                    AccountPageString.emailAcc,
                     style: AppStyle.emailAcc,
                   ),
                 ],
@@ -69,7 +69,7 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccMyOrders),
                           // text
-                          'My Orders',
+                          AccountPageString.myOrders,
                           // onTap
                               () {
                             Navigator.push(
@@ -84,7 +84,7 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccMySubs),
                           // text
-                          'My Subscriptions',
+                          AccountPageString.mySubscriptions,
                           // onTap
                           () {
                             Navigator.push(
@@ -99,13 +99,13 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccAddresses),
                           // text
-                          'My Addresses',
+                          AccountPageString.myAddresses,
                           // onTap
                               () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AddressPage(),
+                                builder: (context) => MyAddresses(),
                               ),
                             );
                           },
@@ -114,7 +114,7 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccFaq),
                           // text
-                          'FAQ',
+                          AccountPageString.faq,
                           // onTap
                               () {
                             Navigator.push(
@@ -129,7 +129,7 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccContact),
                           // text
-                          'Contact Us',
+                          AccountPageString.contactUs,
                           // onTap
                               () {
                             Navigator.push(
@@ -144,7 +144,7 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccAbout),
                           // text
-                          'About',
+                          AccountPageString.about,
                           // onTap
                               () {
                             Navigator.push(
@@ -159,7 +159,7 @@ class _AccountPageState extends State<AccountPage> {
                           // icon
                           SvgPicture.asset(AppSvg.icAccLogout),
                           // text
-                          'Log Out',
+                          AccountPageString.logOut,
                           // onTap
                               () {
                             Navigator.push(

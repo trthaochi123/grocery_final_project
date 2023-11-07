@@ -24,7 +24,7 @@ class _SubsPageState extends State<SubsPage> {
           backgroundColor: AppColors.greenMainColor,
           textStyle: AppStyle.textWhiteLabelPage),
       backgroundColor: AppColors.greenMainColor,
-      body: Column(
+      body: ListView(
         children: [
           Stack(
             children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sg_grocery_project/base/strings/app_strings.dart';
 import 'package:sg_grocery_project/widgets/button_normal.dart';
 import 'package:sg_grocery_project/widgets/contact_info_widget.dart';
 import 'package:sg_grocery_project/widgets/textfield_address.dart';
@@ -36,7 +37,7 @@ class _ContactUsPage extends State<ContactUsPage> {
             icon: SvgPicture.asset("assets/icons/ic_back_white.svg"),
           ),
         ),
-        textTitle: "Contact Us",
+        textTitle: ContactUsPageString.contactUs,
         backgroundColor: AppColors.greenMainColor,
         textStyle: AppStyle.textWhiteLabelPage,
         alignment: Alignment.centerLeft,
@@ -72,7 +73,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       child: Column(
                         children: [
                           Text(
-                            "Get In Touch",
+                            ContactUsPageString.getInTouch,
                             style:
                                 TextStyle(fontSize: 22, fontFamily: "SemiBold"),
                           ),
@@ -80,14 +81,14 @@ class _ContactUsPage extends State<ContactUsPage> {
                             height: 30,
                           ),
                           Text(
-                            "One of our workspace experts will reach out to you",
+                            ContactUsPageString.slogan1,
                             style: TextStyle(fontFamily: "Light"),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            "based on your communicatoin preferences.",
+                            ContactUsPageString.slogan2,
                             style: TextStyle(fontFamily: "Light"),
                           )
                         ],
@@ -98,7 +99,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                   child: Row(
                     children: [
                       Text(
-                        "Your Detail",
+                        ContactUsPageString.yourDetail,
                         style: TextStyle(fontSize: 22, fontFamily: "SemiBold"),
                       )
                     ],
@@ -108,7 +109,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                   children: [
                     TextFieldAddress(
                       controller: firstNameController,
-                      hintText: "First name",
+                      hintText: ContactUsPageString.firstName,
                       hintStyle: AppStyle.hintTextStyle,
                       horizontal: 20,
                       vertical: 6,
@@ -118,7 +119,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                     ),
                     TextFieldAddress(
                       controller: lasttNameController,
-                      hintText: "Last name",
+                      hintText: ContactUsPageString.lastName,
                       hintStyle: AppStyle.hintTextStyle,
                       horizontal: 20,
                       vertical: 6,
@@ -128,7 +129,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                     ),
                     TextFieldAddress(
                       controller: emailController,
-                      hintText: "Email",
+                      hintText: ContactUsPageString.email,
                       hintStyle: AppStyle.hintTextStyle,
                       horizontal: 20,
                       vertical: 6,
@@ -138,7 +139,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                     ),
                     TextFieldAddress(
                       controller: phoneNumberController,
-                      hintText: "Phone number",
+                      hintText: ContactUsPageString.phoneNumber,
                       hintStyle: AppStyle.hintTextStyle,
                       horizontal: 20,
                       vertical: 6,
@@ -148,7 +149,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                     ),
                     TextFieldAddress(
                       controller: infoController,
-                      hintText: "Additional Info",
+                      hintText: ContactUsPageString.additionalInfo,
                       hintStyle: AppStyle.hintTextStyle,
                       horizontal: 20,
                       vertical: 6,
@@ -163,7 +164,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                 ),
                 ButtonNormalWidget(
                   onClickButton: () {},
-                  textButton: "Send Message",
+                  textButton: ContactUsPageString.sendMessage,
                   heightButton: 50,
                   widthButton: 164,
                   textStyle: AppStyle.textButtonNameWidget,
@@ -175,18 +176,18 @@ class _ContactUsPage extends State<ContactUsPage> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
-                      children: [
+                      children: const [
                         ContactInfoWidget(
                           icon: "assets/icons/ic_contact_location.svg",
-                          textInfo: "2464 Royal Ln. Mesa, New Jersey 45463",
+                          textInfo: ContactUsPageString.textInfo,
                         ),
                         ContactInfoWidget(
                           icon: "assets/icons/ic_contact_location.svg",
-                          textInfo: "2464 Royal Ln. Mesa, New Jersey 45463",
+                          textInfo: ContactUsPageString.textInfo,
                         ),
                         ContactInfoWidget(
                           icon: "assets/icons/ic_contact_location.svg",
-                          textInfo: "2464 Royal Ln. Mesa, New Jersey 45463",
+                          textInfo: ContactUsPageString.textInfo,
                         ),
                       ],
                     ))

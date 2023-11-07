@@ -4,6 +4,7 @@ import 'package:sg_grocery_project/widgets/button_normal.dart';
 import 'package:sg_grocery_project/widgets/expansive_widget.dart';
 
 import '../../base/colors/app_colors.dart';
+import '../../base/strings/app_strings.dart';
 import '../../base/styles/app_styles.dart';
 import '../../widgets/custom_appbar.dart';
 
@@ -52,30 +53,28 @@ class _FaqPage extends State<FaqPage> {
             child: Column(
               children: [
                 ExpansiveWidget(
-                    title: "Select Category",
-                    content: "Placing an order is very simple.",
+                    title: FaqPageString.select,
+                    content: FaqPageString.selectContent,
                     backgroundColor: Colors.grey.shade300),
-                ExpansiveWidget(
-                    title: "Where do you Deliver?",
-                    content:
-                        "Placing an order is very simple. Just register on the SG Grocery website/mobile application, pick your choice of products with a wide range of product selection in the online store and proceed to checkout or just call customer care and place an order. i.e. 1800-123-1947 ",
+                const ExpansiveWidget(
+                    title: FaqPageString.where,
+                    content: FaqPageString.whereContent,
                     backgroundColor: AppColors.greenFaq),
-                ExpansiveWidget(
-                    title: "How can I order at SG Grocery? ",
-                    content: "Placing an order is very simple.",
+                const ExpansiveWidget(
+                    title: FaqPageString.how,
+                    content: FaqPageString.selectContent,
                     backgroundColor: AppColors.greenFaq),
-                ExpansiveWidget(
-                    title:
-                        "How do I know at what time I will receive my Delivery? ",
-                    content: "Placing an order is very simple.",
+                const ExpansiveWidget(
+                    title: FaqPageString.howDoIKnow,
+                    content: FaqPageString.selectContent,
                     backgroundColor: AppColors.greenFaq),
-                ExpansiveWidget(
-                    title: "What is minimum order value?",
-                    content: "Placing an order is very simple.",
+                const ExpansiveWidget(
+                    title: FaqPageString.whatIs,
+                    content: FaqPageString.selectContent,
                     backgroundColor: AppColors.greenFaq),
-                ExpansiveWidget(
-                    title: "What if I want to return something?",
-                    content: "Placing an order is very simple.",
+                const ExpansiveWidget(
+                    title: FaqPageString.whatIf,
+                    content: FaqPageString.selectContent,
                     backgroundColor: AppColors.greenFaq),
                 SizedBox(
                   height: 4,
@@ -83,7 +82,7 @@ class _FaqPage extends State<FaqPage> {
                 Row(
                   children: [
                     Text(
-                      "Not Listed your Question/Query?",
+                      FaqPageString.notListed,
                       style: TextStyle(fontSize: 21, fontFamily: "SemiBold"),
                     )
                   ],
@@ -99,10 +98,10 @@ class _FaqPage extends State<FaqPage> {
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
                     child: Text(
-                      "Write your Question/Query here",
+                      FaqPageString.write,
                       style: TextStyle(fontFamily: "ExtraLight", fontSize: 14),
                     ),
                   ),

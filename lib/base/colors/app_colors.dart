@@ -17,4 +17,5 @@ class AppColors { // lưu toàn bộ mã màu trong ứng dụng
   static const Color yellowItemCart = Color.fromRGBO(214, 197, 51, 1);
   static const Color greenCartTotal = Color.fromRGBO(220, 255, 226, 1);
   static const Color greenFaq = Color.fromRGBO(224, 243, 219, 1.0);
+  static const Color containerAbout = Color.fromRGBO(248, 227, 224, 1.0);
 }
