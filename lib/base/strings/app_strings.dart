@@ -265,7 +265,7 @@ class AboutUsPageString {
   static const String weDoNot = "We do not buy from the open";
   static const String market = "market & traders.";
   static const String weWouldLike = "We would like to give the best to our valuable customer that’s why our experts check quality of every products before we deliver it to you and promises to do further to keep faith constant.";
-  static const String organic = "100% Organic";
+  static const String organic = "100% Organic Food";
   static const String service = "24/7 Service";
   static const String delivery = "Fast Delivery";
   static const String secure = "Secure Payment";

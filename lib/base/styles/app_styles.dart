@@ -449,4 +449,21 @@ class AppStyle {
     color: Colors.black
   );
 
+  static TextStyle whyChooseUs = const TextStyle(
+      fontSize: 20,
+      fontFamily: "SemiBold",
+      color: AppColors.greenMainColor
+  );
+
+  static TextStyle weDoNot = const TextStyle(
+      fontSize: 16,
+      fontFamily: "SemiBold",
+      color: Colors.black
+  );
+
+  static TextStyle organic = const TextStyle(
+      fontSize: 14,
+      fontFamily: "SemiBold",
+      color: Colors.black
+  );
 }

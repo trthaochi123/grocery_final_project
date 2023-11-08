@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sg_grocery_project/data/prefs/prefs.dart';
 import 'package:sg_grocery_project/screens/aboutUs/aboutUs_page.dart';
+import 'package:sg_grocery_project/screens/login/login_page.dart';
 import 'package:sg_grocery_project/screens/myAddresses/index.dart';
 import 'package:sg_grocery_project/screens/myOrder/myOrder_page.dart';
 import 'package:sg_grocery_project/screens/subscription/subs_page.dart';
@@ -162,12 +164,15 @@ class _AccountPageState extends State<AccountPage> {
                           AccountPageString.logOut,
                           // onTap
                               () {
+                            setLogin(false);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SubsPage(),
+                                builder: (context) => LoginPage(),
                               ),
                             );
+                            ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text("You've Logged Out")));
                           },
                         ),
 

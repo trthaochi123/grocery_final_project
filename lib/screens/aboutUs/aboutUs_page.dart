@@ -108,12 +108,30 @@ class _AboutUsPage extends State<AboutUsPage> {
                       ),
                       child: Column(
                         children: [
-                          Text(AboutUsPageString.whyChooseUs),
-                          Text(AboutUsPageString.weDoNot),
-                          Text(AboutUsPageString.market),
-                          Text(AboutUsPageString.weWouldLike),
+                          Text(
+                            AboutUsPageString.whyChooseUs,
+                            style: AppStyle.whyChooseUs,
+                          ),
                           SizedBox(
                             height: 16,
+                          ),
+                          Text(
+                            AboutUsPageString.weDoNot,
+                            style: AppStyle.weDoNot,
+                          ),
+                          Text(
+                            AboutUsPageString.market,
+                            style: AppStyle.weDoNot,
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Text(
+                            AboutUsPageString.weWouldLike,
+                            style: AppStyle.textParagraphAbout,
+                          ),
+                          SizedBox(
+                            height: 28,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 16),
@@ -127,14 +145,29 @@ class _AboutUsPage extends State<AboutUsPage> {
                                       children: [
                                         SvgPicture.asset(
                                             "assets/icons/ic_about_organic.svg"),
-                                        Text(AboutUsPageString.organic),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          AboutUsPageString.organic,
+                                          style: AppStyle.organic,
+                                        ),
                                       ],
+                                    ),
+                                    SizedBox(
+                                      height: 16,
                                     ),
                                     Row(
                                       children: [
                                         SvgPicture.asset(
                                             "assets/icons/ic_about_service.svg"),
-                                        Text(AboutUsPageString.service),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          AboutUsPageString.service,
+                                          style: AppStyle.organic,
+                                        ),
                                       ],
                                     )
                                   ],
@@ -146,14 +179,29 @@ class _AboutUsPage extends State<AboutUsPage> {
                                       children: [
                                         SvgPicture.asset(
                                             "assets/icons/ic_about_delivery.svg"),
-                                        Text(AboutUsPageString.delivery),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          AboutUsPageString.delivery,
+                                          style: AppStyle.organic,
+                                        ),
                                       ],
+                                    ),
+                                    SizedBox(
+                                      height: 16,
                                     ),
                                     Row(
                                       children: [
                                         SvgPicture.asset(
                                             "assets/icons/ic_about_security.svg"),
-                                        Text(AboutUsPageString.secure),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          AboutUsPageString.secure,
+                                          style: AppStyle.organic,
+                                        ),
                                       ],
                                     )
                                   ],
@@ -168,35 +216,35 @@ class _AboutUsPage extends State<AboutUsPage> {
               SizedBox(
                 height: 20,
               ),
-              ListileAbout(
-                  AboutUsPageString.privacy,
-                  () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  PrivacyPage(),
-                      ),
-                    );
-                  }
-              ),
+              ListileAbout(AboutUsPageString.privacy, () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PrivacyPage(),
+                  ),
+                );
+              }),
               SizedBox(
                 height: 12,
               ),
-
               ListileAbout(
-                  AboutUsPageString.terms,
-                      () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  TermsPage(),
-                      ),
-                    );
-                  }
+                AboutUsPageString.terms,
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TermsPage(),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 60,
               ),
             ],
           ),
         ),
+
       ),
     );
   }
@@ -206,8 +254,7 @@ class _AboutUsPage extends State<AboutUsPage> {
       width: 396,
       height: 57,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.greenItems),
+          borderRadius: BorderRadius.circular(12), color: AppColors.greenItems),
       child: ListTile(
         trailing: const Icon(
           Icons.chevron_right_outlined,
