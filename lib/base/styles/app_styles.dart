@@ -369,7 +369,7 @@ class AppStyle {
   static TextStyle textButtonNameWidget = const TextStyle(
     fontSize: 16,
     color: Colors.black,
-    fontWeight: FontWeight.bold,
+    fontFamily: "SemiBold",
   );
 
   // ticket_widget
@@ -465,5 +465,51 @@ class AppStyle {
       fontSize: 14,
       fontFamily: "SemiBold",
       color: Colors.black
+  );
+
+  static TextStyle myBalance = const TextStyle(
+      fontSize: 20,
+      fontFamily: "SemiBold",
+      color: Colors.black
+  );
+
+  static TextStyle twentyDollar = const TextStyle(
+      fontSize: 24,
+      fontFamily: "SemiBold",
+      color: AppColors.greenMainColor
+  );
+
+  static TextStyle useToPay = const TextStyle(
+      fontSize: 16,
+      fontFamily: "Light",
+  );
+
+  static TextStyle titlePrivacy = const TextStyle(
+    fontSize: 22,
+    fontFamily: "SemiBold",
+    decoration: TextDecoration.underline,
+  );
+
+  static TextStyle subTerm = const TextStyle(
+    fontSize: 16,
+    fontFamily: "SemiBold",
+    decoration: TextDecoration.underline,
+  );
+
+  static TextStyle subtitlePrivacy = const TextStyle(
+    fontSize: 18,
+    fontFamily: "SemiBold",
+    decoration: TextDecoration.underline,
+  );
+
+  static TextStyle lastUpdate = const TextStyle(
+    fontSize: 14,
+    fontFamily: "Light",
+  );
+
+  static TextStyle contentPrivacy = const TextStyle(
+    fontSize: 12,
+    fontFamily: "Regular",
+
   );
 }

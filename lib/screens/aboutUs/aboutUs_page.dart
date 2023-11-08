@@ -91,7 +91,7 @@ class _AboutUsPage extends State<AboutUsPage> {
                     padding: const EdgeInsets.only(top: 50),
                     child: Container(
                       width: double.infinity,
-                      height: 453,
+                      height: 416,
                       decoration: BoxDecoration(
                         color: AppColors.containerAbout,
                       ),

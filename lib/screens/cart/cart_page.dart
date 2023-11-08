@@ -4,6 +4,7 @@ import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/base/strings/app_strings.dart';
 import 'package:sg_grocery_project/base/strings/db_query_strings.dart';
 import 'package:sg_grocery_project/data/local/db_helper.dart';
+import 'package:sg_grocery_project/screens/payment/payment_page.dart';
 import 'package:sg_grocery_project/widgets/button_normal.dart';
 import 'package:sg_grocery_project/widgets/cart_item.dart';
 import 'package:sg_grocery_project/widgets/custom_appbar.dart';
@@ -257,7 +258,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                   Container(
                     width: 396,
-                    height: 52,
+                    height: 61,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(8.0),
@@ -292,7 +293,14 @@ class _CartPageState extends State<CartPage> {
 
             // ------ BUTTON ------
             ButtonNormalWidget(
-              onClickButton: () {},
+              onClickButton: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaymentPage(),
+                  ),
+                );
+              },
               textButton: CartPageString.textButton,
               heightButton: 50,
               widthButton: 200,

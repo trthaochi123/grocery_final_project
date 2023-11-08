@@ -272,3 +272,20 @@ class AboutUsPageString {
   static const String privacy = "Privacy Policy";
   static const String terms = "Terms and services";
 }
+
+class MyWalletPageString {
+  static const String pageTitle = "My Wallet";
+  static const String myBalance = "My Balance";
+  static const String twentyDollar = "\$20";
+  static const String useToPay = "Use to pay 100% on any orders";
+  static const String date1 = "17 Oct, 2021";
+  static const String date2 = "12 Oct, 2021";
+  static const String date3 = "05 Sept, 2021";
+  static const String cashBack = "Cashback Received";
+  static const String transaction = "Transaction Id : 25917892598342";
+  static const String twoDollar = "\$2";
+  static const String fiveDollar = "\$5";
+  static const String threeDollar = "\$3";
+  static const String spentOn = "Spent on order";
+
+}

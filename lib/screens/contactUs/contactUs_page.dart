@@ -18,7 +18,7 @@ class ContactUsPage extends StatefulWidget {
 
 class _ContactUsPage extends State<ContactUsPage> {
   final firstNameController = TextEditingController();
-  final lasttNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final infoController = TextEditingController();
@@ -118,7 +118,7 @@ class _ContactUsPage extends State<ContactUsPage> {
                       inputType: TextInputType.emailAddress,
                     ),
                     TextFieldAddress(
-                      controller: lasttNameController,
+                      controller: lastNameController,
                       hintText: ContactUsPageString.lastName,
                       hintStyle: AppStyle.hintTextStyle,
                       horizontal: 20,

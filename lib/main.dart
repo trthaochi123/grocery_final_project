@@ -5,6 +5,7 @@ import 'package:sg_grocery_project/screens/fruits/fruits_page.dart';
 import 'package:sg_grocery_project/screens/home/home_page.dart';
 import 'package:sg_grocery_project/screens/login/login_page.dart';
 import 'package:sg_grocery_project/screens/main_page.dart';
+import 'package:sg_grocery_project/screens/myWallet/my_wallet_page.dart';
 import 'package:sg_grocery_project/screens/register/register_page.dart';
 import 'package:sg_grocery_project/screens/splashPage/splash_page.dart';
 import 'package:flutter/material.dart';
