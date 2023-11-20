@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sg_grocery_project/screens/myWallet/my_wallet_page.dart';
+import 'package:sg_grocery_project/widgets/add_address_widget.dart';
 import 'package:sg_grocery_project/widgets/button_normal.dart';
 
 import '../../base/colors/app_colors.dart';
@@ -26,6 +28,13 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   int? selectedRadio;
   bool showCard = false;
+  List<String> assets = [
+    AppImage.cardPayment1,
+    AppImage.cardPayment2,
+  ];
+
+  int currentIndex = 0;
+  final _controller = PageController();
 
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -71,6 +80,7 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppbar(
         leading: SizedBox(
           height: 4,
@@ -100,64 +110,76 @@ class _PaymentPageState extends State<PaymentPage> {
           ),
         ),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
+          child:Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // CONTACT DETAILS
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
-                  "Contact Details",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: "SemiBold",
+
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    "Contact Details",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: "SemiBold",
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 12,
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextFieldAddress(
+                    controller: firstNameController,
+                    hintText: ContactUsPageString.firstName,
+                    hintStyle: AppStyle.hintTextStyle,
+                    horizontal: 1,
+                    vertical: 6,
+                    contentHorizontal: 20,
+                    contentVertical: 10,
+                    inputType: TextInputType.emailAddress,
+                  ),
                 ),
-                TextFieldAddress(
-                  controller: firstNameController,
-                  hintText: ContactUsPageString.firstName,
-                  hintStyle: AppStyle.hintTextStyle,
-                  horizontal: 1,
-                  vertical: 6,
-                  contentHorizontal: 20,
-                  contentVertical: 10,
-                  inputType: TextInputType.emailAddress,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextFieldAddress(
+                    controller: lastNameController,
+                    hintText: ContactUsPageString.lastName,
+                    hintStyle: AppStyle.hintTextStyle,
+                    horizontal: 1,
+                    vertical: 6,
+                    contentHorizontal: 20,
+                    contentVertical: 10,
+                    inputType: TextInputType.emailAddress,
+                  ),
                 ),
-                TextFieldAddress(
-                  controller: lastNameController,
-                  hintText: ContactUsPageString.lastName,
-                  hintStyle: AppStyle.hintTextStyle,
-                  horizontal: 1,
-                  vertical: 6,
-                  contentHorizontal: 20,
-                  contentVertical: 10,
-                  inputType: TextInputType.emailAddress,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextFieldAddress(
+                    controller: emailController,
+                    hintText: ContactUsPageString.email,
+                    hintStyle: AppStyle.hintTextStyle,
+                    horizontal: 1,
+                    vertical: 6,
+                    contentHorizontal: 20,
+                    contentVertical: 10,
+                    inputType: TextInputType.emailAddress,
+                  ),
                 ),
-                TextFieldAddress(
-                  controller: emailController,
-                  hintText: ContactUsPageString.email,
-                  hintStyle: AppStyle.hintTextStyle,
-                  horizontal: 1,
-                  vertical: 6,
-                  contentHorizontal: 20,
-                  contentVertical: 10,
-                  inputType: TextInputType.emailAddress,
-                ),
-                TextFieldAddress(
-                  controller: phoneNumberController,
-                  hintText: ContactUsPageString.phoneNumber,
-                  hintStyle: AppStyle.hintTextStyle,
-                  horizontal: 1,
-                  vertical: 6,
-                  contentHorizontal: 20,
-                  contentVertical: 10,
-                  inputType: TextInputType.emailAddress,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextFieldAddress(
+                    controller: phoneNumberController,
+                    hintText: ContactUsPageString.phoneNumber,
+                    hintStyle: AppStyle.hintTextStyle,
+                    horizontal: 1,
+                    vertical: 6,
+                    contentHorizontal: 20,
+                    contentVertical: 10,
+                    inputType: TextInputType.emailAddress,
+                  ),
                 ),
 
                 SizedBox(
@@ -165,135 +187,150 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
 
                 // CHOOSE ADDRESS
-                Text(
-                  "Choose Delivery Address",
-                  style: TextStyle(fontSize: 18, fontFamily: "SemiBold"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Choose Delivery Address",
+                    style: TextStyle(fontSize: 18, fontFamily: "SemiBold"),
+                  ),
                 ),
 
                 SizedBox(
                   height: 12,
                 ),
 
-                Container(
-                  height: 360,
-                  child: ListView.builder(
-                      itemCount: address.length,
-                      itemBuilder: (context, index) {
-                        return Row(
-                          children: [
-                            Checkbox(
-                              shape: const CircleBorder(),
-                              value: address[index].isCheck,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  for (int i = 0; i < address.length; i++) {
-                                    address[i].isCheck = false;
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Container(
+                    height: 180,
+                    child: ListView.builder(
+                        itemCount: address.length,
+                        itemBuilder: (context, index) {
+                          return Row(
+                            children: [
+                              Checkbox(
+                                shape: const CircleBorder(),
+                                value: address[index].isCheck,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    for (int i = 0; i < address.length; i++) {
+                                      address[i].isCheck = false;
+                                      updateAddress(Address(
+                                        id: address[i].id,
+                                        country: address[i].country,
+                                        state: address[i].state,
+                                        city: address[i].city,
+                                        pincode: address[i].pincode,
+                                        type: address[i].type,
+                                        isCheck: false,
+                                      ));
+                                    }
+                                    address[index].isCheck = true;
                                     updateAddress(Address(
-                                      id: address[i].id,
-                                      country: address[i].country,
-                                      state: address[i].state,
-                                      city: address[i].city,
-                                      pincode: address[i].pincode,
-                                      type: address[i].type,
-                                      isCheck: false,
+                                      id: address[index].id,
+                                      country: address[index].country,
+                                      state: address[index].state,
+                                      city: address[index].city,
+                                      pincode: address[index].pincode,
+                                      type: address[index].type,
+                                      isCheck: true,
                                     ));
-                                  }
-                                  address[index].isCheck = true;
-                                  updateAddress(Address(
-                                    id: address[index].id,
-                                    country: address[index].country,
-                                    state: address[index].state,
-                                    city: address[index].city,
-                                    pincode: address[index].pincode,
-                                    type: address[index].type,
-                                    isCheck: true,
-                                  ));
-                                });
-                              },
-                            ),
-                            AddressItem(
-                              country: address[index].country,
-                              state: address[index].state,
-                              city: address[index].city,
-                              pincode: address[index].pincode,
-                              type: address[index].type,
-                              clickEdit: () async {
-                                final resultEdit = await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => EditAddress(
-                                          editAddress: address[index])),
-                                );
-                                if (resultEdit == true) {
-                                  loadAddress();
-                                }
-                              },
-                              clickDelete: () => showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                  title: const Text(
-                                      'Do you want to delete this address?'),
-                                  actions: <Widget>[
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(context, 'Cancel'),
-                                      child: const Text('CANCEL'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          if (address[index].id == null) {
-                                          } else {
-                                            deleteAddress(address[index].id!);
-                                            address.removeAt(index);
-                                            Navigator.pop(context);
-                                          }
-                                        });
-                                      },
-                                      child: const Text('OK'),
-                                    ),
-                                  ],
-                                ),
+                                  });
+                                },
                               ),
-                              iconType: checkIconType(index: index),
-                            )
-                          ],
-                        );
-                      }),
+                              AddressItem(
+                                country: address[index].country,
+                                state: address[index].state,
+                                city: address[index].city,
+                                pincode: address[index].pincode,
+                                type: address[index].type,
+                                clickEdit: () async {
+                                  final resultEdit = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => EditAddress(
+                                            editAddress: address[index])),
+                                  );
+                                  if (resultEdit == true) {
+                                    loadAddress();
+                                  }
+                                },
+                                clickDelete: () => showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) => AlertDialog(
+                                    title: const Text(
+                                        'Do you want to delete this address?'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, 'Cancel'),
+                                        child: const Text('CANCEL'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            if (address[index].id == null) {
+                                            } else {
+                                              deleteAddress(address[index].id!);
+                                              address.removeAt(index);
+                                              Navigator.pop(context);
+                                            }
+                                          });
+                                        },
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                iconType: checkIconType(index: index),
+                              )
+                            ],
+                          );
+                        }),
+                  ),
                 ),
 
                 SizedBox(
                   height: 12,
                 ),
 
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        final resultAdd = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AddNewAddress()),
-                        );
-                        if (resultAdd == true) {
-                          loadAddress();
-                        }
-                      },
-                      child:
-                          SvgPicture.asset("assets/icons/ic_address_plus.svg"),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      MyAddressPageString.addNewAddress,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.greenMainColor,
-                        fontFamily: "SemiBold",
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                height: 600,
+                                width: double.infinity,
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(child: AddAddressWidget()),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child:
+                            SvgPicture.asset("assets/icons/ic_address_plus.svg"),
                       ),
-                    )
-                  ],
+                      const SizedBox(width: 8),
+                      Text(
+                        MyAddressPageString.addNewAddress,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.greenMainColor,
+                          fontFamily: "SemiBold",
+                        ),
+                      )
+                    ],
+                  ),
                 ),
 
                 SizedBox(
@@ -301,21 +338,27 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
 
                 // DO YOU HAVE PROMO CODE
-                Text(
-                  "Do you have a promo code / Coupon ?",
-                  style: TextStyle(fontSize: 18, fontFamily: "SemiBold"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Do you have a promo code / Coupon ?",
+                    style: TextStyle(fontSize: 18, fontFamily: "SemiBold"),
+                  ),
                 ),
                 SizedBox(height: 16),
-                TextFormField(
-                  controller: codeController,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(12)),
-                      labelText: "Enter your code",
-                      filled: true,
-                      fillColor: Colors.grey[250],
-                      prefixIcon: Icon(Icons.credit_card_rounded)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextFormField(
+                    controller: codeController,
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent),
+                            borderRadius: BorderRadius.circular(12)),
+                        labelText: "Enter your code",
+                        filled: true,
+                        fillColor: Colors.grey[250],
+                        prefixIcon: Icon(Icons.credit_card_rounded)),
+                  ),
                 ),
 
                 SizedBox(
@@ -341,11 +384,14 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
 
                 // CHOOSE PAYMENT METHOD
-                Text(
-                  "Choose payment method",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: "SemiBold",
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Choose payment method",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: "SemiBold",
+                    ),
                   ),
                 ),
 
@@ -353,86 +399,101 @@ class _PaymentPageState extends State<PaymentPage> {
                   height: 16,
                 ),
 
-                Container(
-                  width: 396,
-                  height: 57,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: AppColors.greenItems),
-                  child: buildRadioListTile(1, "Cash On Delivery"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    width: 396,
+                    height: 57,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.greenItems),
+                    child: buildRadioListTile(1, "Cash On Delivery"),
+                  ),
                 ),
 
                 SizedBox(
                   height: 16,
                 ),
 
-                Container(
-                  width: 396,
-                  height: 57,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: AppColors.greenItems),
-                  child: buildRadioListTile(2, "UPI"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    width: 396,
+                    height: 57,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.greenItems),
+                    child: buildRadioListTile(2, "UPI"),
+                  ),
                 ),
 
                 SizedBox(
                   height: 16,
                 ),
 
-                Container(
-                  width: 396,
-                  height: 57,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: AppColors.greenItems),
-                  child: buildRadioListTile(3, "Wallet"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    width: 396,
+                    height: 57,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.greenItems),
+                    child: buildRadioListTile(3, "Wallet"),
+                  ),
                 ),
 
                 SizedBox(
                   height: 16,
                 ),
 
-                Container(
-                  width: 396,
-                  height: 57,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: AppColors.greenItems),
-                  child: buildRadioListTile(4, "Credit / Debit Card"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    width: 396,
+                    height: 57,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.greenItems),
+                    child: buildRadioListTile(4, "Credit / Debit Card"),
+                  ),
                 ),
 
                 SizedBox(
                   height: 16,
                 ),
 
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        final resultAdd = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AddNewAddress()),
-                        );
-                        if (resultAdd == true) {
-                          loadAddress();
-                        }
-                      },
-                      child:
-                          SvgPicture.asset("assets/icons/ic_address_plus.svg"),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      MyAddressPageString.addNewAddress,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.greenMainColor,
-                        fontFamily: "SemiBold",
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          final resultAdd = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddNewAddress()),
+                          );
+                          if (resultAdd == true) {
+                            loadAddress();
+                          }
+                        },
+                        child:
+                            SvgPicture.asset("assets/icons/ic_address_plus.svg"),
                       ),
-                    )
-                  ],
+                      const SizedBox(width: 8),
+                      Text(
+                        "Add New Payment Method",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.greenMainColor,
+                          fontFamily: "SemiBold",
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 16,
@@ -442,32 +503,42 @@ class _PaymentPageState extends State<PaymentPage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MyWalletPage(),
+                                builder: (context) => const MyWalletPage(),
                               ), // Replace 'NewPage' with the desired page
                             );
                           },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                  'assets/images/img_payment_card1.png'),
-                              Image.asset(
-                                  'assets/images/img_payment_card2.png'),
-                            ],
-                          ), // Replace with your image
+                          child: SizedBox(
+                            height: 300,
+                            width: MediaQuery.of(context).size.width,
+                            child: CarouselSlider(
+                              options: CarouselOptions(
+                                height: 400,
+                                enlargeCenterPage: true,
+                                aspectRatio: 3.0,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    currentIndex = index;
+                                  });
+                                },
+                              ),
+                              items: assets.map((asset) {
+                                return Image.asset(asset);
+                              }).toList(),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
 
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
 
@@ -486,14 +557,14 @@ class _PaymentPageState extends State<PaymentPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
+                            const Text(
                               "Enter CVV",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: "Light",
                                   color: AppColors.whiteColor),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Container(
@@ -533,20 +604,20 @@ class _PaymentPageState extends State<PaymentPage> {
                   height: 28,
                 ),
 
-                Text(
-                  "Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.",
-                  style: TextStyle(
-                    fontFamily: "Light",
-                    fontSize: 14
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.",
+                    style: TextStyle(fontFamily: "Light", fontSize: 14),
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
               ],
             ),
-          ),
+
         ),
       ),
     );

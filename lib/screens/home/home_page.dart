@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sg_grocery_project/base/colors/app_colors.dart';
 import 'package:sg_grocery_project/base/images/app_images.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  String name = '';
   List<String> assets = [
     AppImage.adHomePage,
     AppImage.adHomePage,
@@ -30,6 +32,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final _controller = PageController();
 
   navigateExplorePage() {}
+
+  @override
+  void initState() {
+    getUserInfo();
+    super.initState();
+  }
+
+  Future<void> getUserInfo() async {
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user != null) {
+        setState(() {
+          name = user.displayName ?? '';
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -375,3 +395,5 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
+
+

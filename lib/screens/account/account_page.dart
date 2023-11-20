@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/data/prefs/prefs.dart';
@@ -163,8 +164,9 @@ class _AccountPageState extends State<AccountPage> {
                           // text
                           AccountPageString.logOut,
                           // onTap
-                              () {
-                            setLogin(false);
+                              () async {
+                            // setLogin(false);
+                                await FirebaseAuth.instance.signOut();
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -28,13 +28,13 @@ class TicketWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: 24, right: 12),
       child: Stack(
         children: [
           Row(
             children: [
               Container(
-                width: 284,
+                width: 254,
                 height: 108,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -57,7 +57,7 @@ class TicketWidget extends StatelessWidget {
                 width: 2,
               ),
               Container(
-                width: 110,
+                width: 120,
                 height: 108,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -70,7 +70,7 @@ class TicketWidget extends StatelessWidget {
             ],
           ),
           Positioned(
-            left: 273,
+            left: 244,
             top: -12,
             bottom: -12,
             child: Column(
@@ -133,7 +133,7 @@ class TicketWidget extends StatelessWidget {
 
           Positioned(
             top: 12,
-            left: 256,
+            left: 228,
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,7 +146,7 @@ class TicketWidget extends StatelessWidget {
 
           Positioned(
             top: 12,
-            left: 302,
+            left: 274,
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,28 +157,28 @@ class TicketWidget extends StatelessWidget {
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 302,
-              top: 32,
-            ),
-            child: Column(
-              children: [
-                Text(
-                  TicketWidgetString.code,
-                  style: AppStyle.codeStyle,
-                ),
-                Text(
-                  codeText,
-                  style: AppStyle.codeTextDetail,
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(
+          //     left: 302,
+          //     top: 32,
+          //   ),
+          //   child: Column(
+          //     children: [
+          //       Text(
+          //         TicketWidgetString.code,
+          //         style: AppStyle.codeStyle,
+          //       ),
+          //       Text(
+          //         codeText,
+          //         style: AppStyle.codeTextDetail,
+          //       ),
+          //     ],
+          //   ),
+          // ),
 
           Positioned(
             top: 12,
-            left: 370,
+            left: 350,
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

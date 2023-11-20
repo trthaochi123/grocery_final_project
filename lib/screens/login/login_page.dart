@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/data/prefs/prefs.dart';
@@ -21,6 +22,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  Future<UserCredential?> login(
+      {required String email, required String pwd}) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: pwd
+      );
+      return credential;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No user found for that email.'),
+          ),
+        );
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Wrong password provided for that user.'),
+          ),
+        );
+      }
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,14 +135,19 @@ class _LoginPageState extends State<LoginPage> {
 
             //Button
             ButtonWidget(
-              onPressed: () {
-                setLogin(true);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MainPage(),
-                  ),
-                );
+              onPressed: () async {
+                // setLogin(true);
+                final account = await login(
+                  email: emailController.text,
+                  pwd: passwordController.text);
+                if (account != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MainPage(),
+                    ),
+                  );
+                }
               },
               textButton: LoginPageString.textButton,
             ),
@@ -154,7 +186,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             // google or facebook
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google

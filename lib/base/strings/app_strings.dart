@@ -204,7 +204,7 @@ class AccountPageString {
   static const String accountTitle = 'Profile';
   static const String nameAcc = "George D.";
   static const String emailAcc = "@george31";
-  static const String myOrders = "My orders";
+  static const String myOrders = "My Orders";
   static const String mySubscriptions = "My Subscriptions";
   static const String myAddresses = "My Addresses";
   static const String faq = "FAQ";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sg_grocery_project/widgets/add_address_widget.dart';
 
 import '../../base/colors/app_colors.dart';
 import '../../base/strings/app_strings.dart';
@@ -170,125 +171,7 @@ class _AddNewAddress extends State<AddNewAddress> {
               ),
               color: Colors.white,
             ),
-            child: ListView(
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    children: [
-                      AddressTextField(
-                        textFieldName: "Country",
-                        controller: countryController,
-                      ),
-                      const SizedBox(height: 16),
-                      AddressTextField(
-                        textFieldName: "State",
-                        controller: stateController,
-                      ),
-                      const SizedBox(height: 16),
-                      AddressTextField(
-                        textFieldName: "City",
-                        controller: cityController,
-                      ),
-                      const SizedBox(height: 16),
-                      AddressTextField(
-                        textFieldName: "PinCode",
-                        controller: pincodeController,
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: checkHome,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            checkHome = value!;
-                            if (checkHome == true) {
-                              checkOffice = false;
-                              checkOther = false;
-                            }
-                          });
-                        }),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Regular",
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    Checkbox(
-                        value: checkOffice,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            checkOffice = value!;
-                            if (checkOffice == true) {
-                              checkHome = false;
-                              checkOther = false;
-                            }
-                          });
-                        }),
-                    Text(
-                      "Office",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Regular",
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    Checkbox(
-                        value: checkOther,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            checkOther = value!;
-                            if (checkOther == true) {
-                              checkHome = false;
-                              checkOffice = false;
-                            }
-                          });
-                        }),
-                    Text(
-                      "Other",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Regular",
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 80),
-                  child: LogElevatedButton(
-                      buttonWidth: 200,
-                      buttonName: "SAVE",
-                      onClick: () {
-                        setState(() {
-                          if (countryController.text.isEmpty ||
-                              stateController.text.isEmpty ||
-                              cityController.text.isEmpty ||
-                              pincodeController.text.isEmpty ||
-                              (checkHome == false &&
-                                  checkOther == false &&
-                                  checkOffice == false)) {
-                            dialogMising();
-                          } else {
-                            if (checkPincode() == true) {
-                              dialogCheck();
-                            } else {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar());
-                            }
-                          }
-                        });
-                      },
-                      radius: 4),
-                )
-              ],
-            ),
+            child: AddAddressWidget()
           )
         ],
       ),

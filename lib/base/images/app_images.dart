@@ -97,4 +97,8 @@ class AppImage {
   // ABOUT US
   static const String imgIllustrator = "assets/images/img_about.png";
   static const String imgFruit = "assets/images/img_about_fruit.png";
+
+  // CARD
+  static const String cardPayment1 = "assets/images/img_card_payment1.png";
+  static const String cardPayment2 = "assets/images/img_card_payment2.png";
 }

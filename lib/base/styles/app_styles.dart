@@ -404,7 +404,7 @@ class AppStyle {
   );
 
   static TextStyle codeTextDetail = const TextStyle(
-    fontSize: 16,
+    fontSize: 2,
     fontFamily: "ExtraBold",
     color: Colors.white,
   );

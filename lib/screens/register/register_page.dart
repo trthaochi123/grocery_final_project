@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sg_grocery_project/base/styles/app_styles.dart';
 import 'package:sg_grocery_project/screens/login/login_page.dart';
@@ -24,7 +25,45 @@ class _RegisterPageState extends State<RegisterPage> {
   final confirmPasswordController = TextEditingController();
   final contactNumberController = TextEditingController();
 
-  void registerUser() {}
+  Future<UserCredential?> createAccount(
+      {required String email, required String pwd}) async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: pwd,
+      );
+      await credential.user?.updateDisplayName(yournameController.text);
+      return credential;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('The password provided is too weak.'),
+          ),
+        );
+      } else if (e.code == 'email-already-in-use') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('The account already exists for that email.'),
+          ),
+        );
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  void clearAndPop() {
+    Navigator.pop(context);
+    yournameController.clear();
+    emailController.clear();
+    passwordController.clear();
+    confirmPasswordController.clear();
+    contactNumberController.clear();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +172,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
             // Register Button
             ButtonWidget(
-              onPressed: registerUser,
+              onPressed: () async {
+                final login = await createAccount(
+                    email: emailController.text,
+                    pwd: passwordController.text);
+                if(login != null) {
+                  clearAndPop();
+                }
+              },
               textButton: RegisterPageString.textButton,
             ),
 
@@ -171,7 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
 
             // google or apple
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // google
@@ -230,3 +276,4 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
+
