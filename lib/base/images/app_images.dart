@@ -35,6 +35,10 @@ class AppSvg {
 
 // ---- IMAGE -----
 class AppImage {
+
+  // DETAIL
+  static const String prdDetail1 = "assets/images/img_prd_detail1.png";
+
   // CART PAGE
   static const String imgCartItem4 = "assets/images/img_cart_item4.png";
   static const String imgCartItem2 = "assets/images/img_cart_item2.png";

@@ -18,4 +18,10 @@ class AppColors { // lưu toàn bộ mã màu trong ứng dụng
   static const Color greenCartTotal = Color.fromRGBO(220, 255, 226, 1);
   static const Color greenFaq = Color.fromRGBO(224, 243, 219, 1.0);
   static const Color containerAbout = Color.fromRGBO(248, 227, 224, 1.0);
+  static const Color relatedPrdDetailAccentOrange = Color.fromRGBO(255, 234, 209, 1);
+  static const Color relatedPrdDetailOrange = Color.fromRGBO(255, 168, 59, 1);
+  static const Color relatedPrdDetailAccentRed = Color.fromRGBO(245, 217, 217, 1);
+  static const Color relatedPrdDetailRed = Color.fromRGBO(216, 33, 75, 1.0);
+  static const Color relatedPrdDetailAccentGreen = Color.fromRGBO(239, 245, 210, 1);
+  static const Color relatedPrdDetailGreen = Color.fromRGBO(163, 200, 44, 1.0);
 }

@@ -141,7 +141,7 @@ class AppStyle {
 
   static TextStyle amount = const TextStyle(
     fontFamily: "SemiBold",
-    fontSize: 18,
+    fontSize: 20,
     color: AppColors.greenMainColor,
   );
   static TextStyle subscribeButton = const TextStyle(

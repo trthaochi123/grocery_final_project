@@ -9,6 +9,7 @@ import 'package:sg_grocery_project/widgets/name_page.dart';
 import '../../base/colors/app_colors.dart';
 import '../../base/strings/app_strings.dart';
 import '../../widgets/bar_label.dart';
+import '../fruits/fruits_page.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -35,6 +36,7 @@ class _ExplorePageState extends State<ExplorePage> {
               BarLabel(
                 firstLabel: ExplorePageString.groceries,
                 secondLable: ExplorePageString.seeAll,
+
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -72,6 +74,7 @@ class _ExplorePageState extends State<ExplorePage> {
               BarLabel(
                 firstLabel: ExplorePageString.vegetables,
                 secondLable: ExplorePageString.seeAll,
+
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -109,6 +112,14 @@ class _ExplorePageState extends State<ExplorePage> {
               BarLabel(
                 firstLabel: ExplorePageString.fruits,
                 secondLable: ExplorePageString.seeAll,
+                onClickButton: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FruitsPage(),
+                    ),
+                  );
+                },
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,

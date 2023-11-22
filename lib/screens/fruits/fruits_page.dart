@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/base/colors/app_colors.dart';
 import 'package:sg_grocery_project/base/strings/app_strings.dart';
 import 'package:sg_grocery_project/base/styles/app_styles.dart';
+import 'package:sg_grocery_project/screens/details/detail_page.dart';
 import 'package:sg_grocery_project/widgets/app_icon.dart';
 import 'package:sg_grocery_project/widgets/button_normal.dart';
 import 'package:sg_grocery_project/widgets/log_reg_button_widget.dart';
@@ -151,12 +152,22 @@ class _FruitsPageState extends State<FruitsPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8, top: 138),
+                            padding: const EdgeInsets.only(top: 124),
                             child: Row(
                               children: [
-                                Text(
-                                  "${gridMap.elementAt(index)['title']}",
-                                  style: AppStyle.titleFruits,
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>  DetailPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                    "${gridMap.elementAt(index)['title']}",
+                                    style: AppStyle.titleFruits,
+                                  ),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -198,7 +209,7 @@ class _FruitsPageState extends State<FruitsPage> {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
