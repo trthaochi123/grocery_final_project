@@ -69,20 +69,19 @@ class MyOrdersPage extends StatelessWidget {
                 height: 1200,
                 child: ListView(
                   children: const [
-                     MyOrderWidget(
-                      hasOrder: true,
+                    MyOrderWidget(
                       image1: "assets/images/img_cart_item4.png",
                       image2: "assets/icons/ic_myorder_hint.svg",
                       title: "Arrives Tomorrow",
                       subTitle: "7AM - 11 PM",
                     ),
-                     MyOrderWidget(
+                    MyOrderWidget(
                       image1: "assets/images/img_myorder_item2.png",
                       image2: "assets/icons/ic_myorder_hint.svg",
                       title: "Arrives Tomorrow",
                       subTitle: "7AM - 11 PM",
                     ),
-                     MyOrderWidget(
+                    MyOrderWidget(
                       image1: "assets/images/img_myorder_item4.png",
                       image2: "assets/icons/ic_myorder_hint.svg",
                       title: "Arrives Tomorrow",
@@ -91,7 +90,6 @@ class MyOrdersPage extends StatelessWidget {
                   ],
                 ),
               ),
-
             ],
           ),
         ),

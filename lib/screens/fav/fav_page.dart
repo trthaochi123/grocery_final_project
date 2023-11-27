@@ -119,122 +119,130 @@ class _FavPageState extends State<FavPage> {
               itemBuilder: (_, index) {
                 bool isPressed = isSubscribePressed[index];
 
-                return Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: AppColors.greenItems,
-                  ),
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 144, top: 4),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "${gridMap.elementAt(index)['ic_heart']}",
+                return Flexible(
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      color: AppColors.greenItems,
+                    ),
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 130, top: 4),
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  "${gridMap.elementAt(index)['ic_heart']}",
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16, left: 38),
-                            child: Image.asset(
-                              "${gridMap.elementAt(index)['images']}",
-                              height: 132,
-                              width: 110,
-                              fit: BoxFit.fitWidth,
+                            Padding(
+                              padding: const EdgeInsets.only(top: 16, left: 38),
+                              child: Image.asset(
+                                "${gridMap.elementAt(index)['images']}",
+                                height: 132,
+                                width: 110,
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8, top: 138),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "${gridMap.elementAt(index)['title']}",
-                                  style: AppStyle.titleFruits,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "${gridMap.elementAt(index)['price2']}",
-                                  style: AppStyle.price2Fruits,
-                                ),
-                              ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8, top: 138),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "${gridMap.elementAt(index)['title']}",
+                                    style: AppStyle.titleFruits,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "${gridMap.elementAt(index)['price2']}",
+                                    style: AppStyle.price2Fruits,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 154, left: 8),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "${gridMap.elementAt(index)['price']}",
-                                  style: AppStyle.priceFruits,
-                                ),
-                                const SizedBox(
-                                  width: 54,
-                                ),
-                                Row(
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8, top: 156),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "${gridMap.elementAt(index)['price']}",
+                                    style: AppStyle.titleFruits,
+                                  ),
+                                  const SizedBox(
+                                    width: 38,
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: SvgPicture.asset(
+                                          AppSvg.icMinorFruitsPage,
+                                        ),
+                                      ),
+                                      Text(
+                                        "1",
+                                        style: AppStyle.amount,
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: SvgPicture.asset(
+                                          AppSvg.icPlusFruitsPage,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            //BTN
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 198, left: 8),
+                                child: Row(
                                   children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: SvgPicture.asset(
-                                        AppSvg.icMinorFruitsPage,
-                                      ),
+                                    ButtonNormalWidget(
+                                      textButton: FruitsPageString.subscribe,
+                                      heightButton: 24,
+                                      widthButton: 80,
+                                      textStyle: AppStyle.subscribeButton,
+                                      onClickButton: () {
+                                        setState(
+                                          () {
+                                            isSubscribePressed[index] =
+                                                !isPressed;
+                                          },
+                                        );
+                                      },
+                                      backgroundColorButton: isPressed
+                                          ? Colors.grey
+                                          : Colors.green,
                                     ),
-                                    Text(
-                                      "1",
-                                      style: AppStyle.amount,
+                                    const SizedBox(
+                                      width: 4,
                                     ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: SvgPicture.asset(
-                                        AppSvg.icPlusFruitsPage,
-                                      ),
+                                    OutlinedButtonWidget(
+                                      textButton: FruitsPageString.buyOne,
+                                      textStyle: AppStyle.buyOneButton,
+                                      heightButton: 24,
+                                      widthButton: 72,
                                     ),
                                   ],
-                                )
-                              ],
+                                ),
+                              ),
                             ),
-                          ),
-
-                          //BTN
-                          Padding(
-                            padding: const EdgeInsets.only(top: 198, left: 8),
-                            child: Row(
-                              children: [
-                                ButtonNormalWidget(
-                                  textButton: FruitsPageString.subscribe,
-                                  heightButton: 24,
-                                  widthButton: 88,
-                                  textStyle: AppStyle.subscribeButton,
-                                  onClickButton: () {
-                                    setState(
-                                          () {
-                                        isSubscribePressed[index] = !isPressed;
-                                      },
-                                    );
-                                  },
-                                  backgroundColorButton:
-                                  isPressed ? Colors.grey : Colors.green,
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                OutlinedButtonWidget(
-                                  textButton: FruitsPageString.buyOne,
-                                  textStyle: AppStyle.buyOneButton,
-                                  heightButton: 24,
-                                  widthButton: 86,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

@@ -115,26 +115,59 @@ class _CartPageState extends State<CartPage> {
             ),
 
             // ------ TICKET ------
-            const TicketWidget(
-              xPath: AppSvg.icXGreen,
-              firstLineText: CartPageString.flatText,
-              secondLineText: CartPageString.saleOffText,
-              thirdLineText: CartPageString.detailText1,
-              fourthLineText: CartPageString.detailText2,
-              codeText: CartPageString.getFirst,
-              backgroundColor: AppColors.greenItemCart,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const TicketWidget(
-              xPath: AppSvg.icXYellow,
-              firstLineText: CartPageString.get5off,
-              thirdLineText: CartPageString.detailText3,
-              fourthLineText: CartPageString.detailText4,
-              codeText: CartPageString.dollar5,
-              backgroundColor: AppColors.yellowItemCart,
-              secondLineText: '',
+            // const TicketWidget(
+            //   xPath: AppSvg.icXGreen,
+            //   firstLineText: CartPageString.flatText,
+            //   secondLineText: CartPageString.saleOffText,
+            //   thirdLineText: CartPageString.detailText1,
+            //   fourthLineText: CartPageString.detailText2,
+            //   codeText: CartPageString.getFirst,
+            //   backgroundColor: AppColors.greenItemCart,
+            // ),
+            // const SizedBox(
+            //   height: 16,
+            // ),
+            // const TicketWidget(
+            //   xPath: AppSvg.icXYellow,
+            //   firstLineText: CartPageString.get5off,
+            //   thirdLineText: CartPageString.detailText3,
+            //   fourthLineText: CartPageString.detailText4,
+            //   codeText: CartPageString.dollar5,
+            //   backgroundColor: AppColors.yellowItemCart,
+            //   secondLineText: '',
+            // ),
+
+            Container(
+              height: 200, // Set a fixed height for the Ticket section
+              child: Column(
+                children: [
+                  Expanded(
+                    child: TicketWidget(
+                      xPath: AppSvg.icXGreen,
+                      firstLineText: CartPageString.flatText,
+                      secondLineText: CartPageString.saleOffText,
+                      thirdLineText: CartPageString.detailText1,
+                      fourthLineText: CartPageString.detailText2,
+                      codeText: CartPageString.getFirst,
+                      backgroundColor: AppColors.greenItemCart,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Expanded(
+                    child: TicketWidget(
+                      xPath: AppSvg.icXYellow,
+                      firstLineText: CartPageString.get5off,
+                      thirdLineText: CartPageString.detailText3,
+                      fourthLineText: CartPageString.detailText4,
+                      codeText: CartPageString.dollar5,
+                      backgroundColor: AppColors.yellowItemCart,
+                      secondLineText: '',
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             const SizedBox(

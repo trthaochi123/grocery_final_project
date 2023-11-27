@@ -57,7 +57,7 @@ class TicketWidget extends StatelessWidget {
                 width: 2,
               ),
               Container(
-                width: 120,
+                width: 90,
                 height: 108,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -178,7 +178,7 @@ class TicketWidget extends StatelessWidget {
 
           Positioned(
             top: 12,
-            left: 350,
+            left: 324,
             bottom: 12,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -31,7 +31,7 @@ class _MyOrderWidget extends State<MyOrderWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 16,
+        horizontal: 8,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,6 +51,7 @@ class _MyOrderWidget extends State<MyOrderWidget> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //column
               Container(
                 width: 348,
                 height: 97,
@@ -87,8 +88,10 @@ class _MyOrderWidget extends State<MyOrderWidget> {
                 ),
               ),
               SizedBox(
-                height: 12,
+                height: 24,
               ),
+
+              // View order
               Row(
                 children: [
                   OutlinedButtonWidget(
@@ -98,20 +101,17 @@ class _MyOrderWidget extends State<MyOrderWidget> {
                     widthButton: 128,
                   ),
                   const SizedBox(
-                    width: 100,
+                    width: 120,
                   ),
                   if (widget.hasOrder)
                     ButtonNormalWidget(
                       onClickButton: () {},
                       textButton: "Track Order",
                       heightButton: 36,
-                      widthButton: 120,
+                      widthButton: 98,
                       textStyle: TextStyle(fontFamily: "Medium", fontSize: 12),
                       backgroundColorButton: AppColors.greenMainColor,
                     ),
-                  const SizedBox(
-                    width: 24,
-                  ),
 
                   // if has order == false then display this
                   if (widget.hasOrder == false)
@@ -128,6 +128,7 @@ class _MyOrderWidget extends State<MyOrderWidget> {
                 height: 16,
               ),
 
+              // edit Order
               Row(
                 children: [
                   if (widget.hasOrder)
@@ -139,7 +140,7 @@ class _MyOrderWidget extends State<MyOrderWidget> {
                       ),
                     ),
                   const SizedBox(
-                    width: 200,
+                    width: 210,
                   ),
 
                   // if has order
