@@ -119,8 +119,7 @@ class _FavPageState extends State<FavPage> {
               itemBuilder: (_, index) {
                 bool isPressed = isSubscribePressed[index];
 
-                return Flexible(
-                  child: Container(
+                return Container(
                     height: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
@@ -203,48 +202,44 @@ class _FavPageState extends State<FavPage> {
                             ),
 
                             //BTN
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 198, left: 8),
-                                child: Row(
-                                  children: [
-                                    ButtonNormalWidget(
-                                      textButton: FruitsPageString.subscribe,
-                                      heightButton: 24,
-                                      widthButton: 80,
-                                      textStyle: AppStyle.subscribeButton,
-                                      onClickButton: () {
-                                        setState(
-                                          () {
-                                            isSubscribePressed[index] =
-                                                !isPressed;
-                                          },
-                                        );
-                                      },
-                                      backgroundColorButton: isPressed
-                                          ? Colors.grey
-                                          : Colors.green,
-                                    ),
-                                    const SizedBox(
-                                      width: 4,
-                                    ),
-                                    OutlinedButtonWidget(
-                                      textButton: FruitsPageString.buyOne,
-                                      textStyle: AppStyle.buyOneButton,
-                                      heightButton: 24,
-                                      widthButton: 72,
-                                    ),
-                                  ],
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 198, left: 8),
+                              child: Row(
+                                children: [
+                                  ButtonNormalWidget(
+                                    textButton: FruitsPageString.subscribe,
+                                    heightButton: 24,
+                                    widthButton: 80,
+                                    textStyle: AppStyle.subscribeButton,
+                                    onClickButton: () {
+                                      setState(
+                                        () {
+                                          isSubscribePressed[index] =
+                                              !isPressed;
+                                        },
+                                      );
+                                    },
+                                    backgroundColorButton:
+                                        isPressed ? Colors.grey : Colors.green,
+                                  ),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  OutlinedButtonWidget(
+                                    textButton: FruitsPageString.buyOne,
+                                    textStyle: AppStyle.buyOneButton,
+                                    heightButton: 24,
+                                    widthButton: 72,
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                  ),
-                );
+                  );
+
               },
             ),
           ),

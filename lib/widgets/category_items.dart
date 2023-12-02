@@ -46,8 +46,9 @@ class _CategoryItemsState extends State<CategoryItems> {
                 child: Container(
                   width: 87,
                   height: 38,
-                  decoration: const BoxDecoration(
-                    color: AppColors.greenMainColor,
+                  decoration:  BoxDecoration(
+                    // color: AppColors.greenMainColor,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(6),
                       bottomRight: Radius.circular(6),

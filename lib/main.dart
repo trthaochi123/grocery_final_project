@@ -39,6 +39,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: AppColors.yellowItemCart,
+        textTheme: const TextTheme(
+          headlineMedium: TextStyle(
+            color: Colors.greenAccent,
+            fontSize: 24,
+            fontFamily: "SemiBold",
+          )
+        ),
         fontFamily: "Montserrat",
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.bottomNavColor,

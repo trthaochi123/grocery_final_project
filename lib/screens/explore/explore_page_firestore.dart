@@ -20,6 +20,7 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
+
   final db = FirebaseFirestore.instance;
 
 
@@ -32,6 +33,7 @@ class _ExplorePageState extends State<ExplorePage> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,7 +139,7 @@ class _ExplorePageState extends State<ExplorePage> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: [
+                  children: const [
                     ExploreItems(
                       nameProduct: ExplorePageString.strawberry,
                       weightProduct: ExplorePageString.oneKg,
@@ -167,14 +169,15 @@ class _ExplorePageState extends State<ExplorePage> {
               ),
 
               //Dairy Products
-              BarLabel(
+              const BarLabel(
                 firstLabel: ExplorePageString.dairyProducts,
                 secondLable: ExplorePageString.seeAll,
               ),
+
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: [
+                  children: const [
                     ExploreItems(
                       nameProduct: ExplorePageString.a2mateMilk,
                       weightProduct: ExplorePageString.pointFiveLtr,
@@ -211,7 +214,7 @@ class _ExplorePageState extends State<ExplorePage> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: [
+                  children: const [
                     ExploreItems(
                       nameProduct: ExplorePageString.parleRusk,
                       weightProduct: ExplorePageString.fiveHundredGram,

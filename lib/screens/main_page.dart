@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sg_grocery_project/base/images/app_images.dart';
 import 'package:sg_grocery_project/screens/account/account_page.dart';
@@ -19,7 +20,19 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  // final db = FirebaseFirestore.instance;
+
   int seclectedPage = 0; // trỏ HomePage chạy đầu tiên
+
+  // @override
+  // void initState() {
+  //   db.collection('categories').get().then((event) {
+  //     for (var doc in event.docs) {
+  //       print(doc.data());
+  //     }
+  //   });
+  //   super.initState();
+  // }
 
   // các lựa chọn màn hình theo index[selectedPage]
   List<Widget> widgetOption = [

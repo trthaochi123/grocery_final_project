@@ -47,7 +47,8 @@ class _AccountPageState extends State<AccountPage> {
                 children: [
                   Text(
                     AccountPageString.nameAcc,
-                    style: AppStyle.nameAcc,
+                    // style: AppStyle.nameAcc,
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   Text(
                     AccountPageString.emailAcc,

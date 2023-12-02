@@ -70,6 +70,7 @@ class MyOrdersPage extends StatelessWidget {
                 child: ListView(
                   children: const [
                     MyOrderWidget(
+                      hasOrder: true,
                       image1: "assets/images/img_cart_item4.png",
                       image2: "assets/icons/ic_myorder_hint.svg",
                       title: "Arrives Tomorrow",
