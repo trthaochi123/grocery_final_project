@@ -118,7 +118,6 @@ class _FavPageState extends State<FavPage> {
               itemCount: gridMap.length,
               itemBuilder: (_, index) {
                 bool isPressed = isSubscribePressed[index];
-
                 return Container(
                     height: 100,
                     decoration: BoxDecoration(

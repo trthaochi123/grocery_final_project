@@ -18,21 +18,21 @@ class FruitsPage extends StatefulWidget {
   const FruitsPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _FruitsPageState();
+  State<StatefulWidget> createState() => _FruitsPage();
 }
 
-class _FruitsPageState extends State<FruitsPage> {
+class _FruitsPage extends State<FruitsPage> {
   List<bool> isSubscribePressed = List.generate(8, (index) => true);
 
   bool isButtonPressed = true;
 
   final List<Map<String, dynamic>> gridMap = [
     {
-      "title": FruitsPageString.strawberry,
+      "title": FruitsPageString.banana,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem1,
-      "ic_heart": AppSvg.icHeartFruitsPage,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
       "title": FruitsPageString.banana,
@@ -42,46 +42,46 @@ class _FruitsPageState extends State<FruitsPage> {
       "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
-      "title": FruitsPageString.kiwiFruit,
-      "price2": FruitsPageString.threeUnit,
-      "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem3,
-      "ic_heart": AppSvg.icHeartFruitsPage,
-    },
-    {
-      "title": FruitsPageString.grapes,
+      "title": FruitsPageString.banana,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem4,
-      "ic_heart": AppSvg.icHeartFruitsPage,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
-      "title": FruitsPageString.watermelon,
+      "title": FruitsPageString.banana,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem5,
-      "ic_heart": AppSvg.icHeartFruitsPage,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
-      "title": FruitsPageString.orange,
+      "title": FruitsPageString.banana,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem6,
-      "ic_heart": AppSvg.icHeartFruitsPage,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
-      "title": FruitsPageString.guava,
+      "title": FruitsPageString.banana,
       "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem6,
-      "ic_heart": AppSvg.icHeartFruitsPage,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
     {
-      "title": FruitsPageString.avocado,
-      "price2": FruitsPageString.twoPacks,
+      "title": FruitsPageString.banana,
+      "price2": FruitsPageString.oneKg,
       "price": FruitsPageString.fourDollars,
-      "images": AppImage.fruitPageItem8,
-      "ic_heart": AppSvg.icHeartFruitsPage,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
+    },
+    {
+      "title": FruitsPageString.banana,
+      "price2": FruitsPageString.oneKg,
+      "price": FruitsPageString.fourDollars,
+      "images": AppImage.fruitPageItem2,
+      "ic_heart": AppSvg.icHeartFruitsPage2,
     },
   ];
 
@@ -89,13 +89,13 @@ class _FruitsPageState extends State<FruitsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(
-        textTitle: FruitsPageString.fruitsTitle,
+        textTitle: FavPageString.favTitle,
         backgroundColor: AppColors.greenMainColor,
         textStyle: AppStyle.textWhiteLabelPage,
       ),
       backgroundColor: AppColors.greenMainColor,
       body: Container(
-        margin: const EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 10),
         height: double.infinity,
         decoration: const BoxDecoration(
           color: AppColors.whiteColor,
@@ -106,10 +106,7 @@ class _FruitsPageState extends State<FruitsPage> {
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 50,
-            ),
+            padding: const EdgeInsets.all(16),
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -122,7 +119,6 @@ class _FruitsPageState extends State<FruitsPage> {
               itemCount: gridMap.length,
               itemBuilder: (_, index) {
                 bool isPressed = isSubscribePressed[index];
-
                 return Container(
                   height: 100,
                   decoration: BoxDecoration(
@@ -134,7 +130,7 @@ class _FruitsPageState extends State<FruitsPage> {
                       Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 144, top: 4),
+                            padding: const EdgeInsets.only(left: 130, top: 4),
                             child: IconButton(
                               onPressed: () {},
                               icon: SvgPicture.asset(
@@ -151,8 +147,9 @@ class _FruitsPageState extends State<FruitsPage> {
                               fit: BoxFit.fitWidth,
                             ),
                           ),
+
                           Padding(
-                            padding: const EdgeInsets.only(top: 124),
+                            padding: const EdgeInsets.only(top: 128),
                             child: Row(
                               children: [
                                 TextButton(
@@ -160,7 +157,7 @@ class _FruitsPageState extends State<FruitsPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>  DetailPage(),
+                                        builder: (context) => DetailPage(),
                                       ),
                                     );
                                   },
@@ -179,16 +176,17 @@ class _FruitsPageState extends State<FruitsPage> {
                               ],
                             ),
                           ),
+
                           Padding(
-                            padding: const EdgeInsets.only(top: 154, left: 8),
+                            padding: const EdgeInsets.only(left: 8, top: 156),
                             child: Row(
                               children: [
                                 Text(
                                   "${gridMap.elementAt(index)['price']}",
-                                  style: AppStyle.priceFruits,
+                                  style: AppStyle.titleFruits,
                                 ),
                                 const SizedBox(
-                                  width: 54,
+                                  width: 38,
                                 ),
                                 Row(
                                   children: [
@@ -222,17 +220,18 @@ class _FruitsPageState extends State<FruitsPage> {
                                 ButtonNormalWidget(
                                   textButton: FruitsPageString.subscribe,
                                   heightButton: 24,
-                                  widthButton: 88,
+                                  widthButton: 80,
                                   textStyle: AppStyle.subscribeButton,
                                   onClickButton: () {
                                     setState(
-                                      () {
-                                        isSubscribePressed[index] = !isPressed;
+                                          () {
+                                        isSubscribePressed[index] =
+                                        !isPressed;
                                       },
                                     );
                                   },
                                   backgroundColorButton:
-                                      isPressed ? Colors.green : Colors.grey,
+                                  isPressed ? Colors.grey : Colors.green,
                                 ),
                                 const SizedBox(
                                   width: 4,
@@ -241,7 +240,7 @@ class _FruitsPageState extends State<FruitsPage> {
                                   textButton: FruitsPageString.buyOne,
                                   textStyle: AppStyle.buyOneButton,
                                   heightButton: 24,
-                                  widthButton: 86,
+                                  widthButton: 72,
                                 ),
                               ],
                             ),
@@ -251,6 +250,7 @@ class _FruitsPageState extends State<FruitsPage> {
                     ],
                   ),
                 );
+
               },
             ),
           ),

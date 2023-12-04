@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
             //Button
             ButtonWidget(
               onPressed: () async {
-                // setLogin(true);
+                setLogin(true);
                 final account = await login(
                   email: emailController.text,
                   pwd: passwordController.text);

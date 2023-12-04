@@ -29,8 +29,8 @@ class _AccountPageState extends State<AccountPage> {
     return Scaffold(
         appBar: CustomAppbar(
           textTitle: AccountPageString.accountTitle,
-          backgroundColor: AppColors.whiteColor,
-          textStyle: AppStyle.textBlackLabelPage,
+          backgroundColor: AppColors.greenMainColor,
+          textStyle: AppStyle.textWhiteLabelPage,
         ),
         body: Container(
           padding: EdgeInsets.only(left: 16),
@@ -166,7 +166,7 @@ class _AccountPageState extends State<AccountPage> {
                           AccountPageString.logOut,
                           // onTap
                               () async {
-                            // setLogin(false);
+                            setLogin(false);
                                 await FirebaseAuth.instance.signOut();
                             Navigator.push(
                               context,

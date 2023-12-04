@@ -9,6 +9,8 @@ import 'package:sg_grocery_project/widgets/name_page.dart';
 
 import '../../base/colors/app_colors.dart';
 import '../../base/strings/app_strings.dart';
+import '../../models/product.dart';
+import '../../models/title.dart';
 import '../../widgets/bar_label.dart';
 import '../fruits/fruits_page.dart';
 
@@ -21,227 +23,109 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage> {
   final db = FirebaseFirestore.instance;
-
+  List<TabTitle> titles = [];
+  List<Product> products = [];
 
   @override
   void initState() {
+    final titlesTemp = <TabTitle>[];
+    final productsTemp = <Product>[];
     db.collection('categories').get().then((event) {
-      for (var doc in event.docs) {
-        print(doc.data());
+      for (var i = 0; i < event.docs.length; i++) {
+        db.collection('products').get().then(
+          (value) {
+            for (final item in value.docs) {
+              final categoriesId = (item.data()['category_id']
+                      as DocumentReference<Map<String, dynamic>>)
+                  .id;
+              print("ddd ${event.docs[i].id}");
+              if (categoriesId == event.docs[i].id) {
+                productsTemp.add(
+                  Product(
+                    categoryId: categoriesId,
+                    description: item.data()['description'] as String,
+                    image: item.data()['image'] as String,
+                    name: item.data()['name'] as String,
+                    price: item.data()['price'] as String,
+                    weight: item.data()['weight'] as String,
+                  ),
+                );
+              }
+            }
+            setState(() {
+              titles = titlesTemp;
+            });
+          },
+        );
+
+        titlesTemp.add(
+          TabTitle(
+            id: event.docs[i].id,
+            name: event.docs[i].data().values.first as String,
+          ),
+        );
       }
+      setState(() {
+        products = productsTemp;
+      });
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(
         textTitle: ExplorePageString.exploreTitle,
-        backgroundColor: AppColors.whiteColor,
-        textStyle: AppStyle.textBlackLabelPage,
+        backgroundColor: AppColors.greenMainColor,
+        textStyle: AppStyle.textWhiteLabelPage,
       ),
-      body:  SizedBox(
+      body: SizedBox(
         height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //Groceries
-              BarLabel(
-                firstLabel: ExplorePageString.groceries,
-                secondLable: ExplorePageString.seeAll,
-
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ExploreItems(
-                      nameProduct: ExplorePageString.jaggeryPowder,
-                      weightProduct: ExplorePageString.fiveHundredGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.groItem1,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.tataArharDal,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.fourDollars,
-                      imagePath: AppImage.groItem2,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.saffolaGoldOil,
-                      weightProduct: ExplorePageString.fiveLtrAndOneLtr,
-                      priceProduct: ExplorePageString.twentyDollar,
-                      imagePath: AppImage.groItem3,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.jaggeryPowder,
-                      weightProduct: ExplorePageString.fiveHundredGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.groItem1,
-                    ),
-                  ],
-                ),
-              ),
-
-              //Vegetables
-              BarLabel(
-                firstLabel: ExplorePageString.vegetables,
-                secondLable: ExplorePageString.seeAll,
-
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ExploreItems(
-                      nameProduct: ExplorePageString.tomato,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.twoDollars,
-                      imagePath: AppImage.vegeItem1,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.potato,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.oneDollars,
-                      imagePath: AppImage.vegeItem2,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.onion,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.twoDollars,
-                      imagePath: AppImage.vegeItem3,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.jaggeryPowder,
-                      weightProduct: ExplorePageString.fiveHundredGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.vegeItem1,
-                    ),
-                  ],
-                ),
+              Column(
+                children: titles.isNotEmpty
+                    ? titles.map((e) {
+                        return Column(
+                          children: [
+                            BarLabel(
+                              firstLabel: e.name,
+                              secondLable: ExplorePageString.seeAll,
+                              onClickButton: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FruitsPage(),
+                                  ),
+                                );
+                              },
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: products.isNotEmpty
+                                    ? products.map((e) {
+                                  return ExploreItems(
+                                    nameProduct: e.name,
+                                    weightProduct: e.weight,
+                                    priceProduct: e.price,
+                                    imagePath: e.image,
+                                  );
+                                }).toList()
+                                    : [],
+                              ),
+                            ),
+                          ],
+                        );
+                      }).toList()
+                    : [],
               ),
 
-              //Fruits
-              BarLabel(
-                firstLabel: ExplorePageString.fruits,
-                secondLable: ExplorePageString.seeAll,
-                onClickButton: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const FruitsPage(),
-                    ),
-                  );
-                },
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ExploreItems(
-                      nameProduct: ExplorePageString.strawberry,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.fourDollars,
-                      imagePath: AppImage.fruitItem1,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.banana,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.twoDollars,
-                      imagePath: AppImage.fruitItem2,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.kiwifruit,
-                      weightProduct: ExplorePageString.oneKg,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.fruitItem3,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.jaggeryFruit,
-                      weightProduct: ExplorePageString.fiveHundredGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.fruitItem1,
-                    ),
-                  ],
-                ),
-              ),
-
-              //Dairy Products
-              BarLabel(
-                firstLabel: ExplorePageString.dairyProducts,
-                secondLable: ExplorePageString.seeAll,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ExploreItems(
-                      nameProduct: ExplorePageString.a2mateMilk,
-                      weightProduct: ExplorePageString.pointFiveLtr,
-                      priceProduct: ExplorePageString.twoDollars,
-                      imagePath: AppImage.dailyItem1,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.amulButter,
-                      weightProduct: ExplorePageString.pointFiveLtr,
-                      priceProduct: ExplorePageString.twoDollars,
-                      imagePath: AppImage.dailyItem2,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.sofitSoyaMilk,
-                      weightProduct: ExplorePageString.pointFiveLtr,
-                      priceProduct: ExplorePageString.twoDollars,
-                      imagePath: AppImage.dailyItem3,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.jaggeryPowder,
-                      weightProduct: ExplorePageString.fiveHundredGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.dailyItem1,
-                    ),
-                  ],
-                ),
-              ),
-
-              //Cookies
-              BarLabel(
-                firstLabel: ExplorePageString.bakeryItems,
-                secondLable: ExplorePageString.seeAll,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ExploreItems(
-                      nameProduct: ExplorePageString.parleRusk,
-                      weightProduct: ExplorePageString.fiveHundredGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.bakeryItem1,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.chocoMuffin,
-                      weightProduct: ExplorePageString.sixPacks,
-                      priceProduct: ExplorePageString.fourDollars,
-                      imagePath: AppImage.bakeryItem2,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.harsheysBar,
-                      weightProduct: ExplorePageString.fourtyThreeGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.bakeryItem3,
-                    ),
-                    ExploreItems(
-                      nameProduct: ExplorePageString.brandBer,
-                      weightProduct: ExplorePageString.fourtyThreeGram,
-                      priceProduct: ExplorePageString.threeDollars,
-                      imagePath: AppImage.bakeryItem1,
-                    ),
-                  ],
-                ),
-              ),
 
               SizedBox(
-                height: 30,
+                height: 40,
               ),
             ],
           ),

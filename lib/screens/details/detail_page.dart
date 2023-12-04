@@ -46,218 +46,244 @@ class _DetailPage extends State<DetailPage> {
         alignment: Alignment.centerLeft,
       ),
       backgroundColor: AppColors.whiteColor,
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 140,
-                decoration: BoxDecoration(
-                  color: AppColors.greenMainColor,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(28),
-                    bottomLeft: Radius.circular(28),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // header
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 140,
+                  decoration: const BoxDecoration(
+                    color: AppColors.greenMainColor,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(28),
+                      bottomLeft: Radius.circular(28),
+                    ),
                   ),
                 ),
-              ),
 
-              // Product Carousel
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 190,
-                        width: MediaQuery.of(context).size.width,
-                        child: PageView.builder(
-                          itemCount: assets.length,
+                // Product Carousel
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 1),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 190,
+                          width: MediaQuery.of(context).size.width,
+                          child: PageView.builder(
+                            itemCount: assets.length,
+                            controller: _controller,
+                            onPageChanged: (value) {
+                              //value: tham số đại diện cho chỉ số của trang mới được chọn
+                              currentIndex = value;
+                              setState(
+                                () {},
+                              );
+                            },
+                            // itemBuider Xây dựng và trả về widget tương ứng với index
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: const EdgeInsets.all(1),
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                child: Image.asset(
+                                  assets[index],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        SmoothPageIndicator(
                           controller: _controller,
-                          onPageChanged: (value) {
-                            //value: tham số đại diện cho chỉ số của trang mới được chọn
-                            currentIndex = value;
-                            setState(
-                              () {},
-                            );
-                          },
-                          // itemBuider Xây dựng và trả về widget tương ứng với index
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.all(1),
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: Image.asset(
-                                assets[index],
-                              ),
-                            );
-                          },
+                          count: assets.length,
+                          effect: const ExpandingDotsEffect(
+                            activeDotColor: AppColors.greenMainColor,
+                            dotColor: AppColors.greyColor,
+                            dotHeight: 6,
+                            dotWidth: 12,
+                            spacing: 4,
+                            expansionFactor: 2,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      SmoothPageIndicator(
-                        controller: _controller,
-                        count: assets.length,
-                        effect: const ExpandingDotsEffect(
-                          activeDotColor: AppColors.greenMainColor,
-                          dotColor: AppColors.greyColor,
-                          dotHeight: 6,
-                          dotWidth: 12,
-                          spacing: 4,
-                          expansionFactor: 2,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
+              ],
+            ),
+
+            const SizedBox(
+              height: 20,
+            ),
+
+            // Content
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: SizedBox(
+                height: 400,
+                child: Column(
+                  children: [
+                    // Label Product
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Green Apple",
+                          style:
+                              TextStyle(fontFamily: "SemiBold", fontSize: 24),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                AppSvg.icMinorFruitsPage,
+                                height: 24,
+                              ),
+                            ),
+                            Text(
+                              "1",
+                              style: AppStyle.amount,
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset(
+                                AppSvg.icPlusFruitsPage,
+                                height: 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(
+                      height: 8,
+                    ),
+
+                    // Special price
+                    Row(
+                      children: [
+                        const Text(
+                          "Special price",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: "Regular",
+                              color: AppColors.greenMainColor),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(
+                      height: 16,
+                    ),
+
+                    // Price
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "\$2",
+                          style:
+                              TextStyle(fontFamily: "SemiBold", fontSize: 24),
+                        ),
+                        Text(
+                          "(42% off)",
+                          style: TextStyle(
+                              fontFamily: "SemiBold",
+                              fontSize: 16,
+                              color: AppColors.greenMainColor),
+                        )
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: 24,
+                    ),
+
+                    // Description
+                    Row(
+                      children: const [
+                        Text(
+                          "Description",
+                          style:
+                              TextStyle(fontFamily: "SemiBold", fontSize: 20),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(
+                      height: 12,
+                    ),
+
+                    const Text(
+                      "Green apples have less sugar and carbs, and more fiber, protein, potassium, iron, and vitamin K, taking the lead as a healthier variety, although the differences are ever so slight.",
+                      style: TextStyle(fontFamily: "ExtraLight", fontSize: 14),
+                    ),
+
+                    SizedBox(
+                      height: 32,
+                    ),
+
+                    // Button
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ButtonNormalWidget(
+                          textButton: FruitsPageString.subscribe,
+                          heightButton: 36,
+                          widthButton: 106,
+                          textStyle:
+                              TextStyle(fontSize: 14, fontFamily: "SemiBold"),
+                          onClickButton: () {},
+                          backgroundColorButton: AppColors.greenMainColor,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        const OutlinedButtonWidget(
+                          textButton: FruitsPageString.buyOne,
+                          textStyle:
+                              TextStyle(fontSize: 14, fontFamily: "SemiBold"),
+                          heightButton: 36,
+                          widthButton: 106,
+                        )
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: 32,
+                    ),
+
+                    // Related Items
+                    Row(
+                      children: const [
+                        Text(
+                          "Related items",
+                          style:
+                              TextStyle(fontFamily: "SemiBold", fontSize: 20),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SizedBox(
-              height: 587,
-              child: ListView(
-                children: [
-                  // Label Product
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Green Apple",
-                        style: TextStyle(fontFamily: "SemiBold", fontSize: 24),
-                      ),
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              AppSvg.icMinorFruitsPage,
-                              height: 24,
-                            ),
-                          ),
-                          Text(
-                            "1",
-                            style: AppStyle.amount,
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              AppSvg.icPlusFruitsPage,
-                              height: 24,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+            ),
 
-                  SizedBox(
-                    height: 8,
-                  ),
-
-                  // Special price
-                  const Text(
-                    "Special price",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: "Regular",
-                        color: AppColors.greenMainColor),
-                  ),
-
-                  SizedBox(
-                    height: 16,
-                  ),
-
-                  // Price
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "\$2",
-                        style: TextStyle(fontFamily: "SemiBold", fontSize: 24),
-                      ),
-                      Text(
-                        "(42% off)",
-                        style: TextStyle(
-                            fontFamily: "SemiBold",
-                            fontSize: 16,
-                            color: AppColors.greenMainColor),
-                      )
-                    ],
-                  ),
-
-                  SizedBox(
-                    height: 24,
-                  ),
-
-                  // Description
-                  Text(
-                    "Description",
-                    style: TextStyle(fontFamily: "SemiBold", fontSize: 20),
-                  ),
-
-                  SizedBox(
-                    height: 12,
-                  ),
-
-                  Text(
-                    "Green apples have less sugar and carbs, and more fiber, protein, potassium, iron, and vitamin K, taking the lead as a healthier variety, although the differences are ever so slight.",
-                    style: TextStyle(fontFamily: "ExtraLight", fontSize: 14),
-                  ),
-
-                  SizedBox(
-                    height: 32,
-                  ),
-
-                  // Button
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ButtonNormalWidget(
-                        textButton: FruitsPageString.subscribe,
-                        heightButton: 36,
-                        widthButton: 106,
-                        textStyle:
-                            TextStyle(fontSize: 14, fontFamily: "SemiBold"),
-                        onClickButton: () {},
-                        backgroundColorButton: AppColors.greenMainColor,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      OutlinedButtonWidget(
-                        textButton: FruitsPageString.buyOne,
-                        textStyle:
-                            TextStyle(fontSize: 14, fontFamily: "SemiBold"),
-                        heightButton: 36,
-                        widthButton: 106,
-                      )
-                    ],
-                  ),
-
-                  SizedBox(
-                    height: 32,
-                  ),
-
-                  // Related Items
-                  Text(
-                    "Related items",
-                    style: TextStyle(fontFamily: "SemiBold", fontSize: 20),
-                  ),
-
-                  SizedBox(
-                    height: 30,
-                  ),
-
-                  Row(
+            SizedBox(
+              width: double.infinity,
+              height: 196,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
                     children: const [
                       RelatedPrdDetailWidget(
                         backgroundColor: AppColors.relatedPrdDetailAccentOrange,
@@ -265,35 +291,42 @@ class _DetailPage extends State<DetailPage> {
                         image: "assets/images/img_prd_detail_1.png",
                         namePrd: "Pinapple",
                       ),
-
-                      SizedBox(width: 16,),
-
+                      SizedBox(
+                        width: 16,
+                      ),
                       RelatedPrdDetailWidget(
                         backgroundColor: AppColors.relatedPrdDetailAccentRed,
                         labelColor: AppColors.relatedPrdDetailRed,
                         image: "assets/images/img_prd_detail_2.png",
                         namePrd: "Strawberry",
                       ),
-
-                      SizedBox(width: 16,),
-
+                      SizedBox(
+                        width: 16,
+                      ),
                       RelatedPrdDetailWidget(
                         backgroundColor: AppColors.relatedPrdDetailAccentGreen,
                         labelColor: AppColors.relatedPrdDetailGreen,
                         image: "assets/images/img_prd_detail_3.png",
                         namePrd: "Grapes",
                       ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      RelatedPrdDetailWidget(
+                        backgroundColor: AppColors.relatedPrdDetailAccentOrange,
+                        labelColor: AppColors.relatedPrdDetailOrange,
+                        image: "assets/images/img_prd_detail_3.png",
+                        namePrd: "Grapes",
+                      ),
                     ],
                   ),
+                ),
 
-                  SizedBox(
-                    height: 30,
-                  ),
-                ],
-              ),
             ),
-          )
-        ],
+
+            SizedBox(height: 40,)
+          ],
+        ),
       ),
     );
   }

@@ -49,8 +49,8 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: CustomAppbar(
         textTitle: CartPageString.myCart,
-        backgroundColor: AppColors.whiteColor,
-        textStyle: AppStyle.textBlackLabelPage,
+        backgroundColor: AppColors.greenMainColor,
+        textStyle: AppStyle.textWhiteLabelPage,
       ),
       body: SingleChildScrollView(
         child: Column(

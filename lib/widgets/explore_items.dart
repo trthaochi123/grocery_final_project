@@ -29,7 +29,7 @@ class _ExploreItemsState extends State<ExploreItems> {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 6, left: 15),
+          padding: const EdgeInsets.only(top: 2, left: 15, bottom: 20),
           child: Stack(
             children: [
               Container(
@@ -83,8 +83,10 @@ class _ExploreItemsState extends State<ExploreItems> {
                   vertical: 12,
                 ),
                 child: SizedBox(
-                  child: Image.asset(
+                  child: Image.network(
                     widget.imagePath,
+                    width: 72,
+                    height: 72,
                   ),
                 ),
               ),
